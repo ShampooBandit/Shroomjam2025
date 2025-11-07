@@ -1,0 +1,73 @@
+[gd_scene load_steps=5 format=3 uid="uid://bt5r7n1w3eui5"]
+
+[ext_resource type="Script" uid="uid://ub3367t5lo43" path="res://Scripts/main.gd" id="1_8gbba"]
+[ext_resource type="PackedScene" uid="uid://bkhwbueajubi7" path="res://Scenes/Games/Platformer/PlatformerGame.tscn" id="1_jjgbg"]
+[ext_resource type="VideoStream" uid="uid://lipqcx5ow2fm" path="res://Videos/90s Commercials - S01.E1.ogv" id="2_bo1nx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jjgbg"]
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_8gbba")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Container" type="CenterContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/Container"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jjgbg")
+
+[node name="TVScreen" type="SubViewportContainer" parent="CanvasLayer/Container/PanelContainer"]
+layout_mode = 2
+
+[node name="SubViewport" type="SubViewport" parent="CanvasLayer/Container/PanelContainer/TVScreen"]
+handle_input_locally = false
+size = Vector2i(432, 320)
+render_target_update_mode = 4
+
+[node name="CanvasLayer" type="CanvasLayer" parent="CanvasLayer/Container/PanelContainer/TVScreen/SubViewport"]
+
+[node name="Commercials" type="Control" parent="CanvasLayer/Container/PanelContainer/TVScreen/SubViewport/CanvasLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Container/PanelContainer/TVScreen/SubViewport/CanvasLayer/Commercials"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/Container/PanelContainer/TVScreen/SubViewport/CanvasLayer/Commercials"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 10.0
+offset_right = 416.0
+offset_bottom = 310.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="CanvasLayer/Container/PanelContainer/TVScreen/SubViewport/CanvasLayer/Commercials/CenterContainer"]
+layout_mode = 2
+stream = ExtResource("2_bo1nx")
+volume_db = -18.469997
+autoplay = true
+loop = true
+
+[node name="PlatformerGame" parent="CanvasLayer/Container/PanelContainer/TVScreen/SubViewport" instance=ExtResource("1_jjgbg")]
+visible = false
