@@ -23,6 +23,7 @@ func _ready() -> void:
 	AudioServer.set_bus_volume_db(bus_ids[1], -5)
 	platformer.visible = false
 	channel_label_timer = 120
+	# set process_mode = Node.PROCESS_MODE_DISABLED for each game that isn't running and make them not visible
 	
 func _process(_delta: float) -> void:
 	if channel_label_timer > 0:

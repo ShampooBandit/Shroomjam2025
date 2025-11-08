@@ -1,7 +1,7 @@
-class_name PlatformerEnemy1 extends CharacterBody2D
+class_name PlatformerGoombaEnemy extends CharacterBody2D
 
 var dir : int = 1
-var speed : int = 100
+var speed : int = 50
 var gravity : int = 200
 var stomped : bool = false
 
@@ -12,7 +12,7 @@ var stomped : bool = false
 @onready var anim_player : AnimationPlayer = $AnimationPlayer
 
 func _ready() -> void:
-	pass
+	anim_player.play("walk")
 
 func _physics_process(_delta: float) -> void:
 	if !stomped:
@@ -37,6 +37,13 @@ func getStomped() -> void:
 
 func _on_animation_player_animation_finished(_anim_name):
 	if _anim_name == "die":
-		#queue_free()
-		anim_player.play("RESET")
-		stomped = false
+		visible = false
+		process_mode = Node.PROCESS_MODE_DISABLED
+	elif _anim_name == "RESET":
+		anim_player.play("walk")
+		
+func respawn() -> void:
+	process_mode = Node.PROCESS_MODE_PAUSABLE
+	stomped = false
+	anim_player.play("RESET")
+	visible = true
