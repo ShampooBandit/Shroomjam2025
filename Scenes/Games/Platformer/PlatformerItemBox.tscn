@@ -1,0 +1,125 @@
+[gd_scene load_steps=10 format=3 uid="uid://6c0taioo7lv7"]
+
+[ext_resource type="Texture2D" uid="uid://cekt8boehewbe" path="res://GFX/NES - Super Mario Bros. - Miscellaneous - Tileset.png" id="1_txorv"]
+[ext_resource type="Script" uid="uid://bcf2ljyf6yrtc" path="res://Scenes/Games/Platformer/PlatformerItemBox.gd" id="1_vbkg8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4anim"]
+size = Vector2(32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tqic8"]
+atlas = ExtResource("1_txorv")
+region = Rect2(272, 136, 136, 34)
+
+[sub_resource type="Animation" id="Animation_26pd6"]
+resource_name = "idle"
+length = 1.0000033
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.33333334, 0.6666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+
+[sub_resource type="Animation" id="Animation_6jowy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_ycgue"]
+resource_name = "empty"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+
+[sub_resource type="Animation" id="Animation_wkome"]
+resource_name = "hit"
+length = 0.30000335
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, -24.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_u6l77"]
+_data = {
+&"RESET": SubResource("Animation_6jowy"),
+&"empty": SubResource("Animation_ycgue"),
+&"hit": SubResource("Animation_wkome"),
+&"idle": SubResource("Animation_26pd6")
+}
+
+[node name="ItemBox" type="CharacterBody2D"]
+collision_layer = 17
+collision_mask = 17
+script = ExtResource("1_vbkg8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_4anim")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_tqic8")
+hframes = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_u6l77")
+}
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://d062h34aklbaa"]
+
+[ext_resource type="Script" uid="uid://dy76pq2qegjb7" path="res://Scenes/Games/Zelda/pickups/ZeldaItem.gd" id="1_jtyfc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jtyfc"]
+
+[node name="ZeldaItem" type="Node2D"]
+script = ExtResource("1_jtyfc")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_jtyfc")

@@ -15,7 +15,7 @@ var counter = 0
 @export var score_label: Label
 @export var ducks_label: Label
 
-func _process(delta: float):
+func _process(_delta: float):
 	match shots:
 		3:
 			ammo_label.text = "333"
@@ -42,5 +42,5 @@ func _process(delta: float):
 		scoretext = "0" + scoretext
 	score_label.text = scoretext
 	
-func _physics_process(delta: float):
+func _physics_process(_delta: float):
 	counter += 1

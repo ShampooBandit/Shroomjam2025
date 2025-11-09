@@ -49,7 +49,7 @@ func _ready():
 	random_trajectory()
 	
 
-func _physics_process(delta: float):
+func _physics_process(_delta: float):
 	timer -= 1
 	match state:
 		DuckState.NEUTRAL: # cooldown

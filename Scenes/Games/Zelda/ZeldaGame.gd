@@ -1,0 +1,21 @@
+class_name ZeldaGame extends Node2D
+
+@onready var tilemap1 := $SubViewportContainer/TileMapLayer1
+@onready var tilemap2 := $SubViewportContainer/TileMapLayer2
+@onready var tilemap3 := $SubViewportContainer/TileMapLayer3
+@onready var tilemaps : Array = [tilemap1, tilemap2, tilemap3]
+@onready var gameViewport := $SubViewportContainer
+
+func _ready() -> void:
+	pass
+
+func disable_tilemaps() -> void:
+	for t in tilemaps:
+		t.collision_enabled = false
+
+func _on_player_darken_screen() -> void:
+	gameViewport.modulate = gameViewport.modulate.darkened(0.7)
+
+
+func _on_player_respawn():
+	gameViewport.modulate = Color.WHITE

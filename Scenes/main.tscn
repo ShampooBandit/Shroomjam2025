@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bt5r7n1w3eui5"]
+[gd_scene load_steps=12 format=3 uid="uid://bt5r7n1w3eui5"]
 
 [ext_resource type="Script" uid="uid://ub3367t5lo43" path="res://Scripts/main.gd" id="1_8gbba"]
 [ext_resource type="PackedScene" uid="uid://bkhwbueajubi7" path="res://Scenes/Games/Platformer/PlatformerGame.tscn" id="1_jjgbg"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://cym2oh0esmntw" path="res://Scripts/commercials.gd" id="2_jjvhh"]
 [ext_resource type="FontFile" uid="uid://pjyc6fsvj4te" path="res://Resource/STV5730A.ttf" id="5_kry3j"]
 [ext_resource type="PackedScene" uid="uid://b8kqpck7ep2bo" path="res://Scenes/Games/Duckhunt/DuckhuntGame.tscn" id="6_6bp64"]
+[ext_resource type="PackedScene" uid="uid://sf2oei2qqhjc" path="res://Scenes/Games/Zelda/ZeldaGame.tscn" id="7_ynf5e"]
 [ext_resource type="Shader" uid="uid://p5qwhgmiideg" path="res://GFX/Shaders/crt.gdshader" id="8_344ge"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ynf5e"]
@@ -25,7 +26,7 @@ shader_parameter/distort_intensity = 0.00400000019
 shader_parameter/noise_opacity = 0.0
 shader_parameter/noise_speed = 5.0
 shader_parameter/static_noise_intensity = 0.094000004465
-shader_parameter/aberration = 0.010000047974999982
+shader_parameter/aberration = 0.01000004797499998
 shader_parameter/brightness = 1.2
 shader_parameter/discolor = false
 shader_parameter/warp_amount = 1.0000000475
@@ -108,22 +109,26 @@ loop = true
 bus = &"Commercial"
 
 [node name="PlatformerGame" parent="CanvasLayer/Container/TVScreen/SubViewport" instance=ExtResource("1_jjgbg")]
-visible = false
 
 [node name="DuckhuntGame" parent="CanvasLayer/Container/TVScreen/SubViewport" instance=ExtResource("6_6bp64")]
+visible = false
 texture_filter = 1
 position = Vector2(-768, -559)
 scale = Vector2(2, 2)
 
+[node name="ZeldaGame" parent="CanvasLayer/Container/TVScreen/SubViewport" instance=ExtResource("7_ynf5e")]
+visible = false
+
 [node name="ChannelLabel" type="CanvasLayer" parent="CanvasLayer/Container/TVScreen/SubViewport"]
 
 [node name="Label" type="Label" parent="CanvasLayer/Container/TVScreen/SubViewport/ChannelLabel"]
-offset_left = 25.0
-offset_top = 25.0
-offset_right = 113.0
-offset_bottom = 79.0
+offset_left = 48.0
+offset_top = 48.0
+offset_right = 142.0
+offset_bottom = 102.0
 theme_override_colors/font_color = Color(0, 1, 0, 1)
 theme_override_fonts/font = ExtResource("5_kry3j")
+theme_override_font_sizes/font_size = 32
 text = "Ch. 3"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="CanvasLayer/Container/TVScreen/SubViewport"]

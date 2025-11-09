@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://debnr3af2oohu"]
+
+[ext_resource type="Script" uid="uid://c87c0ncbvwto6" path="res://Scenes/Games/Zelda/pickups/ZeldaPickup.gd" id="1_odc0a"]
+
+[node name="ZeldaPickup" type="Node2D"]
+script = ExtResource("1_odc0a")

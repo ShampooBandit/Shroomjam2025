@@ -29,7 +29,7 @@ func _process(delta: float):
 		game.score += 1
 
 
-func _physics_process(delta: float):
+func _physics_process(_delta: float):
 	#black_screen.hide()
 	if black_screen.modulate.a > 0:
 		black_screen.modulate.a -= 0.05
