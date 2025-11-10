@@ -23,6 +23,14 @@ func disable_tilemaps() -> void:
 func enable_tilemaps() -> void:
 	tilemap.collision_enabled = true
 	
+func hide_game() -> void:
+	visible = false
+	#gui.visible = false
+	
+func show_game() -> void:
+	visible = true
+	#gui.visible = true
+	
 func goToNextLevel() -> void:
 	match level:
 		1:
