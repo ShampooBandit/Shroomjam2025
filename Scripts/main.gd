@@ -1,4 +1,5 @@
 extends Node2D
+class_name GameLoop
 
 @onready var commercials : CanvasLayer = find_child("Commercials")
 @onready var platformer : Node2D = find_child("PlatformerGame")
@@ -33,7 +34,7 @@ func _process(_delta: float) -> void:
 	
 	if Input.is_action_just_pressed("ToggleCommercial"):
 		if show_game:
-			duckhunt.visible = false
+			platformer.visible = false
 			commercials.visible = true
 			AudioServer.set_bus_mute(bus_ids[2], true)
 			AudioServer.set_bus_mute(bus_ids[1], false)
@@ -42,7 +43,7 @@ func _process(_delta: float) -> void:
 			channel_label_timer = 120
 			show_game = false
 		else:
-			duckhunt.visible = true
+			platformer.visible = true
 			commercials.visible = false
 			AudioServer.set_bus_mute(bus_ids[2], false)
 			AudioServer.set_bus_mute(bus_ids[1], true)
