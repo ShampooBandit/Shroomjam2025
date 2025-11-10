@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dhwjmgmvhihqv"
-path="res://.godot/imported/duck_sheet.png-c56d5c6c7426f1010bb39a548b6ff4e6.ctex"
+uid="uid://bampjfuxas1t6"
+path="res://.godot/imported/city_bg.png-54f2a3f722e07cab918e1c46868bcada.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://GFX/duck_sheet.png"
-dest_files=["res://.godot/imported/duck_sheet.png-c56d5c6c7426f1010bb39a548b6ff4e6.ctex"]
+source_file="res://GFX/city_bg.png"
+dest_files=["res://.godot/imported/city_bg.png-54f2a3f722e07cab918e1c46868bcada.ctex"]
 
 [params]
 

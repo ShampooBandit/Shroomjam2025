@@ -1,14 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://vdkr2mv6p1bc"]
+[gd_scene load_steps=9 format=3 uid="uid://vdkr2mv6p1bc"]
 
 [ext_resource type="Script" uid="uid://fn7lc23dch61" path="res://Scenes/Games/Platformer/PlatformerGoombaEnemy.gd" id="1_n4los"]
-[ext_resource type="Texture2D" uid="uid://dvrdk73w6tlh" path="res://GFX/NES - Super Mario Bros. - Enemies & Bosses - Enemies & Bosses.png" id="2_mtgrx"]
+[ext_resource type="Texture2D" uid="uid://cr4nt7hcqocub" path="res://GFX/duck_game.png" id="2_n4los"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4wiod"]
-size = Vector2(30, 28)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_72rhq"]
-atlas = ExtResource("2_mtgrx")
-region = Rect2(0, 0, 102, 34)
+size = Vector2(28, 22)
 
 [sub_resource type="Animation" id="Animation_kcagp"]
 length = 0.001
@@ -47,6 +43,18 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:flip_h")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_72rhq"]
@@ -88,10 +96,22 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.33333334),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [0, 1]
+"values": [false, true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_febry"]
@@ -102,7 +122,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_72rhq"]
-size = Vector2(32, 4)
+size = Vector2(28, 3.5)
 
 [node name="GoombaEnemy" type="CharacterBody2D"]
 collision_layer = 6
@@ -110,12 +130,13 @@ collision_mask = 6
 script = ExtResource("1_n4los")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 2)
+position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_4wiod")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = SubResource("AtlasTexture_72rhq")
-hframes = 3
+texture = ExtResource("2_n4los")
+region_enabled = true
+region_rect = Rect2(321.95114, 243.81953, 28.136688, 24.396225)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -123,12 +144,12 @@ libraries = {
 }
 
 [node name="RayCastFloorRight" type="RayCast2D" parent="."]
-position = Vector2(15, 15)
+position = Vector2(12, 11)
 target_position = Vector2(0, 8)
 collision_mask = 2
 
 [node name="RayCastFloorLeft" type="RayCast2D" parent="."]
-position = Vector2(-15, 15)
+position = Vector2(-12, 11)
 target_position = Vector2(0, 8)
 collision_mask = 2
 
@@ -147,9 +168,10 @@ collision_layer = 8
 collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Head"]
-position = Vector2(0, -14)
+position = Vector2(0, -11.75)
 shape = SubResource("RectangleShape2D_72rhq")
 
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+rect = Rect2(-14, -10, 28, 20)
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

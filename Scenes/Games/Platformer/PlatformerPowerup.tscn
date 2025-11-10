@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://bytd034png3yx"]
+
+[ext_resource type="Script" uid="uid://7w4vv6roibfk" path="res://Scenes/Games/Platformer/PlatformerPowerup.gd" id="1_qa1xq"]
+[ext_resource type="Texture2D" uid="uid://cr4nt7hcqocub" path="res://GFX/duck_game.png" id="2_qa1xq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qa1xq"]
+size = Vector2(32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wo70s"]
+atlas = ExtResource("2_qa1xq")
+region = Rect2(243, 177, 26, 30)
+
+[node name="PlatformerPowerup" type="CharacterBody2D"]
+collision_layer = 6
+collision_mask = 6
+script = ExtResource("1_qa1xq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_qa1xq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_wo70s")
+
+[node name="CheckWallLeft" type="RayCast2D" parent="."]
+target_position = Vector2(-18, 0)
+
+[node name="CheckWallRight" type="RayCast2D" parent="."]
+target_position = Vector2(18, 0)

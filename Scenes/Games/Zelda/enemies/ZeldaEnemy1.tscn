@@ -1,0 +1,65 @@
+[gd_scene load_steps=8 format=3 uid="uid://cb8tg8bs5x0yl"]
+
+[ext_resource type="Script" uid="uid://bewwse7o7q8dk" path="res://Scenes/Games/Zelda/enemies/ZeldaEnemy1.gd" id="1_1d37h"]
+[ext_resource type="Texture2D" uid="uid://ci7awt5dj3p1w" path="res://GFX/Zoria Tileset/player.png" id="1_qmsvy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bv21s"]
+atlas = ExtResource("1_qmsvy")
+region = Rect2(432, 467, 72, 36)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bv21s"]
+size = Vector2(20, 16)
+
+[sub_resource type="Animation" id="Animation_1d37h"]
+resource_name = "walk"
+length = 0.66667
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.33333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_dy33w"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fu4o5"]
+_data = {
+&"RESET": SubResource("Animation_dy33w"),
+&"walk": SubResource("Animation_1d37h")
+}
+
+[node name="ZeldaEnemy1" type="CharacterBody2D"]
+script = ExtResource("1_1d37h")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_bv21s")
+hframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 5)
+shape = SubResource("RectangleShape2D_bv21s")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_fu4o5")
+}

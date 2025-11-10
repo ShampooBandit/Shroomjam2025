@@ -1,14 +1,14 @@
 [gd_scene load_steps=9 format=3 uid="uid://bq2x8g12l4d6i"]
 
 [ext_resource type="Script" uid="uid://jcrqf1yuv5rw" path="res://Scenes/Games/Platformer/PlatformerPlantEnemy.gd" id="1_81akq"]
-[ext_resource type="Texture2D" uid="uid://dvrdk73w6tlh" path="res://GFX/NES - Super Mario Bros. - Enemies & Bosses - Enemies & Bosses.png" id="2_rn3qq"]
+[ext_resource type="Texture2D" uid="uid://cr4nt7hcqocub" path="res://GFX/duck_game.png" id="2_81akq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4wiod"]
 size = Vector2(28, 44)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_72rhq"]
-atlas = ExtResource("2_rn3qq")
-region = Rect2(68, 68, 68, 50)
+atlas = ExtResource("2_81akq")
+region = Rect2(291.57108, 155.10529, 25.997772, 52.99597)
 
 [sub_resource type="Animation" id="Animation_kcagp"]
 length = 0.001
@@ -88,10 +88,10 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.33333334),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0, 1]
+"values": [0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_febry"]
@@ -102,6 +102,7 @@ _data = {
 }
 
 [node name="PlantEnemy" type="CharacterBody2D"]
+z_index = 1
 collision_layer = 4
 collision_mask = 4
 script = ExtResource("1_81akq")
@@ -112,7 +113,6 @@ shape = SubResource("RectangleShape2D_4wiod")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = SubResource("AtlasTexture_72rhq")
-hframes = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

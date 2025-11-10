@@ -1,7 +1,7 @@
 class_name PlatformerPlantEnemy extends CharacterBody2D
 
 var dir : int = 1
-var speed : int = 1000
+var speed : int = 2500
 var stomped : bool = false
 var top_y : float = 0
 var bottom_y : float = 0

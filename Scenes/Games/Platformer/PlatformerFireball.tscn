@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://xanxyj6t7oes"]
+
+[ext_resource type="Script" uid="uid://bv5owjhjf4qw2" path="res://Scenes/Games/Platformer/PlatformerFireball.gd" id="1_reau8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_reau8"]
+
+[node name="PlatformerFireball" type="CharacterBody2D"]
+script = ExtResource("1_reau8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_reau8")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

@@ -10,7 +10,7 @@ var timer = 0
 func _ready():
 	play()
 
-func _physics_process(delta: float):
+func _physics_process(_delta: float):
 	if moving_up and global_position > dog_end_pos.global_position:
 		position.y -= 1
 	elif !moving_up and global_position < dog_start_pos.global_position:
