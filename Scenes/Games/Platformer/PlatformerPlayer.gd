@@ -23,7 +23,7 @@ var invuln : bool = false
 var invuln_timer : int = 60
 var hp : int = 1
 var run : bool = false
-var pit_y : int = 406
+@export var pit_y : int = 406
 var beat_level : bool = false
 var flag_bottom : float = 0.0
 var getting_powerup : bool = false
@@ -222,7 +222,6 @@ func _big_physics_process(delta: float) -> void:
 			velocity.y = 0
 			velocity.x = 0
 			anim_player.speed_scale = 1
-			visible = true
 			anim_player.play("die")
 		
 		move_and_slide()

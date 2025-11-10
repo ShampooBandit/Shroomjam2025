@@ -1,31 +1,14 @@
 [gd_scene load_steps=10 format=3 uid="uid://6c0taioo7lv7"]
 
-[ext_resource type="Texture2D" uid="uid://cekt8boehewbe" path="res://GFX/NES - Super Mario Bros. - Miscellaneous - Tileset.png" id="1_txorv"]
 [ext_resource type="Script" uid="uid://bcf2ljyf6yrtc" path="res://Scenes/Games/Platformer/PlatformerItemBox.gd" id="1_vbkg8"]
+[ext_resource type="Texture2D" uid="uid://dcy3yak3sd1er" path="res://GFX/mario_game_tiles.png" id="2_vbkg8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4anim"]
 size = Vector2(32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tqic8"]
-atlas = ExtResource("1_txorv")
-region = Rect2(272, 136, 136, 34)
-
-[sub_resource type="Animation" id="Animation_26pd6"]
-resource_name = "idle"
-length = 1.0000033
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.33333334, 0.6666667),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [0, 1, 2]
-}
+atlas = ExtResource("2_vbkg8")
+region = Rect2(191.94429, 32.091537, 32.155685, 32.02672)
 
 [sub_resource type="Animation" id="Animation_6jowy"]
 length = 0.001
@@ -97,6 +80,23 @@ tracks/1/keys = {
 "values": [0.0, -24.0, 0.0]
 }
 
+[sub_resource type="Animation" id="Animation_26pd6"]
+resource_name = "idle"
+length = 1.0000033
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.33333334, 0.6666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_u6l77"]
 _data = {
 &"RESET": SubResource("Animation_6jowy"),
@@ -115,7 +115,6 @@ shape = SubResource("RectangleShape2D_4anim")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = SubResource("AtlasTexture_tqic8")
-hframes = 4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
