@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bt5r7n1w3eui5"]
+[gd_scene load_steps=12 format=3 uid="uid://bt5r7n1w3eui5"]
 
 [ext_resource type="Script" uid="uid://ub3367t5lo43" path="res://Scripts/main.gd" id="1_8gbba"]
 [ext_resource type="PackedScene" uid="uid://bkhwbueajubi7" path="res://Scenes/Games/Platformer/PlatformerGame.tscn" id="1_jjgbg"]
@@ -8,6 +8,7 @@
 [ext_resource type="FontFile" uid="uid://pjyc6fsvj4te" path="res://Resource/STV5730A.ttf" id="5_kry3j"]
 [ext_resource type="PackedScene" uid="uid://b8kqpck7ep2bo" path="res://Scenes/Games/Duckhunt/DuckhuntGame.tscn" id="6_6bp64"]
 [ext_resource type="Shader" uid="uid://p5qwhgmiideg" path="res://GFX/Shaders/crt.gdshader" id="8_344ge"]
+[ext_resource type="Script" uid="uid://b4ijsa6rbewmc" path="res://Scenes/detection.gd" id="9_ynf5e"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ynf5e"]
 shader = ExtResource("8_344ge")
@@ -25,7 +26,7 @@ shader_parameter/distort_intensity = 0.00400000019
 shader_parameter/noise_opacity = 0.0
 shader_parameter/noise_speed = 5.0
 shader_parameter/static_noise_intensity = 0.094000004465
-shader_parameter/aberration = 0.010000047974999982
+shader_parameter/aberration = 0.01000004797499998
 shader_parameter/brightness = 1.2
 shader_parameter/discolor = false
 shader_parameter/warp_amount = 1.0000000475
@@ -108,9 +109,9 @@ loop = true
 bus = &"Commercial"
 
 [node name="PlatformerGame" parent="CanvasLayer/Container/TVScreen/SubViewport" instance=ExtResource("1_jjgbg")]
-visible = false
 
 [node name="DuckhuntGame" parent="CanvasLayer/Container/TVScreen/SubViewport" instance=ExtResource("6_6bp64")]
+visible = false
 texture_filter = 1
 position = Vector2(-768, -559)
 scale = Vector2(2, 2)
@@ -142,3 +143,15 @@ bus = &"World"
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_21xkr")
+
+[node name="LightFromDoor" type="ColorRect" parent="."]
+offset_left = 1100.0
+offset_top = 143.0
+offset_right = 1238.0
+offset_bottom = 800.0
+color = Color(1, 1, 0.56078434, 0.32941177)
+
+[node name="Detection" type="Node" parent="." node_paths=PackedStringArray("light_from_door", "game_loop")]
+script = ExtResource("9_ynf5e")
+light_from_door = NodePath("../LightFromDoor")
+game_loop = NodePath("..")
