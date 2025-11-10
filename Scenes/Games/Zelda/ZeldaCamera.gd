@@ -1,5 +1,6 @@
 class_name ZeldaCamera extends Camera2D
 
+signal TransitionStart
 signal TransitionComplete
 
 var width : int = 512
@@ -54,6 +55,7 @@ func finish_transition() -> void:
 	bottom_border = position.y + height + 96.0 
 
 func _on_player_screen_transition(_dir: int):
+	TransitionStart.emit()
 	move = true
 	dir = _dir
 	match _dir:

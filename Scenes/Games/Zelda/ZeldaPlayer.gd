@@ -30,11 +30,11 @@ var speed : int = 100
 var hp : int = 10
 var maxhp : int = 10
 
-var sword : bool = true
+var sword : bool = false
 var bombs : bool = false
-
 var transition_done : bool = false
-var in_dungeon : bool = true
+var in_dungeon : bool = false
+var in_building : bool = false
 
 func _ready() -> void:
 	pass
@@ -69,7 +69,7 @@ func poll_input() -> void:
 		dpad_input |= 8
 
 func check_screen_transition() -> void:
-	if STATE != PlayerState.SCREEN:
+	if STATE != PlayerState.SCREEN and !in_building:
 		if position.x - 16.0 <= camera.left_border:
 			ScreenTransition.emit(1)
 			TARGET_STATE = PlayerState.SCREEN
@@ -166,7 +166,7 @@ func enter_state() -> void:
 					velocity = Vector2(0.0, speed / 2.0)
 		PlayerState.ITEM: #get item
 			anim_player.play("get_item")
-			timer = 60
+			timer = 120
 		PlayerState.TELEPORT: #teleport
 			pass
 		PlayerState.DIE:
@@ -256,7 +256,10 @@ func screen_state_process(_delta: float) -> void:
 	move_and_slide()
 
 func item_state_process(_delta: float) -> void:
-	pass
+	if timer > 0:
+		timer -= 1
+	elif timer <= 0 and Input.is_anything_pressed():
+		TARGET_STATE = PlayerState.IDLE
 	
 func teleport_state_process(_delta: float) -> void:
 	pass
@@ -270,11 +273,11 @@ func die_state_process(_delta: float) -> void:
 
 func respawn() -> void:
 	if in_dungeon:
-		camera.teleport(Vector2(1696.0, 0.0))
+		camera.teleport(Vector2(1696.0, -96.0))
 		position = Vector2(1750.0, 200.0)
 	else:
-		camera.teleport(Vector2.ZERO)
-		position = Vector2(96.0, 96.0)
+		camera.teleport(Vector2(0.0, -96.0))
+		position = Vector2(172.0, 128.0)
 	hp = maxhp
 	TARGET_STATE = PlayerState.IDLE
 	Respawn.emit()
@@ -284,3 +287,7 @@ func _on_slash_finished():
 
 func _on_camera_transition_complete():
 	transition_done = true
+
+func _on_animation_player_animation_finished(_anim_name):
+	if !sword and STATE == PlayerState.ATTACK:
+		TARGET_STATE = PlayerState.IDLE

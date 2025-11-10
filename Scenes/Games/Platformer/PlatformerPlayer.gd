@@ -68,7 +68,7 @@ func getPowerup() -> void:
 		wallbox.shape.size = Vector2(24.0, 50.0)
 		wallbox.position = Vector2(0.0, 4.0)
 		headbox.position = Vector2(0.0, -24.0)
-		getting_powerup = false
+	getting_powerup = false
 		
 func losePowerup() -> void:
 	speed = 150
@@ -222,6 +222,7 @@ func _big_physics_process(delta: float) -> void:
 			velocity.y = 0
 			velocity.x = 0
 			anim_player.speed_scale = 1
+			visible = true
 			anim_player.play("die")
 		
 		move_and_slide()

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://brksosprc0vl0"
-path="res://.godot/imported/gui.png-1fa17b01d1a62a18a38414dbc84f3be5.ctex"
+uid="uid://bampjfuxas1t6"
+path="res://.godot/imported/city_bg.png-54f2a3f722e07cab918e1c46868bcada.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://GFX/Zoria Tileset/scraps/gui.png"
-dest_files=["res://.godot/imported/gui.png-1fa17b01d1a62a18a38414dbc84f3be5.ctex"]
+source_file="res://GFX/city_bg.png"
+dest_files=["res://.godot/imported/city_bg.png-54f2a3f722e07cab918e1c46868bcada.ctex"]
 
 [params]
 

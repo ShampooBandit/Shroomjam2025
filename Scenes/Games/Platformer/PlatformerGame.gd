@@ -14,6 +14,12 @@ var level = 1
 
 signal beatGame
 
+func disable_tilemaps() -> void:
+	tilemap.collision_enabled = false
+	
+func enable_tilemaps() -> void:
+	tilemap.collision_enabled = true
+
 func _ready() -> void:
 	player.respawned.connect(_on_player_respawn)
 	

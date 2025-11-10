@@ -10,7 +10,7 @@ extends Node2D
 #1 - Duck Hunt
 #2 - Zelda
 #etc
-var current_game : int = 0
+var current_game : int = 2
 @onready var game_list : Array = [platformer, duckhunt, zelda]
 var bus_ids : Array = [0,0,0,0]
 var show_game : bool = true
@@ -23,13 +23,13 @@ func _ready() -> void:
 	bus_ids[3] = AudioServer.get_bus_index("World")
 	AudioServer.set_bus_mute(bus_ids[1], true)
 	AudioServer.set_bus_volume_db(bus_ids[1], -5)
-	platformer.visible = true
+	zelda.visible = true
 	channel_label_timer = 120
 	# set process_mode = Node.PROCESS_MODE_DISABLED for each game that isn't running and make them not visible
-	zelda.process_mode = Node.PROCESS_MODE_DISABLED
-	zelda.disable_tilemaps()
+	platformer.process_mode = Node.PROCESS_MODE_DISABLED
+	platformer.disable_tilemaps()
 	duckhunt.process_mode = Node.PROCESS_MODE_DISABLED
-	platformer.find_child("Camera2D").make_current()
+	zelda.find_child("Camera2D").make_current()
 	
 func _process(_delta: float) -> void:
 	if channel_label_timer > 0:
@@ -39,7 +39,7 @@ func _process(_delta: float) -> void:
 	
 	if Input.is_action_just_pressed("ToggleCommercial"):
 		if show_game:
-			game_list[current_game].visible = false
+			game_list[current_game].hide_game()
 			commercials.visible = true
 			AudioServer.set_bus_mute(bus_ids[2], true)
 			AudioServer.set_bus_mute(bus_ids[1], false)
@@ -48,7 +48,7 @@ func _process(_delta: float) -> void:
 			channel_label_timer = 120
 			show_game = false
 		else:
-			game_list[current_game].visible = true
+			game_list[current_game].show_game()
 			commercials.visible = false
 			AudioServer.set_bus_mute(bus_ids[2], false)
 			AudioServer.set_bus_mute(bus_ids[1], true)

@@ -143,6 +143,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+autoplay = true
 bus = &"World"
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
