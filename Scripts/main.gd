@@ -1,4 +1,5 @@
 extends Node2D
+class_name GameLoop
 
 @onready var commercials : CanvasLayer = find_child("Commercials")
 @onready var platformer : Node2D = find_child("PlatformerGame")

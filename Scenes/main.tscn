@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://b8kqpck7ep2bo" path="res://Scenes/Games/Duckhunt/DuckhuntGame.tscn" id="6_6bp64"]
 [ext_resource type="PackedScene" uid="uid://sf2oei2qqhjc" path="res://Scenes/Games/Zelda/ZeldaGame.tscn" id="7_ynf5e"]
 [ext_resource type="Shader" uid="uid://p5qwhgmiideg" path="res://GFX/Shaders/crt.gdshader" id="8_344ge"]
+[ext_resource type="Script" uid="uid://b4ijsa6rbewmc" path="res://Scenes/detection.gd" id="9_ynf5e"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ynf5e"]
 shader = ExtResource("8_344ge")
@@ -148,3 +149,15 @@ bus = &"World"
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_21xkr")
+
+[node name="LightFromDoor" type="ColorRect" parent="."]
+offset_left = 1100.0
+offset_top = 143.0
+offset_right = 1238.0
+offset_bottom = 800.0
+color = Color(1, 1, 0.56078434, 0.32941177)
+
+[node name="Detection" type="Node" parent="." node_paths=PackedStringArray("light_from_door", "game_loop")]
+script = ExtResource("9_ynf5e")
+light_from_door = NodePath("../LightFromDoor")
+game_loop = NodePath("..")

@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Shroomjam 2025 Game"
-run/main_scene="uid://bt5r7n1w3eui5"
+run/main_scene="uid://566cjaism5dv"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 config/icon="res://icon.svg"
 
