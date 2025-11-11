@@ -57,12 +57,12 @@ func levelEnd() -> void:
 func getPowerup() -> void:
 	if hp == 1:
 		hp = 2
-		speed = 150
-		gravity = 500
-		jump_impulse = -375
-		terminal_velocity = 500
-		top_speed = 150
-		fall_impulse = 100
+		#speed = 150
+		#gravity = 500
+		#jump_impulse = -375
+		#terminal_velocity = 500
+		#top_speed = 150
+		#fall_impulse = 100
 		hurtbox.shape.size = Vector2(24.0, 50.0)
 		hurtbox.position = Vector2(0.0, 4.0)
 		wallbox.shape.size = Vector2(24.0, 50.0)
@@ -71,11 +71,11 @@ func getPowerup() -> void:
 	getting_powerup = false
 		
 func losePowerup() -> void:
-	speed = 150
-	gravity = 500
-	jump_impulse = -375
-	terminal_velocity = 500
-	top_speed = 150
+	#speed = 150
+	#gravity = 500
+	#jump_impulse = -375
+	#terminal_velocity = 500
+	#top_speed = 150
 	fall_impulse = 100
 	hurtbox.shape.size = Vector2(24.0, 24.0)
 	hurtbox.position = Vector2(0.0, 16.0)
