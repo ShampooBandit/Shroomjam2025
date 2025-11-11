@@ -1,6 +1,24 @@
-[gd_scene load_steps=2 format=3 uid="uid://debnr3af2oohu"]
+[gd_scene load_steps=4 format=3 uid="uid://debnr3af2oohu"]
 
 [ext_resource type="Script" uid="uid://c87c0ncbvwto6" path="res://Scenes/Games/Zelda/pickups/ZeldaPickup.gd" id="1_odc0a"]
+[ext_resource type="Texture2D" uid="uid://ci7awt5dj3p1w" path="res://GFX/Zoria Tileset/player.png" id="2_51v2r"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_34jq7"]
+size = Vector2(14, 16)
 
 [node name="ZeldaPickup" type="Node2D"]
 script = ExtResource("1_odc0a")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_51v2r")
+region_enabled = true
+region_rect = Rect2(443, 127, 14, 16)
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 64
+collision_mask = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_34jq7")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

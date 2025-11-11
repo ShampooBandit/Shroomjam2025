@@ -3,7 +3,7 @@ extends Node2D
 var enemy1 : Resource = preload("res://Scenes/Games/Zelda/enemies/ZeldaEnemy1.tscn")
 var enemy2 : Resource = preload("res://Scenes/Games/Zelda/enemies/ZeldaEnemy2.tscn")
 var enemy3 : Resource = preload("res://Scenes/Games/Zelda/enemies/ZeldaEnemy3.tscn")
-var enemy4 : Resource = preload("res://Scenes/Games/Zelda/enemies/ZeldaEnemy1.tscn")
+var enemy4 : Resource = preload("res://Scenes/Games/Zelda/enemies/ZeldaEnemy4.tscn")
 
 @export var enemy_id : int = 0
 @export var camera : ZeldaCamera
@@ -35,7 +35,9 @@ func _on_transition_complete() -> void:
 			add_child(enemy)
 			enemy_child = enemy
 		3:
-			pass
+			var enemy = enemy4.instantiate()
+			add_child(enemy)
+			enemy_child = enemy
 		4:
 			pass
 	enemy_child.hp = enemy_hp
