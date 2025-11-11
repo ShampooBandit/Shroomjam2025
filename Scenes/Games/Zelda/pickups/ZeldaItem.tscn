@@ -1,24 +1,88 @@
-[gd_scene load_steps=5 format=3 uid="uid://d062h34aklbaa"]
+[gd_scene load_steps=9 format=3 uid="uid://d062h34aklbaa"]
 
 [ext_resource type="Script" uid="uid://dy76pq2qegjb7" path="res://Scenes/Games/Zelda/pickups/ZeldaItem.gd" id="1_jtyfc"]
 [ext_resource type="Texture2D" uid="uid://ci7awt5dj3p1w" path="res://GFX/Zoria Tileset/player.png" id="2_l3uqt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jtyfc"]
 atlas = ExtResource("2_l3uqt")
-region = Rect2(468, 0, 36, 72)
+region = Rect2(396, 0, 108, 108)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l3uqt"]
 size = Vector2(20, 22)
 
+[sub_resource type="Animation" id="Animation_hdhr3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+
+[sub_resource type="Animation" id="Animation_l3uqt"]
+resource_name = "item0"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_ytkhh"]
+resource_name = "item1"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [3, 4]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hdhr3"]
+_data = {
+&"RESET": SubResource("Animation_hdhr3"),
+&"item0": SubResource("Animation_l3uqt"),
+&"item1": SubResource("Animation_ytkhh")
+}
+
 [node name="ZeldaItem" type="Node2D"]
+z_index = 1
 script = ExtResource("1_jtyfc")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = SubResource("AtlasTexture_jtyfc")
-vframes = 2
+hframes = 3
+vframes = 3
+frame = 2
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_layer = 128
+collision_mask = 128
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, 7)
 shape = SubResource("RectangleShape2D_l3uqt")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_hdhr3")
+}

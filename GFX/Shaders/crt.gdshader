@@ -149,6 +149,8 @@ void fragment()
 
     text.rgb *= border(uv);
     text.rgb *= vignette(uv);
+	
+	text.rgb = max(text.rgb, 0.0);
 
     if (clip_warp){
         text.a = border(uv);

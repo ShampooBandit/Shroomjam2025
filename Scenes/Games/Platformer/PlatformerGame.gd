@@ -33,27 +33,22 @@ func show_game() -> void:
 	
 func goToNextLevel() -> void:
 	match level:
-		1:
-			camera.limit_top = 448
-			camera.limit_bottom = 864
-			respawn.position = Vector2(4800, 480)
+		1: #Going to level 2
+			camera.limit_top = 896
+			camera.limit_bottom = 1312
+			respawn.position = Vector2(126, 1216)
 			player.position = respawn.position
 			player.pit_y = camera.limit_bottom - 8
 			player.respawn()
-		2:
-			camera.limit_top = 896
-			camera.limit_bottom = 1312
+		2: #Going to level 3
+			camera.limit_top = 1344
+			camera.limit_bottom = 1760
 			respawn.position = Vector2(4800, 1232)
 			player.position = respawn.position
 			player.pit_y = camera.limit_bottom - 8
 			player.respawn()
-		3:
-			camera.limit_top = 1344
-			camera.limit_bottom = 1760
-			respawn.position = Vector2(4800, 1600)
-			player.position = respawn.position
-			player.pit_y = camera.limit_bottom - 8
-			player.respawn()
+		3: #Going to level 4
+			finishGame()
 		4:
 			finishGame()
 	
