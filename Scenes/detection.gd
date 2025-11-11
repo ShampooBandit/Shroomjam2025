@@ -11,44 +11,55 @@ class_name Detection
 @export var min_time_of_attack = 5
 ## How long will attacks last at maximum
 @export var max_time_of_attack = 10
+## Chance of immediately opening the door again
+@export var instant_open_chance = 1
 
-@export var light_from_door: ColorRect
 @export var game_loop: GameLoop
 
-var timer = 0
+var timer = 60
 
 enum AttackState {IDLE, GRACE, ATTACKING, RECOVERY}
 
 var attack_state = AttackState.IDLE
 
-func _physics_process(delta: float) -> void:
+@onready var anim_player : AnimationPlayer = $AnimationPlayer
+
+func _ready() -> void:
+	pass
+
+func _physics_process(_delta: float) -> void:
 	timer -= 1 # Always deduct the timer every 1/60th of a second
 	match attack_state:
 		AttackState.IDLE:
 			# Play door closing anim
-			light_from_door.size.x = lerp(light_from_door.size.x, 0.0, 0.1)
 			if timer <= 0:
 				# Transition to grace period
 				timer = grace_period * 60
 				attack_state = AttackState.GRACE
+				anim_player.play("opening")
 		AttackState.GRACE:
 			# Play door opening anim
-			light_from_door.size.x = lerp(light_from_door.size.x, 138.0, 0.1)
 			if timer <= 0:
 				# Transition to actual attack phase
 				timer = randi_range(min_time_of_attack * 60, max_time_of_attack * 60)
 				attack_state = AttackState.ATTACKING
+				# Show silhouette
 		AttackState.ATTACKING:
 			if game_loop.show_game == true:
 				lose()
 			if timer <= 0:
 				# Transition to recovery
 				attack_state = AttackState.RECOVERY
+				anim_player.play("closing")
+				timer = 30
 		AttackState.RECOVERY:
 			# Does nothing for now
-			timer = randi_range(min_time_between_attacks * 60, max_time_between_attacks * 60)
-			attack_state = AttackState.IDLE
+			if timer <= 0:
+				#if randi_range(): 
+				timer = randi_range(min_time_between_attacks * 60, max_time_between_attacks * 60)
+				attack_state = AttackState.IDLE
 			
 			
 func lose():
 	pass
+	#print("Caught!")

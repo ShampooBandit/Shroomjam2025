@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cvcsio6dm1pv8"]
+[gd_scene load_steps=24 format=3 uid="uid://cvcsio6dm1pv8"]
 
 [ext_resource type="Script" uid="uid://4fd4rvqb6t6r" path="res://Scenes/Games/Zelda/ZeldaPlayer.gd" id="1_21olf"]
 [ext_resource type="Texture2D" uid="uid://ci7awt5dj3p1w" path="res://GFX/Zoria Tileset/player.png" id="2_x1xla"]
@@ -24,6 +24,30 @@ tracks/0/keys = {
 "update": 1,
 "values": [0]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:z_index")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_5esxn"]
 resource_name = "die"
@@ -39,6 +63,86 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 6, 12, 18, 0, 6, 12, 18, 0, 6, 12, 18, 0, 17, 23, 11]
+}
+
+[sub_resource type="Animation" id="Animation_5pxh4"]
+resource_name = "enter"
+length = 1.5000035
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0001, 0.23333333, 0.46666667, 0.70000005, 0.93333334, 1.1666666, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [13, 13, 14, 13, 14, 13, 14, 13]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:z_index")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [-1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 32)]
+}
+
+[sub_resource type="Animation" id="Animation_rxg8s"]
+resource_name = "enter"
+length = 1.5000035
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.23333333, 0.46666667, 0.70000005, 0.93333334, 1.1666666, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [1, 2, 1, 2, 1, 2, 1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:z_index")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [-1, 0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 32), Vector2(0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_evg5b"]
@@ -253,6 +357,8 @@ tracks/0/keys = {
 _data = {
 &"RESET": SubResource("Animation_pn86b"),
 &"die": SubResource("Animation_5esxn"),
+&"enter": SubResource("Animation_5pxh4"),
+&"exit": SubResource("Animation_rxg8s"),
 &"get_item": SubResource("Animation_evg5b"),
 &"idle_down": SubResource("Animation_x1xla"),
 &"idle_left": SubResource("Animation_jb35f"),
@@ -272,6 +378,8 @@ _data = {
 size = Vector2(24, 28)
 
 [node name="ZeldaPlayer" type="CharacterBody2D"]
+collision_layer = 65
+collision_mask = 65
 script = ExtResource("1_21olf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -282,6 +390,8 @@ shape = SubResource("RectangleShape2D_21olf")
 texture = SubResource("AtlasTexture_pn86b")
 hframes = 6
 vframes = 4
+region_enabled = true
+region_rect = Rect2(0, 0, 216, 144)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -289,11 +399,21 @@ libraries = {
 }
 
 [node name="Hurtbox" type="Area2D" parent="."]
-collision_layer = 2
-collision_mask = 2
+collision_layer = 516
+collision_mask = 516
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_x1xla")
 
+[node name="Itembox" type="Area2D" parent="."]
+collision_layer = 128
+collision_mask = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Itembox"]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_x1xla")
+
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]
+[connection signal="area_entered" from="Itembox" to="." method="_on_itembox_area_entered"]

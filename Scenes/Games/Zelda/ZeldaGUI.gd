@@ -25,6 +25,11 @@ func update_items() -> void:
 func update_life() -> void:
 	var hearts = life_display.get_children()
 	var j = 0
+	if player.maxhp == 8:
+		hearts[4].visible = true
+	elif player.maxhp == 10:
+		hearts[5].visible = true
+	
 	for i in range(floor(player.maxhp / 2)):
 		hearts[i + 1].frame = 0
 		

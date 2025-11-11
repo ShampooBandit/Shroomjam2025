@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://blvf77pdxq7im"]
+
+[ext_resource type="Script" uid="uid://c28ta7dthsrhg" path="res://Scenes/Games/Zelda/ZeldaCrumbleWall.gd" id="1_alx8u"]
+[ext_resource type="Texture2D" uid="uid://b05gmrhxmrypq" path="res://GFX/Zoria Tileset/overworld.png" id="1_lxp8c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_htys3"]
+size = Vector2(32, 32)
+
+[node name="ZeldaCrumbleWall" type="CharacterBody2D"]
+collision_layer = 513
+collision_mask = 513
+script = ExtResource("1_alx8u")
+
+[node name="WallSprite" type="Sprite2D" parent="."]
+z_index = 1
+texture = ExtResource("1_lxp8c")
+hframes = 2
+region_enabled = true
+region_rect = Rect2(512, 672, 64, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_htys3")
+
+[node name="OverSprite" type="Sprite2D" parent="."]
+visible = false
+z_index = 2
+position = Vector2(0, -5)
+texture = ExtResource("1_lxp8c")
+region_enabled = true
+region_rect = Rect2(544, 704, 32, 23)

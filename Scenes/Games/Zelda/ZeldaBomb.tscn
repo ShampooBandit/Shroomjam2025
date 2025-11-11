@@ -1,0 +1,281 @@
+[gd_scene load_steps=7 format=3 uid="uid://cjd2uf71wvhy7"]
+
+[ext_resource type="Script" uid="uid://cvkfx0km538l8" path="res://Scenes/Games/Zelda/ZeldaBomb.gd" id="1_qysj4"]
+[ext_resource type="Texture2D" uid="uid://ci7awt5dj3p1w" path="res://GFX/Zoria Tileset/player.png" id="2_jd7vp"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jd7vp"]
+radius = 42.0
+
+[sub_resource type="Animation" id="Animation_rsvhl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Explosion1:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Explosion2:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Explosion3:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Explosion4:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Explosion7:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Explosion5:frame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Explosion6:frame")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+
+[sub_resource type="Animation" id="Animation_jtr80"]
+resource_name = "explode"
+length = 0.50000334
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Explosion1:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.33333334),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [2, 1, 0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Explosion2:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.33333334),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [2, 1, 0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Explosion3:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.33333334),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [2, 1, 0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Explosion4:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.33333334),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [2, 1, 0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Explosion7:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.33333334),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [2, 1, 0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Explosion5:frame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.33333334),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [2, 1, 0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Explosion6:frame")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.33333334),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [2, 1, 0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_txrwn"]
+_data = {
+&"RESET": SubResource("Animation_rsvhl"),
+&"explode": SubResource("Animation_jtr80")
+}
+
+[node name="ZeldaBomb" type="Node2D"]
+top_level = true
+z_index = 1
+script = ExtResource("1_qysj4")
+
+[node name="Explosion1" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_jd7vp")
+hframes = 3
+frame = 2
+region_enabled = true
+region_rect = Rect2(360, 74, 108, 32)
+
+[node name="Explosion2" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(14, -22)
+texture = ExtResource("2_jd7vp")
+hframes = 3
+frame = 2
+region_enabled = true
+region_rect = Rect2(360, 74, 108, 32)
+
+[node name="Explosion3" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-14, -22)
+texture = ExtResource("2_jd7vp")
+hframes = 3
+frame = 2
+region_enabled = true
+region_rect = Rect2(360, 74, 108, 32)
+
+[node name="Explosion4" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-26, 1)
+texture = ExtResource("2_jd7vp")
+hframes = 3
+frame = 2
+region_enabled = true
+region_rect = Rect2(360, 74, 108, 32)
+
+[node name="Explosion7" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(26, 1)
+texture = ExtResource("2_jd7vp")
+hframes = 3
+frame = 2
+region_enabled = true
+region_rect = Rect2(360, 74, 108, 32)
+
+[node name="Explosion5" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-14, 21)
+texture = ExtResource("2_jd7vp")
+hframes = 3
+frame = 2
+region_enabled = true
+region_rect = Rect2(360, 74, 108, 32)
+
+[node name="Explosion6" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(14, 21)
+texture = ExtResource("2_jd7vp")
+hframes = 3
+frame = 2
+region_enabled = true
+region_rect = Rect2(360, 74, 108, 32)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_jd7vp")
+region_enabled = true
+region_rect = Rect2(469, 39, 34, 34)
+
+[node name="EnemyArea" type="Area2D" parent="."]
+collision_layer = 256
+collision_mask = 256
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyArea"]
+shape = SubResource("CircleShape2D_jd7vp")
+
+[node name="WallArea" type="Area2D" parent="."]
+collision_layer = 512
+collision_mask = 512
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallArea"]
+shape = SubResource("CircleShape2D_jd7vp")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_txrwn")
+}
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

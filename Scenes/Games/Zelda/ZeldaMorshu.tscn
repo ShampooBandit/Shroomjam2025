@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://chmi7pho5axri"]
+
+[ext_resource type="Texture2D" uid="uid://ci7awt5dj3p1w" path="res://GFX/Zoria Tileset/player.png" id="1_ey0ha"]
+
+[node name="ZeldaMorshu" type="Node2D"]
+z_index = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ey0ha")
+region_enabled = true
+region_rect = Rect2(10, 298, 54, 54)

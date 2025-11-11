@@ -1,9 +1,12 @@
 extends Node2D
 
-@export var item_id : int = 0
 @onready var sprite := $Sprite2D
 
 func _ready() -> void:
-	match item_id:
-		0:
-			sprite.frame = 0
+	pass
+
+func _on_area_2d_body_entered(body):
+	if body is ZeldaPlayer:
+		if body.hp < body.maxhp:
+			body.hp += 1
+		queue_free()
