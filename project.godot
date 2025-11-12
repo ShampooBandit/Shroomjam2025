@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 SoundPlayer="*res://Scripts/SoundPlayer.gd"
+Settings="*res://Scripts/Settings.gd"
 
 [display]
 

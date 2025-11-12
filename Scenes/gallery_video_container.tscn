@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bg3s3oi38dg6i"]
 
 [ext_resource type="Texture2D" uid="uid://lx7rxlfco8m8" path="res://GFX/play-button.png" id="1_1qyrp"]
-[ext_resource type="Script" uid="uid://ds1b1uqgfrklq" path="res://Scenes/gallery_video_container.gd" id="1_vrjko"]
+[ext_resource type="Script" uid="uid://ds1b1uqgfrklq" path="res://Scripts/gallery_video_container.gd" id="1_vrjko"]
 
 [node name="VideoContainer" type="VBoxContainer" node_paths=PackedStringArray("label")]
 custom_minimum_size = Vector2(0, 100.805)

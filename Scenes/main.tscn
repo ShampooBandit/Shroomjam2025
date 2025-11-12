@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://b8kqpck7ep2bo" path="res://Scenes/Games/Duckhunt/DuckhuntGame.tscn" id="6_6bp64"]
 [ext_resource type="PackedScene" uid="uid://sf2oei2qqhjc" path="res://Scenes/Games/Zelda/ZeldaGame.tscn" id="7_ynf5e"]
 [ext_resource type="Shader" uid="uid://p5qwhgmiideg" path="res://GFX/Shaders/crt.gdshader" id="8_344ge"]
-[ext_resource type="Script" uid="uid://b4ijsa6rbewmc" path="res://Scenes/detection.gd" id="9_ynf5e"]
+[ext_resource type="Script" uid="uid://b4ijsa6rbewmc" path="res://Scripts/detection.gd" id="9_ynf5e"]
 [ext_resource type="PackedScene" uid="uid://cidu46v48wg8y" path="res://Scenes/hands.tscn" id="11_d1ilt"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ynf5e"]
