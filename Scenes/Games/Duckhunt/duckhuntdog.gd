@@ -7,6 +7,8 @@ var timer = 0
 @export var dog_start_pos: Node2D
 @export var dog_end_pos: Node2D
 
+@export var game: DuckHuntGame
+
 func _ready():
 	play()
 
@@ -18,6 +20,11 @@ func _physics_process(delta: float):
 	timer -= 1
 	if timer <= 0:
 		moving_up = false
+		
+	if game.gamemode != game.Gamemode.NORMAL:
+		hide()
+	else:
+		show()
 	
 func hit():
 	animation = "happy_1"
