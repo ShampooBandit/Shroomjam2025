@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://566cjaism5dv"]
 
 [ext_resource type="Script" uid="uid://bmwiesyeswwbl" path="res://Scripts/main_menu.gd" id="1_ekrfg"]
-[ext_resource type="PackedScene" uid="uid://btnsj2saglf54" path="res://Scenes/main_menu_button.tscn" id="1_w31pl"]
+[ext_resource type="PackedScene" path="res://Scenes/main_menu_button.tscn" id="1_w31pl"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_4obfb"]
 font_size = 56
@@ -65,5 +65,6 @@ text = "Quit
 "
 
 [connection signal="pressed" from="VBoxContainer/StartGameButton" to="." method="_on_start_game_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/GalleryButton" to="." method="_on_gallery_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
