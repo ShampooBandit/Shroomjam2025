@@ -67,6 +67,9 @@ func _physics_process(_delta: float):
 		duck_hitbox.monitorable = true
 		white_square.show()
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes

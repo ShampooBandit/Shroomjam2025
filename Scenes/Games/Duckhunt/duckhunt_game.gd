@@ -24,6 +24,7 @@ var counter = 0
 @export var threshold_label: Label
 @export var level_label: Label
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 
 @export var foreground: Sprite2D
 @export var background: ColorRect
@@ -41,6 +42,13 @@ func _process(delta: float):
 		0:
 			ammo_label.text = "000"
 =======
+=======
+
+@export var foreground: Sprite2D
+@export var background: ColorRect
+@export var clay_background: Sprite2D
+
+>>>>>>> Stashed changes
 =======
 
 @export var foreground: Sprite2D
@@ -84,6 +92,9 @@ func _process(_delta: float):
 				0:
 					ammo_label.text = "000"
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
@@ -125,8 +136,11 @@ func _process(_delta: float):
 	
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 func _physics_process(delta: float):
 =======
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 	var thresholdtext = ""
