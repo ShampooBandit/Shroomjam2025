@@ -1,0 +1,134 @@
+[gd_scene load_steps=7 format=3 uid="uid://deguk77k5tl4b"]
+
+[ext_resource type="PackedScene" uid="uid://d04mk4w0qjsk" path="res://Scenes/gallery_video_container.tscn" id="1_1m3ku"]
+[ext_resource type="Script" path="res://Scenes/gallery_player.gd" id="2_c4y5e"]
+[ext_resource type="VideoStream" uid="uid://lipqcx5ow2fm" path="res://Videos/90s Commercials - S01.E1.ogv" id="2_e6kyq"]
+[ext_resource type="Texture2D" path="res://GFX/play-button.png" id="3_c4y5e"]
+[ext_resource type="Texture2D" path="res://GFX/cross.png" id="5_s4i5e"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_vpk6y"]
+font_size = 51
+
+[node name="Gallery" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -27.5
+offset_right = 27.5
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "Gallery"
+label_settings = SubResource("LabelSettings_vpk6y")
+horizontal_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 23.0
+offset_top = 86.0
+offset_right = -23.0
+offset_bottom = -461.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 5
+
+[node name="Blockbuster" parent="GridContainer" instance=ExtResource("1_1m3ku")]
+layout_mode = 2
+
+[node name="BackButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 16.0
+offset_right = 133.0
+offset_bottom = 57.0
+text = "Back"
+
+[node name="Player" type="Panel" parent="." node_paths=PackedStringArray("vid_player", "play_pause_button", "progress_bar")]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("2_c4y5e")
+vid_player = NodePath("VideoStreamPlayer")
+play_pause_button = NodePath("PlayPauseButton")
+progress_bar = NodePath("ProgressBar")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="Player"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 251.0
+offset_top = 14.0
+offset_right = -251.0
+offset_bottom = -122.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+stream = ExtResource("2_e6kyq")
+expand = true
+
+[node name="PlayPauseButton" type="Button" parent="Player"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -46.5
+offset_top = -105.0
+offset_right = 46.5
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 0
+icon = ExtResource("3_c4y5e")
+expand_icon = true
+
+[node name="ProgressBar" type="HSlider" parent="Player"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -119.0
+offset_bottom = -103.0
+grow_horizontal = 2
+grow_vertical = 0
+focus_neighbor_top = NodePath("../CloseButton")
+focus_neighbor_bottom = NodePath("../PlayPauseButton")
+
+[node name="CloseButton" type="Button" parent="Player"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -95.0
+offset_top = 22.0
+offset_right = -23.0
+offset_bottom = 94.0
+grow_horizontal = 0
+focus_neighbor_bottom = NodePath("../ProgressBar")
+icon = ExtResource("5_s4i5e")
+expand_icon = true
+
+[connection signal="internal_button_pressed" from="GridContainer/Blockbuster" to="Player" method="_on_blockbuster_pressed"]
+[connection signal="pressed" from="BackButton" to="Player" method="_on_back_button_pressed"]
+[connection signal="pressed" from="Player/PlayPauseButton" to="Player" method="_on_play_pause_button_pressed"]
+[connection signal="drag_ended" from="Player/ProgressBar" to="Player" method="_on_progress_bar_drag_ended"]
+[connection signal="drag_started" from="Player/ProgressBar" to="Player" method="_on_progress_bar_drag_started"]
+[connection signal="pressed" from="Player/CloseButton" to="Player" method="_on_close_button_pressed"]

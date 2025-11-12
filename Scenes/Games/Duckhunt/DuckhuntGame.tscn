@@ -15,11 +15,6 @@
 [ext_resource type="Texture2D" uid="uid://deqchesvwcu6m" path="res://GFX/claypigeons.png" id="7_bh705"]
 [ext_resource type="Script" uid="uid://418yq83pngnq" path="res://Scenes/Games/Duckhunt/crosshair.gd" id="7_nghqb"]
 [ext_resource type="Script" path="res://Scenes/Games/Duckhunt/clay_pigeon.gd" id="8_v254o"]
-[ext_resource type="Script" uid="uid://01jsbdsdtx40" path="res://Scenes/Games/Duckhunt/clay_pigeon_2.gd" id="7_5hr01"]
-[ext_resource type="FontFile" uid="uid://pjyc6fsvj4te" path="res://Resource/STV5730A.ttf" id="7_14j52"]
-[ext_resource type="Texture2D" uid="uid://deqchesvwcu6m" path="res://GFX/claypigeons.png" id="7_bh705"]
-[ext_resource type="Script" uid="uid://418yq83pngnq" path="res://Scenes/Games/Duckhunt/crosshair.gd" id="7_nghqb"]
-[ext_resource type="Script" uid="uid://cb6b7qlbv3q3e" path="res://Scenes/Games/Duckhunt/clay_pigeon.gd" id="8_v254o"]
 [ext_resource type="Script" uid="uid://b1jijlwgfypwi" path="res://Scenes/Games/Duckhunt/duck_hitbox.gd" id="10_x7ppw"]
 [ext_resource type="Texture2D" uid="uid://ddcfjleqj4q0s" path="res://GFX/NES - Hogan's Alley - Miscellaneous - Hogan's Alley A.png" id="14_mvrrf"]
 
@@ -355,8 +350,9 @@ color = Color(0.3882353, 0.6784314, 1, 1)
 position = Vector2(512, 355.5)
 texture = ExtResource("2_1xkak")
 
-[node name="Duck" type="AnimatedSprite2D" parent="." node_paths=PackedStringArray("topleft", "bottomright", "white_square", "fly_away_text", "duck_spawner", "game", "dog")]
-[node name="Duck" type="AnimatedSprite2D" parent="." node_paths=PackedStringArray("topleft", "bottomright", "white_square", "fly_away_text", "duck_spawner", "game", "dog", "duck_hitbox")]
+[node name="Duck" type="AnimatedSprite2D" parent="."]
+
+[node name="Duck2" type="AnimatedSprite2D" parent="." node_paths=PackedStringArray("topleft", "bottomright", "white_square", "fly_away_text", "duck_spawner", "game", "dog", "duck_hitbox")]
 position = Vector2(423, 437)
 sprite_frames = SubResource("SpriteFrames_lw3rs")
 animation = &"green_flying"
@@ -396,7 +392,7 @@ game = NodePath("..")
 other_pigeon = NodePath("../ClayPigeon1")
 duck_hitbox = NodePath("../BlackScreen/WhiteSquareClay2/DuckHitbox")
 
-[node name="ClayPigeon1" type="AnimatedSprite2D" parent="." node_paths=PackedStringArray("topleft", "bottomright", "white_square", "fly_away_text", "duck_spawner", "game", "second_pigeon", "duck_hitbox")]
+[node name="ClayPigeon3" type="AnimatedSprite2D" parent="." node_paths=PackedStringArray("topleft", "bottomright", "white_square", "fly_away_text", "duck_spawner", "game", "second_pigeon", "duck_hitbox")]
 position = Vector2(513, 433)
 sprite_frames = SubResource("SpriteFrames_xcl4j")
 script = ExtResource("8_v254o")
@@ -409,7 +405,7 @@ game = NodePath("..")
 second_pigeon = NodePath("../ClayPigeon2")
 duck_hitbox = NodePath("../BlackScreen/WhiteSquareClay1/DuckHitbox")
 
-[node name="ClayPigeon2" type="AnimatedSprite2D" parent="." node_paths=PackedStringArray("topleft", "bottomright", "white_square", "fly_away_text", "duck_spawner", "game", "other_pigeon", "duck_hitbox")]
+[node name="ClayPigeon4" type="AnimatedSprite2D" parent="." node_paths=PackedStringArray("topleft", "bottomright", "white_square", "fly_away_text", "duck_spawner", "game", "other_pigeon", "duck_hitbox")]
 position = Vector2(516, 435)
 sprite_frames = SubResource("SpriteFrames_xcl4j")
 script = ExtResource("7_5hr01")
