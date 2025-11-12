@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://bi0pfgl2bnbki"]
 
-[ext_resource type="PackedScene" uid="uid://bg3s3oi38dg6i" path="res://Scenes/gallery_video_container.tscn" id="1_1m3ku"]
+[ext_resource type="Script" uid="uid://dpvfedut3c734" path="res://Scenes/gallery_video_list.gd" id="1_s4i5e"]
 [ext_resource type="Script" uid="uid://u7j7yhvlt8ab" path="res://Scenes/gallery_player.gd" id="2_c4y5e"]
 [ext_resource type="VideoStream" uid="uid://lipqcx5ow2fm" path="res://Videos/90s Commercials - S01.E1.ogv" id="2_e6kyq"]
 [ext_resource type="Texture2D" uid="uid://lx7rxlfco8m8" path="res://GFX/play-button.png" id="3_c4y5e"]
@@ -42,9 +42,7 @@ offset_bottom = -461.0
 grow_horizontal = 2
 grow_vertical = 2
 columns = 5
-
-[node name="Blockbuster" parent="GridContainer" instance=ExtResource("1_1m3ku")]
-layout_mode = 2
+script = ExtResource("1_s4i5e")
 
 [node name="BackButton" type="Button" parent="."]
 layout_mode = 0
@@ -126,7 +124,6 @@ focus_neighbor_bottom = NodePath("../ProgressBar")
 icon = ExtResource("5_s4i5e")
 expand_icon = true
 
-[connection signal="internal_button_pressed" from="GridContainer/Blockbuster" to="Player" method="_on_blockbuster_pressed"]
 [connection signal="pressed" from="BackButton" to="Player" method="_on_back_button_pressed"]
 [connection signal="pressed" from="Player/PlayPauseButton" to="Player" method="_on_play_pause_button_pressed"]
 [connection signal="drag_ended" from="Player/ProgressBar" to="Player" method="_on_progress_bar_drag_ended"]

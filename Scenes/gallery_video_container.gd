@@ -1,7 +1,9 @@
 extends VBoxContainer
 class_name GalleryVideoContainer
 
-signal internal_button_pressed
+@export var video_name = ""
+
+@export var video_player: GalleryPlayer
 
 func _on_texture_rect_pressed() -> void:
-	internal_button_pressed.emit()
+	video_player.play_video("res://Videos/" + video_name + ".ogv")

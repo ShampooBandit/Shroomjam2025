@@ -22,13 +22,10 @@ func _physics_process(delta: float):
 	progress_bar.max_value = vid_player.get_stream_length()
 
 func play_video(url):
+	vid_player.stream = load(url)
 	vid_player.play()
 	player_visible = true
 	mouse_filter = Control.MOUSE_FILTER_STOP
-
-func _on_blockbuster_pressed() -> void:
-	play_video("dsd")
-
 
 func _on_play_pause_button_pressed() -> void:
 	if vid_player.is_playing():

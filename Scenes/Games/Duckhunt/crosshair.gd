@@ -8,12 +8,16 @@ extends Sprite2D
 @export var duck: Duck
 @export var clay1: ClayPigeon
 @export var clay2: ClayPigeon2
+@export var carriage: Carriage
 
 @export var game: DuckHuntGame
 
 var on_target_duck = false
 var on_target_clay1 = false
 var on_target_clay2 = false
+var on_target_hogan_l = false
+var on_target_hogan_c = false
+var on_target_hogan_r = false
 
 func _process(delta: float):
 	var move_vector_h = Input.get_axis("Left", "Right")
@@ -26,7 +30,7 @@ func _process(delta: float):
 		move_vector_v = 0
 	if global_position.y + move_vector_v < topleft.global_position.y:
 		move_vector_v = 0
-	position += Vector2(move_vector_h, move_vector_v) * delta * 120
+	position += Vector2(move_vector_h, move_vector_v) * delta * 180
 	
 	if Input.is_action_just_pressed("A") and game.shots > 0:
 		if on_target_duck and duck.state == duck.DuckState.FLYING and game.gamemode == game.Gamemode.NORMAL:
@@ -38,6 +42,12 @@ func _process(delta: float):
 		if on_target_clay2 and clay2.state == clay2.ClayState.FLYING and game.gamemode == game.Gamemode.CLAY:
 			clay2.hit()
 			game.earn_second_point()
+		if on_target_hogan_l and carriage.state == carriage.HoganState.SHOWN and game.gamemode == game.Gamemode.HOGAN:
+			carriage.hit(0)
+		if on_target_hogan_c and carriage.state == carriage.HoganState.SHOWN and game.gamemode == game.Gamemode.HOGAN:
+			carriage.hit(1)
+		if on_target_hogan_r and carriage.state == carriage.HoganState.SHOWN and game.gamemode == game.Gamemode.HOGAN:
+			carriage.hit(2)
 
 
 func _physics_process(delta: float):
@@ -60,6 +70,12 @@ func _on_crosshair_hitbox_area_entered(area: Area2D) -> void:
 				on_target_clay1 = true
 			2:
 				on_target_clay2 = true
+			3:
+				on_target_hogan_l = true
+			4:
+				on_target_hogan_c = true
+			5:
+				on_target_hogan_r = true
 
 
 func _on_crosshair_hitbox_area_exited(area: Area2D) -> void:
@@ -71,3 +87,9 @@ func _on_crosshair_hitbox_area_exited(area: Area2D) -> void:
 				on_target_clay1 = false
 			2:
 				on_target_clay2 = false
+			3:
+				on_target_hogan_l = false
+			4:
+				on_target_hogan_c = false
+			5:
+				on_target_hogan_r = false

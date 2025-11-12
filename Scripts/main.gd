@@ -3,7 +3,7 @@ class_name GameLoop
 
 @onready var commercials : Commercials = find_child("Commercials")
 @onready var platformer : PlatformerGame = find_child("PlatformerGame")
-@onready var duckhunt : Node2D = find_child("DuckhuntGame")
+@onready var duckhunt : DuckHuntGame = find_child("DuckhuntGame")
 @onready var zelda : ZeldaGame = find_child("ZeldaGame")
 @onready var channel_label : CanvasLayer = find_child("ChannelLabel")
 @onready var detection : Detection = find_child("Detection")
@@ -30,6 +30,7 @@ var is_currentgame_complete : bool = false
 func _ready() -> void:
 	screen_cover.modulate.a = 0.0
 	
+	duckhunt.beat_game.connect(beat_nes_game)
 	platformer.beatGame.connect(go_to_next_game)
 	zelda.ZeldaGameBeat.connect(go_to_next_game)
 	detection.CaughtGaming.connect(lose_game)

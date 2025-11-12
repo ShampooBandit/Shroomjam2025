@@ -3,6 +3,8 @@ class_name ClayPigeon
 
 enum ClayState {NEUTRAL, FLYING, HIT, TOOLATE}
 
+var hard = false
+
 var state = ClayState.NEUTRAL
 # 0 - neutral
 # 1 - flying
@@ -45,6 +47,10 @@ func _ready():
 	
 
 func _physics_process(_delta: float):
+	if hard == true:
+		base_speed = 8
+	else:
+		base_speed = 5
 	if game.gamemode != game.Gamemode.CLAY:
 		hide()
 		duck_hitbox.monitoring = false
@@ -83,7 +89,7 @@ func _physics_process(_delta: float):
 				position += Vector2(hori_speed+base_mult, (-base_speed-base_mult) * v_velocity)
 			# Display white square in the right position
 			white_square.show()
-			white_square.global_position = global_position + Vector2(-32, -32)
+			white_square.global_position = global_position + Vector2(-24, -20)
 			if timer <= 0:
 				state = ClayState.TOOLATE
 				white_square.hide()

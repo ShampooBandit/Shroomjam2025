@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://b8kqpck7ep2bo"]
+[gd_scene load_steps=80 format=3 uid="uid://b8kqpck7ep2bo"]
 
 [ext_resource type="Texture2D" uid="uid://hd072p64ax2m" path="res://GFX/NES - Duck Hunt - Backgrounds - Backgrounds.png" id="1_4clnm"]
 [ext_resource type="Script" uid="uid://bkjydt42dr3b" path="res://Scenes/Games/Duckhunt/duckhunt_game.gd" id="1_ktv5o"]
@@ -14,9 +14,13 @@
 [ext_resource type="FontFile" uid="uid://pjyc6fsvj4te" path="res://Resource/STV5730A.ttf" id="7_14j52"]
 [ext_resource type="Texture2D" uid="uid://deqchesvwcu6m" path="res://GFX/claypigeons.png" id="7_bh705"]
 [ext_resource type="Script" uid="uid://418yq83pngnq" path="res://Scenes/Games/Duckhunt/crosshair.gd" id="7_nghqb"]
+[ext_resource type="Texture2D" uid="uid://1quolbfa4trd" path="res://GFX/hogancutouts.png" id="8_h4o7v"]
+[ext_resource type="Script" uid="uid://bfn78mvv5c3w4" path="res://Scenes/Games/Duckhunt/hogan_carriage.gd" id="8_iu5i7"]
 [ext_resource type="Script" uid="uid://cb6b7qlbv3q3e" path="res://Scenes/Games/Duckhunt/clay_pigeon.gd" id="8_v254o"]
 [ext_resource type="Script" uid="uid://b1jijlwgfypwi" path="res://Scenes/Games/Duckhunt/duck_hitbox.gd" id="10_x7ppw"]
+[ext_resource type="FontFile" uid="uid://desqh063rddbw" path="res://GFX/hoganfont.png" id="13_wg0fp"]
 [ext_resource type="Texture2D" uid="uid://ddcfjleqj4q0s" path="res://GFX/NES - Hogan's Alley - Miscellaneous - Hogan's Alley A.png" id="14_mvrrf"]
+[ext_resource type="FontFile" uid="uid://ciftl4jofuyng" path="res://Resource/nintendo-nes-font.ttf" id="21_bn0kx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x7ppw"]
 atlas = ExtResource("2_wmckl")
@@ -256,6 +260,160 @@ animations = [{
 "speed": 4.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_u381p"]
+atlas = ExtResource("8_h4o7v")
+region = Rect2(288, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xcl4j"]
+atlas = ExtResource("8_h4o7v")
+region = Rect2(160, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mvk78"]
+atlas = ExtResource("8_h4o7v")
+region = Rect2(128, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bssy0"]
+atlas = ExtResource("8_h4o7v")
+region = Rect2(0, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cuk7e"]
+atlas = ExtResource("8_h4o7v")
+region = Rect2(32, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vtapx"]
+atlas = ExtResource("8_h4o7v")
+region = Rect2(64, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w37gb"]
+atlas = ExtResource("8_h4o7v")
+region = Rect2(256, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ihraj"]
+atlas = ExtResource("8_h4o7v")
+region = Rect2(288, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mxg77"]
+atlas = ExtResource("8_h4o7v")
+region = Rect2(192, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aarmf"]
+atlas = ExtResource("8_h4o7v")
+region = Rect2(224, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_avvak"]
+atlas = ExtResource("8_h4o7v")
+region = Rect2(256, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f6i72"]
+atlas = ExtResource("8_h4o7v")
+region = Rect2(288, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x8bkw"]
+atlas = ExtResource("8_h4o7v")
+region = Rect2(96, 0, 32, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u381p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u381p")
+}, {
+"duration": 100.0,
+"texture": SubResource("AtlasTexture_xcl4j")
+}],
+"loop": true,
+"name": &"cop",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u381p")
+}, {
+"duration": 100.0,
+"texture": SubResource("AtlasTexture_mvk78")
+}],
+"loop": true,
+"name": &"detective",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u381p")
+}, {
+"duration": 100.0,
+"texture": SubResource("AtlasTexture_bssy0")
+}],
+"loop": true,
+"name": &"gang1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u381p")
+}, {
+"duration": 100.0,
+"texture": SubResource("AtlasTexture_cuk7e")
+}],
+"loop": true,
+"name": &"gang2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u381p")
+}, {
+"duration": 100.0,
+"texture": SubResource("AtlasTexture_vtapx")
+}],
+"loop": true,
+"name": &"gang3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w37gb")
+}],
+"loop": true,
+"name": &"neutral",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ihraj")
+}],
+"loop": true,
+"name": &"revealing",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mxg77")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aarmf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_avvak")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f6i72")
+}],
+"loop": true,
+"name": &"spinning",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u381p")
+}, {
+"duration": 100.0,
+"texture": SubResource("AtlasTexture_x8bkw")
+}],
+"loop": true,
+"name": &"woman",
+"speed": 5.0
+}]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_7u5ww"]
 atlas = ExtResource("4_ds1hk")
 region = Rect2(192, 0, 64, 64)
@@ -318,6 +476,14 @@ animations = [{
 font = ExtResource("4_m0feh")
 font_size = 8
 
+[sub_resource type="LabelSettings" id="LabelSettings_h4o7v"]
+font = ExtResource("13_wg0fp")
+font_size = 12
+
+[sub_resource type="LabelSettings" id="LabelSettings_iu5i7"]
+font = ExtResource("4_m0feh")
+font_size = 8
+
 [sub_resource type="LabelSettings" id="LabelSettings_wmckl"]
 font = ExtResource("5_lw3rs")
 font_size = 8
@@ -328,16 +494,43 @@ size = Vector2(2, 2)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_14j52"]
 size = Vector2(34, 31)
 
-[node name="DuckhuntGame" type="Node2D" node_paths=PackedStringArray("ammo_label", "score_label", "ducks_label", "threshold_label", "level_label", "foreground", "background", "clay_background")]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bn0kx"]
+size = Vector2(34, 57)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a4wkw"]
+size = Vector2(22, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iu5i7"]
+size = Vector2(22, 20)
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_iu5i7"]
+
+[node name="DuckhuntGame" type="Node2D" node_paths=PackedStringArray("ammo_label", "score_label", "ducks_label", "threshold_label", "level_label", "score_label_hogan", "high_score_label_hogan", "level_label_hogan", "tth_label_hogan", "tth_label_second_hogan", "misses_label_hogan", "foreground", "background", "clay_background", "hogan_foreground", "success_text", "duck_obj", "clay1_obj", "clay2_obj", "dog", "carriage_obj", "title_screen", "end_screen", "end_screen_label")]
 script = ExtResource("1_ktv5o")
 ammo_label = NodePath("AmmoLeft")
 score_label = NodePath("Score")
 ducks_label = NodePath("DucksHit")
 threshold_label = NodePath("Threshold")
 level_label = NodePath("Level")
+score_label_hogan = NodePath("HoganScore")
+high_score_label_hogan = NodePath("HoganHighScore")
+level_label_hogan = NodePath("HoganLevel")
+tth_label_hogan = NodePath("HoganTimeToHit")
+tth_label_second_hogan = NodePath("HoganTimeToHit/SecondNumber")
+misses_label_hogan = NodePath("HoganMisses")
 foreground = NodePath("Foreground")
 background = NodePath("Background")
 clay_background = NodePath("ClayBackground")
+hogan_foreground = NodePath("HoganForeground")
+success_text = NodePath("SuccessText")
+duck_obj = NodePath("Duck")
+clay1_obj = NodePath("ClayPigeon1")
+clay2_obj = NodePath("ClayPigeon2")
+dog = NodePath("Dog")
+carriage_obj = NodePath("Carriage")
+title_screen = NodePath("TitleScreen")
+end_screen = NodePath("EndScreen")
+end_screen_label = NodePath("EndScreen/Label")
 
 [node name="Background" type="ColorRect" parent="."]
 offset_left = 384.0
@@ -390,6 +583,46 @@ game = NodePath("..")
 other_pigeon = NodePath("../ClayPigeon1")
 duck_hitbox = NodePath("../BlackScreen/WhiteSquareClay2/DuckHitbox")
 
+[node name="Carriage" type="Node2D" parent="." node_paths=PackedStringArray("game", "left_cutout", "center_cutout", "right_cutout", "left_white_square", "center_white_square", "right_white_square")]
+script = ExtResource("8_iu5i7")
+game = NodePath("..")
+left_cutout = NodePath("LeftCutout")
+center_cutout = NodePath("CenterCutout")
+right_cutout = NodePath("RightCutout")
+left_white_square = NodePath("../BlackScreen/HoganWhiteSquareLeft")
+center_white_square = NodePath("../BlackScreen/HoganWhiteSquareCenter")
+right_white_square = NodePath("../BlackScreen/HoganWhiteSquareRight")
+
+[node name="LeftCutout" type="AnimatedSprite2D" parent="Carriage"]
+position = Vector2(448, 378)
+sprite_frames = SubResource("SpriteFrames_u381p")
+animation = &"neutral"
+
+[node name="CenterCutout" type="AnimatedSprite2D" parent="Carriage"]
+position = Vector2(512, 378)
+sprite_frames = SubResource("SpriteFrames_u381p")
+animation = &"neutral"
+
+[node name="RightCutout" type="AnimatedSprite2D" parent="Carriage"]
+position = Vector2(576, 378)
+sprite_frames = SubResource("SpriteFrames_u381p")
+animation = &"neutral"
+
+[node name="LeftFakeCutout" type="AnimatedSprite2D" parent="Carriage"]
+position = Vector2(248, 378)
+sprite_frames = SubResource("SpriteFrames_u381p")
+animation = &"neutral"
+
+[node name="CenterFakeCutout" type="AnimatedSprite2D" parent="Carriage"]
+position = Vector2(312, 378)
+sprite_frames = SubResource("SpriteFrames_u381p")
+animation = &"neutral"
+
+[node name="RightFakeCutout" type="AnimatedSprite2D" parent="Carriage"]
+position = Vector2(376, 378)
+sprite_frames = SubResource("SpriteFrames_u381p")
+animation = &"neutral"
+
 [node name="DogEndPos" type="Node2D" parent="."]
 position = Vector2(513, 380)
 
@@ -410,8 +643,7 @@ position = Vector2(768, 512)
 texture = ExtResource("1_4clnm")
 
 [node name="HoganForeground" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(512, 576)
+position = Vector2(512, 576.5)
 texture = ExtResource("14_mvrrf")
 
 [node name="Score" type="Label" parent="."]
@@ -419,6 +651,24 @@ offset_left = 576.0
 offset_top = 464.0
 offset_right = 624.0
 offset_bottom = 472.0
+text = "000000"
+label_settings = SubResource("LabelSettings_nghqb")
+
+[node name="HoganScore" type="Label" parent="."]
+visible = false
+offset_left = 416.0
+offset_top = 465.0
+offset_right = 464.0
+offset_bottom = 473.0
+text = "000000"
+label_settings = SubResource("LabelSettings_nghqb")
+
+[node name="HoganHighScore" type="Label" parent="."]
+visible = false
+offset_left = 561.0
+offset_top = 465.0
+offset_right = 609.0
+offset_bottom = 473.0
 text = "000000"
 label_settings = SubResource("LabelSettings_nghqb")
 
@@ -431,7 +681,51 @@ offset_bottom = 456.0
 text = "1"
 label_settings = SubResource("LabelSettings_nghqb")
 
+[node name="HoganLevel" type="Label" parent="."]
+visible = false
+offset_left = 514.0
+offset_top = 460.0
+offset_right = 526.0
+offset_bottom = 472.0
+text = "1"
+label_settings = SubResource("LabelSettings_h4o7v")
+
+[node name="HoganTimeToHit" type="Label" parent="."]
+visible = false
+offset_left = 499.0
+offset_top = 300.0
+offset_right = 523.0
+offset_bottom = 312.0
+text = "2"
+label_settings = SubResource("LabelSettings_h4o7v")
+
+[node name="Dot" type="Label" parent="HoganTimeToHit"]
+layout_mode = 0
+offset_left = 12.0
+offset_right = 36.0
+offset_bottom = 12.0
+text = "."
+label_settings = SubResource("LabelSettings_h4o7v")
+
+[node name="SecondNumber" type="Label" parent="HoganTimeToHit"]
+layout_mode = 0
+offset_left = 16.0
+offset_right = 40.0
+offset_bottom = 12.0
+text = "0"
+label_settings = SubResource("LabelSettings_h4o7v")
+
+[node name="HoganMisses" type="Label" parent="."]
+visible = false
+offset_left = 527.0
+offset_top = 474.0
+offset_right = 535.0
+offset_bottom = 482.0
+text = "1"
+label_settings = SubResource("LabelSettings_iu5i7")
+
 [node name="DucksHit" type="Label" parent="."]
+visible = false
 offset_left = 480.0
 offset_top = 464.0
 offset_right = 560.0
@@ -440,6 +734,7 @@ text = "1111111111"
 label_settings = SubResource("LabelSettings_wmckl")
 
 [node name="Threshold" type="Label" parent="."]
+visible = false
 offset_left = 480.0
 offset_top = 472.0
 offset_right = 560.0
@@ -464,7 +759,16 @@ offset_bottom = 350.0
 theme_override_fonts/font = ExtResource("7_14j52")
 text = "FLY AWAY"
 
-[node name="Crosshair" type="Sprite2D" parent="." node_paths=PackedStringArray("black_screen", "topleft", "bottomright", "duck", "clay1", "clay2", "game")]
+[node name="SuccessText" type="Label" parent="."]
+visible = false
+offset_left = 462.0
+offset_top = 327.0
+offset_right = 556.0
+offset_bottom = 350.0
+theme_override_fonts/font = ExtResource("7_14j52")
+text = "SUCCESS!"
+
+[node name="Crosshair" type="Sprite2D" parent="." node_paths=PackedStringArray("black_screen", "topleft", "bottomright", "duck", "clay1", "clay2", "carriage", "game")]
 position = Vector2(510, 340)
 texture = ExtResource("6_lw3rs")
 script = ExtResource("7_nghqb")
@@ -474,6 +778,7 @@ bottomright = NodePath("../BottomRightMarker")
 duck = NodePath("../Duck")
 clay1 = NodePath("../ClayPigeon1")
 clay2 = NodePath("../ClayPigeon2")
+carriage = NodePath("../Carriage")
 game = NodePath("..")
 
 [node name="CrosshairHitbox" type="Area2D" parent="Crosshair"]
@@ -501,35 +806,80 @@ script = ExtResource("10_x7ppw")
 position = Vector2(17, 15.5)
 shape = SubResource("RectangleShape2D_14j52")
 
+[node name="HoganWhiteSquareLeft" type="ColorRect" parent="BlackScreen"]
+layout_mode = 0
+offset_left = 431.0
+offset_top = 345.0
+offset_right = 465.0
+offset_bottom = 402.0
+
+[node name="DuckHitbox" type="Area2D" parent="BlackScreen/HoganWhiteSquareLeft"]
+script = ExtResource("10_x7ppw")
+hitbox_type = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BlackScreen/HoganWhiteSquareLeft/DuckHitbox"]
+position = Vector2(17, 28.5)
+shape = SubResource("RectangleShape2D_bn0kx")
+
+[node name="HoganWhiteSquareCenter" type="ColorRect" parent="BlackScreen"]
+layout_mode = 0
+offset_left = 495.0
+offset_top = 345.0
+offset_right = 529.0
+offset_bottom = 402.0
+
+[node name="DuckHitbox" type="Area2D" parent="BlackScreen/HoganWhiteSquareCenter"]
+script = ExtResource("10_x7ppw")
+hitbox_type = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BlackScreen/HoganWhiteSquareCenter/DuckHitbox"]
+position = Vector2(17, 28.5)
+shape = SubResource("RectangleShape2D_bn0kx")
+
+[node name="HoganWhiteSquareRight" type="ColorRect" parent="BlackScreen"]
+layout_mode = 0
+offset_left = 559.0
+offset_top = 345.0
+offset_right = 593.0
+offset_bottom = 402.0
+
+[node name="DuckHitbox" type="Area2D" parent="BlackScreen/HoganWhiteSquareRight"]
+script = ExtResource("10_x7ppw")
+hitbox_type = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BlackScreen/HoganWhiteSquareRight/DuckHitbox"]
+position = Vector2(17, 28.5)
+shape = SubResource("RectangleShape2D_bn0kx")
+
 [node name="WhiteSquareClay1" type="ColorRect" parent="BlackScreen"]
 layout_mode = 0
 offset_left = 498.0
 offset_top = 321.0
-offset_right = 532.0
-offset_bottom = 352.0
+offset_right = 519.9355
+offset_bottom = 341.0
 
 [node name="DuckHitbox" type="Area2D" parent="BlackScreen/WhiteSquareClay1"]
 script = ExtResource("10_x7ppw")
 hitbox_type = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BlackScreen/WhiteSquareClay1/DuckHitbox"]
-position = Vector2(17, 15.5)
-shape = SubResource("RectangleShape2D_14j52")
+position = Vector2(11, 10)
+shape = SubResource("RectangleShape2D_a4wkw")
 
 [node name="WhiteSquareClay2" type="ColorRect" parent="BlackScreen"]
 layout_mode = 0
 offset_left = 498.0
 offset_top = 321.0
-offset_right = 532.0
-offset_bottom = 352.0
+offset_right = 519.9355
+offset_bottom = 341.0
 
 [node name="DuckHitbox" type="Area2D" parent="BlackScreen/WhiteSquareClay2"]
 script = ExtResource("10_x7ppw")
 hitbox_type = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BlackScreen/WhiteSquareClay2/DuckHitbox"]
-position = Vector2(17, 15.5)
-shape = SubResource("RectangleShape2D_14j52")
+position = Vector2(11, 10)
+shape = SubResource("RectangleShape2D_iu5i7")
 
 [node name="TopLeftMarker" type="Node2D" parent="."]
 position = Vector2(385, 281)
@@ -539,6 +889,44 @@ position = Vector2(639, 487)
 
 [node name="DuckSpawner" type="Node2D" parent="."]
 position = Vector2(513, 437)
+
+[node name="TitleScreen" type="TextureRect" parent="."]
+visible = false
+offset_left = 384.0
+offset_top = 279.0
+offset_right = 640.0
+offset_bottom = 487.0
+texture = SubResource("NoiseTexture2D_iu5i7")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="TitleScreen"]
+layout_mode = 0
+offset_left = 38.0
+offset_top = 122.0
+offset_right = 214.0
+offset_bottom = 145.0
+theme_override_fonts/font = ExtResource("21_bn0kx")
+text = "PRESS START"
+
+[node name="EndScreen" type="TextureRect" parent="."]
+visible = false
+offset_left = 384.0
+offset_top = 279.0
+offset_right = 640.0
+offset_bottom = 487.0
+texture = SubResource("NoiseTexture2D_iu5i7")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="EndScreen"]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 121.0
+offset_right = 230.0
+offset_bottom = 156.0
+theme_override_fonts/font = ExtResource("21_bn0kx")
+text = "VICTORY
+SCORE: 696900"
+horizontal_alignment = 1
 
 [connection signal="area_entered" from="Crosshair/CrosshairHitbox" to="Crosshair" method="_on_crosshair_hitbox_area_entered"]
 [connection signal="area_exited" from="Crosshair/CrosshairHitbox" to="Crosshair" method="_on_crosshair_hitbox_area_exited"]

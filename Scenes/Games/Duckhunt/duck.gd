@@ -3,6 +3,8 @@ class_name Duck
 
 enum DuckState {NEUTRAL, FLYING, HIT, FALLING, FLY_AWAY, DOG_CATCH, DOG_GIGGLE}
 
+var hard = false
+
 var state = DuckState.NEUTRAL
 # 0 - neutral
 # 1 - flying
@@ -160,6 +162,8 @@ func select_color():
 			base_mult = 0.4
 		2:
 			base_mult = 0.2
+	if hard:
+		base_mult += 0.6
 
 func random_trajectory():
 	if randi() % 2:

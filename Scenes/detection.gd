@@ -50,7 +50,8 @@ func _physics_process(_delta: float) -> void:
 					# Show silhouette
 			AttackState.ATTACKING:
 				if game_loop.show_game == true:
-					lose()
+					# TODO lose()
+					pass
 				if timer <= 0:
 					# Transition to recovery
 					attack_state = AttackState.RECOVERY
