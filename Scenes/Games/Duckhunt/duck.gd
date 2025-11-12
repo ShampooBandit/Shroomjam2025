@@ -33,8 +33,6 @@ var flying_down = false
 
 @export var dog: DuckHuntDog
 
-@export var duck_hitbox: DuckHitbox
-
 var timer = 0
 
 var random_x_offset = 0
