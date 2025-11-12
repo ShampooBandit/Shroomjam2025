@@ -350,9 +350,7 @@ color = Color(0.3882353, 0.6784314, 1, 1)
 position = Vector2(512, 355.5)
 texture = ExtResource("2_1xkak")
 
-[node name="Duck" type="AnimatedSprite2D" parent="."]
-
-[node name="Duck2" type="AnimatedSprite2D" parent="." node_paths=PackedStringArray("topleft", "bottomright", "white_square", "fly_away_text", "duck_spawner", "game", "dog", "duck_hitbox")]
+[node name="Duck" type="AnimatedSprite2D" parent="." node_paths=PackedStringArray("topleft", "bottomright", "white_square", "fly_away_text", "duck_spawner", "game", "dog", "duck_hitbox")]
 position = Vector2(423, 437)
 sprite_frames = SubResource("SpriteFrames_lw3rs")
 animation = &"green_flying"
@@ -380,32 +378,6 @@ second_pigeon = NodePath("../ClayPigeon2")
 duck_hitbox = NodePath("../BlackScreen/WhiteSquareClay1/DuckHitbox")
 
 [node name="ClayPigeon2" type="AnimatedSprite2D" parent="." node_paths=PackedStringArray("topleft", "bottomright", "white_square", "fly_away_text", "duck_spawner", "game", "other_pigeon", "duck_hitbox")]
-position = Vector2(516, 435)
-sprite_frames = SubResource("SpriteFrames_xcl4j")
-script = ExtResource("7_5hr01")
-topleft = NodePath("../TopLeftMarker")
-bottomright = NodePath("../BottomRightMarker")
-white_square = NodePath("../BlackScreen/WhiteSquareClay2")
-fly_away_text = NodePath("../FlyAwayText")
-duck_spawner = NodePath("../DuckSpawner")
-game = NodePath("..")
-other_pigeon = NodePath("../ClayPigeon1")
-duck_hitbox = NodePath("../BlackScreen/WhiteSquareClay2/DuckHitbox")
-
-[node name="ClayPigeon3" type="AnimatedSprite2D" parent="." node_paths=PackedStringArray("topleft", "bottomright", "white_square", "fly_away_text", "duck_spawner", "game", "second_pigeon", "duck_hitbox")]
-position = Vector2(513, 433)
-sprite_frames = SubResource("SpriteFrames_xcl4j")
-script = ExtResource("8_v254o")
-topleft = NodePath("../TopLeftMarker")
-bottomright = NodePath("../BottomRightMarker")
-white_square = NodePath("../BlackScreen/WhiteSquareClay1")
-fly_away_text = NodePath("../FlyAwayText")
-duck_spawner = NodePath("../DuckSpawner")
-game = NodePath("..")
-second_pigeon = NodePath("../ClayPigeon2")
-duck_hitbox = NodePath("../BlackScreen/WhiteSquareClay1/DuckHitbox")
-
-[node name="ClayPigeon4" type="AnimatedSprite2D" parent="." node_paths=PackedStringArray("topleft", "bottomright", "white_square", "fly_away_text", "duck_spawner", "game", "other_pigeon", "duck_hitbox")]
 position = Vector2(516, 435)
 sprite_frames = SubResource("SpriteFrames_xcl4j")
 script = ExtResource("7_5hr01")

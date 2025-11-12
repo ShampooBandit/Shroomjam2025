@@ -29,13 +29,13 @@ func _process(delta: float):
 	position += Vector2(move_vector_h, move_vector_v) * delta * 120
 	
 	if Input.is_action_just_pressed("A") and game.shots > 0:
-		if on_target_duck and duck.state == duck.DuckState.FLYING:
+		if on_target_duck and duck.state == duck.DuckState.FLYING and game.gamemode == game.Gamemode.NORMAL:
 			duck.hit()
 			game.earn_point()
-		if on_target_clay1 and clay1.state == clay1.ClayState.FLYING:
+		if on_target_clay1 and clay1.state == clay1.ClayState.FLYING and game.gamemode == game.Gamemode.CLAY:
 			clay1.hit()
 			game.earn_first_point()
-		if on_target_clay2 and clay2.state == clay2.ClayState.FLYING:
+		if on_target_clay2 and clay2.state == clay2.ClayState.FLYING and game.gamemode == game.Gamemode.CLAY:
 			clay2.hit()
 			game.earn_second_point()
 
