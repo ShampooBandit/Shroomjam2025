@@ -67,7 +67,7 @@ func _process(_delta: float):
 	if duck >= 10:
 		if score >= threshold:
 			level += 1
-		restart_game()
+		reset_game()
 	
 	
 	
@@ -128,7 +128,7 @@ func disable_tilemaps() -> void:
 func enable_tilemaps() -> void:
 	pass
 
-func restart_game() -> void:
+func reset_game() -> void:
 	score = 0
 	pointscore = 0
 	shots = 3
