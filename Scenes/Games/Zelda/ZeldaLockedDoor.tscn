@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://c1qljtx6vptx4"]
+
+[ext_resource type="Texture2D" uid="uid://b05gmrhxmrypq" path="res://GFX/Zoria Tileset/overworld.png" id="1_121xv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_umyip"]
+size = Vector2(32, 32)
+
+[node name="ZeldaLockedDoor" type="CharacterBody2D"]
+z_index = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_umyip")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_121xv")
+region_enabled = true
+region_rect = Rect2(256, 640, 32, 32)

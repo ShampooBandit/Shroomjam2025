@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://2b8vgb4rity1" path="res://Scenes/Games/Zelda/enemies/ZeldaEnemySpawner.gd" id="1_28k1y"]
 
 [node name="ZeldaEnemySpawner" type="Node2D"]
+z_index = 1
 script = ExtResource("1_28k1y")
 
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]

@@ -6,10 +6,14 @@ extends Sprite2D
 @export var bottomright: Node2D
 
 @export var duck: Duck
+@export var clay1: ClayPigeon
+@export var clay2: ClayPigeon2
 
 @export var game: DuckHuntGame
 
-var on_target = false
+var on_target_duck = false
+var on_target_clay1 = false
+var on_target_clay2 = false
 
 func _process(delta: float):
 	var move_vector_h = Input.get_axis("Left", "Right")
@@ -24,12 +28,19 @@ func _process(delta: float):
 		move_vector_v = 0
 	position += Vector2(move_vector_h, move_vector_v) * delta * 120
 	
-	if Input.is_action_just_pressed("A") and on_target and game.shots > 0 and duck.state == duck.DuckState.FLYING:
-		duck.hit()
-		game.score += 1
+	if Input.is_action_just_pressed("A") and game.shots > 0:
+		if on_target_duck and duck.state == duck.DuckState.FLYING and game.gamemode == game.Gamemode.NORMAL:
+			duck.hit()
+			game.earn_point()
+		if on_target_clay1 and clay1.state == clay1.ClayState.FLYING and game.gamemode == game.Gamemode.CLAY:
+			clay1.hit()
+			game.earn_first_point()
+		if on_target_clay2 and clay2.state == clay2.ClayState.FLYING and game.gamemode == game.Gamemode.CLAY:
+			clay2.hit()
+			game.earn_second_point()
 
 
-func _physics_process(_delta: float):
+func _physics_process(delta: float):
 	#black_screen.hide()
 	if black_screen.modulate.a > 0:
 		black_screen.modulate.a -= 0.05
@@ -42,9 +53,21 @@ func _physics_process(_delta: float):
 
 func _on_crosshair_hitbox_area_entered(area: Area2D) -> void:
 	if area is DuckHitbox:
-		on_target = true
+		match area.hitbox_type:
+			0:
+				on_target_duck = true
+			1:
+				on_target_clay1 = true
+			2:
+				on_target_clay2 = true
 
 
 func _on_crosshair_hitbox_area_exited(area: Area2D) -> void:
 	if area is DuckHitbox:
-		on_target = false
+		match area.hitbox_type:
+			0:
+				on_target_duck = false
+			1:
+				on_target_clay1 = false
+			2:
+				on_target_clay2 = false

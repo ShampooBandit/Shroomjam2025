@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://bt56pdtu4awca"]
+
+[ext_resource type="Script" uid="uid://dp7gnda7mtk8l" path="res://Scenes/Games/Zelda/ZeldaBigKey.gd" id="1_0mn7l"]
+[ext_resource type="Texture2D" uid="uid://ci7awt5dj3p1w" path="res://GFX/Zoria Tileset/player.png" id="1_x3lo8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0mn7l"]
+size = Vector2(32, 30)
+
+[node name="ZeldaBigKey" type="Node2D"]
+z_index = 1
+script = ExtResource("1_0mn7l")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_x3lo8")
+region_enabled = true
+region_rect = Rect2(398, 110, 32, 30)
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 128
+collision_mask = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_0mn7l")

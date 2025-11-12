@@ -1,0 +1,497 @@
+[gd_scene load_steps=55 format=3 uid="uid://b8kqpck7ep2bo"]
+
+[ext_resource type="Texture2D" uid="uid://hd072p64ax2m" path="res://GFX/NES - Duck Hunt - Backgrounds - Backgrounds.png" id="1_4clnm"]
+[ext_resource type="Script" uid="uid://bkjydt42dr3b" path="res://Scenes/Games/Duckhunt/duckhunt_game.gd" id="1_ktv5o"]
+[ext_resource type="Texture2D" uid="uid://f11qtod1n2su" path="res://GFX/duckhuntclaypigeonbg.png" id="2_1xkak"]
+[ext_resource type="Texture2D" uid="uid://cf8rv5n8yqfwy" path="res://GFX/duckanims.png" id="2_wmckl"]
+[ext_resource type="Script" uid="uid://dp66j64ydofhx" path="res://Scenes/Games/Duckhunt/duck.gd" id="3_14j52"]
+[ext_resource type="Texture2D" uid="uid://ct3l884r7ward" path="res://GFX/duckhuntdoganims.png" id="4_ds1hk"]
+[ext_resource type="FontFile" uid="uid://dqa1tj8u3r6hg" path="res://GFX/duckhuntfont.png" id="4_m0feh"]
+[ext_resource type="Script" uid="uid://bwb0a422dew3u" path="res://Scenes/Games/Duckhunt/duckhuntdog.gd" id="5_dijtl"]
+[ext_resource type="FontFile" uid="uid://dv18yi1vgwufu" path="res://GFX/duckhunthitfont.png" id="5_lw3rs"]
+[ext_resource type="Texture2D" uid="uid://bxoym16bmp6mv" path="res://GFX/duckhuntcrosshair.png" id="6_lw3rs"]
+[ext_resource type="FontFile" uid="uid://pjyc6fsvj4te" path="res://Resource/STV5730A.ttf" id="7_14j52"]
+[ext_resource type="Texture2D" uid="uid://deqchesvwcu6m" path="res://GFX/claypigeons.png" id="7_bh705"]
+[ext_resource type="Script" uid="uid://418yq83pngnq" path="res://Scenes/Games/Duckhunt/crosshair.gd" id="7_nghqb"]
+[ext_resource type="Script" uid="uid://cb6b7qlbv3q3e" path="res://Scenes/Games/Duckhunt/clay_pigeon.gd" id="8_v254o"]
+[ext_resource type="Script" uid="uid://b1jijlwgfypwi" path="res://Scenes/Games/Duckhunt/duck_hitbox.gd" id="10_x7ppw"]
+[ext_resource type="Texture2D" uid="uid://ddcfjleqj4q0s" path="res://GFX/NES - Hogan's Alley - Miscellaneous - Hogan's Alley A.png" id="14_mvrrf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x7ppw"]
+atlas = ExtResource("2_wmckl")
+region = Rect2(224, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ds1hk"]
+atlas = ExtResource("2_wmckl")
+region = Rect2(256, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dijtl"]
+atlas = ExtResource("2_wmckl")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1xkak"]
+atlas = ExtResource("2_wmckl")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mvrrf"]
+atlas = ExtResource("2_wmckl")
+region = Rect2(64, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bh705"]
+atlas = ExtResource("2_wmckl")
+region = Rect2(192, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v254o"]
+atlas = ExtResource("2_wmckl")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5hr01"]
+atlas = ExtResource("2_wmckl")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wg0fp"]
+atlas = ExtResource("2_wmckl")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h4o7v"]
+atlas = ExtResource("2_wmckl")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iu5i7"]
+atlas = ExtResource("2_wmckl")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bn0kx"]
+atlas = ExtResource("2_wmckl")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a4wkw"]
+atlas = ExtResource("2_wmckl")
+region = Rect2(224, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a06o3"]
+atlas = ExtResource("2_wmckl")
+region = Rect2(256, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v2e83"]
+atlas = ExtResource("2_wmckl")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8lo6b"]
+atlas = ExtResource("2_wmckl")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u1hff"]
+atlas = ExtResource("2_wmckl")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pvnfo"]
+atlas = ExtResource("2_wmckl")
+region = Rect2(192, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lw3rs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x7ppw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ds1hk")
+}],
+"loop": true,
+"name": &"blue_falling",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dijtl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1xkak")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mvrrf")
+}],
+"loop": true,
+"name": &"blue_flying",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bh705")
+}],
+"loop": true,
+"name": &"blue_shock",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v254o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5hr01")
+}],
+"loop": true,
+"name": &"green_falling",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wg0fp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h4o7v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iu5i7")
+}],
+"loop": true,
+"name": &"green_flying",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bn0kx")
+}],
+"loop": true,
+"name": &"green_shock",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a4wkw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a06o3")
+}],
+"loop": true,
+"name": &"red_falling",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v2e83")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8lo6b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u1hff")
+}],
+"loop": true,
+"name": &"red_flying",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pvnfo")
+}],
+"loop": true,
+"name": &"red_shock",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xno6k"]
+atlas = ExtResource("7_bh705")
+region = Rect2(0, 0, 24, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_no144"]
+atlas = ExtResource("7_bh705")
+region = Rect2(24, 0, 24, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hkxtd"]
+atlas = ExtResource("7_bh705")
+region = Rect2(48, 0, 24, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cmdug"]
+atlas = ExtResource("7_bh705")
+region = Rect2(72, 0, 24, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pr1fi"]
+atlas = ExtResource("7_bh705")
+region = Rect2(96, 0, 24, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ql5v3"]
+atlas = ExtResource("7_bh705")
+region = Rect2(120, 0, 24, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jnhyu"]
+atlas = ExtResource("7_bh705")
+region = Rect2(144, 0, 24, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tcutu"]
+atlas = ExtResource("7_bh705")
+region = Rect2(168, 0, 24, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xcl4j"]
+animations = [{
+"frames": [{
+"duration": 0.6,
+"texture": SubResource("AtlasTexture_xno6k")
+}, {
+"duration": 0.8,
+"texture": SubResource("AtlasTexture_no144")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hkxtd")
+}, {
+"duration": 1.2,
+"texture": SubResource("AtlasTexture_cmdug")
+}, {
+"duration": 1.4,
+"texture": SubResource("AtlasTexture_pr1fi")
+}, {
+"duration": 1.6,
+"texture": SubResource("AtlasTexture_ql5v3")
+}, {
+"duration": 1.8,
+"texture": SubResource("AtlasTexture_jnhyu")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_tcutu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7u5ww"]
+atlas = ExtResource("4_ds1hk")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ocpjn"]
+atlas = ExtResource("4_ds1hk")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wiyrm"]
+atlas = ExtResource("4_ds1hk")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m7ajs"]
+atlas = ExtResource("4_ds1hk")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fcj32"]
+atlas = ExtResource("4_ds1hk")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xno6k"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7u5ww")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ocpjn")
+}],
+"loop": true,
+"name": &"giggling",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wiyrm")
+}],
+"loop": true,
+"name": &"happy_1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m7ajs")
+}],
+"loop": true,
+"name": &"happy_2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fcj32")
+}],
+"loop": true,
+"name": &"happy_3",
+"speed": 5.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_nghqb"]
+font = ExtResource("4_m0feh")
+font_size = 8
+
+[sub_resource type="LabelSettings" id="LabelSettings_wmckl"]
+font = ExtResource("5_lw3rs")
+font_size = 8
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x7ppw"]
+size = Vector2(2, 2)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_14j52"]
+size = Vector2(34, 31)
+
+[node name="DuckhuntGame" type="Node2D" node_paths=PackedStringArray("ammo_label", "score_label", "ducks_label", "threshold_label", "foreground", "background", "clay_background")]
+script = ExtResource("1_ktv5o")
+ammo_label = NodePath("AmmoLeft")
+score_label = NodePath("Score")
+ducks_label = NodePath("DucksHit")
+threshold_label = NodePath("Threshold")
+foreground = NodePath("Foreground")
+background = NodePath("Background")
+clay_background = NodePath("ClayBackground")
+
+[node name="Background" type="ColorRect" parent="."]
+offset_left = 384.0
+offset_top = 256.0
+offset_right = 640.0
+offset_bottom = 496.0
+color = Color(0.3882353, 0.6784314, 1, 1)
+
+[node name="ClayBackground" type="Sprite2D" parent="."]
+position = Vector2(512, 355.5)
+texture = ExtResource("2_1xkak")
+
+[node name="Duck" type="AnimatedSprite2D" parent="." node_paths=PackedStringArray("topleft", "bottomright", "white_square", "fly_away_text", "duck_spawner", "game", "dog")]
+position = Vector2(423, 437)
+sprite_frames = SubResource("SpriteFrames_lw3rs")
+animation = &"green_flying"
+script = ExtResource("3_14j52")
+topleft = NodePath("../TopLeftMarker")
+bottomright = NodePath("../BottomRightMarker")
+white_square = NodePath("../BlackScreen/WhiteSquare")
+fly_away_text = NodePath("../FlyAwayText")
+duck_spawner = NodePath("../DuckSpawner")
+game = NodePath("..")
+dog = NodePath("../Dog")
+
+[node name="ClayPigeon1" type="AnimatedSprite2D" parent="." node_paths=PackedStringArray("topleft", "bottomright", "white_square", "fly_away_text", "duck_spawner", "game")]
+position = Vector2(510, 378)
+sprite_frames = SubResource("SpriteFrames_xcl4j")
+frame = 5
+frame_progress = 0.52699476
+script = ExtResource("8_v254o")
+topleft = NodePath("../TopLeftMarker")
+bottomright = NodePath("../BottomRightMarker")
+white_square = NodePath("../BlackScreen/WhiteSquare")
+fly_away_text = NodePath("../FlyAwayText")
+duck_spawner = NodePath("../DuckSpawner")
+game = NodePath("..")
+
+[node name="DogEndPos" type="Node2D" parent="."]
+position = Vector2(513, 380)
+
+[node name="DogStartPos" type="Node2D" parent="."]
+position = Vector2(513, 420)
+
+[node name="Dog" type="AnimatedSprite2D" parent="." node_paths=PackedStringArray("dog_start_pos", "dog_end_pos", "game")]
+position = Vector2(513, 420)
+sprite_frames = SubResource("SpriteFrames_xno6k")
+animation = &"happy_1"
+script = ExtResource("5_dijtl")
+dog_start_pos = NodePath("../DogStartPos")
+dog_end_pos = NodePath("../DogEndPos")
+game = NodePath("..")
+
+[node name="Foreground" type="Sprite2D" parent="."]
+position = Vector2(768, 512)
+texture = ExtResource("1_4clnm")
+
+[node name="HoganForeground" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(512, 576)
+texture = ExtResource("14_mvrrf")
+
+[node name="Score" type="Label" parent="."]
+offset_left = 576.0
+offset_top = 464.0
+offset_right = 624.0
+offset_bottom = 472.0
+text = "000000"
+label_settings = SubResource("LabelSettings_nghqb")
+
+[node name="Level" type="Label" parent="."]
+modulate = Color(0.54901963, 0.8392157, 0, 1)
+offset_left = 424.0
+offset_top = 448.0
+offset_right = 432.0
+offset_bottom = 456.0
+text = "1"
+label_settings = SubResource("LabelSettings_nghqb")
+
+[node name="DucksHit" type="Label" parent="."]
+offset_left = 480.0
+offset_top = 464.0
+offset_right = 560.0
+offset_bottom = 472.0
+text = "1111111111"
+label_settings = SubResource("LabelSettings_wmckl")
+
+[node name="Threshold" type="Label" parent="."]
+offset_left = 480.0
+offset_top = 472.0
+offset_right = 560.0
+offset_bottom = 480.0
+text = "4444440000"
+label_settings = SubResource("LabelSettings_wmckl")
+
+[node name="AmmoLeft" type="Label" parent="."]
+offset_left = 408.0
+offset_top = 464.0
+offset_right = 432.0
+offset_bottom = 472.0
+text = "333"
+label_settings = SubResource("LabelSettings_wmckl")
+
+[node name="FlyAwayText" type="Label" parent="."]
+visible = false
+offset_left = 462.0
+offset_top = 327.0
+offset_right = 556.0
+offset_bottom = 350.0
+theme_override_fonts/font = ExtResource("7_14j52")
+text = "FLY AWAY"
+
+[node name="Crosshair" type="Sprite2D" parent="." node_paths=PackedStringArray("black_screen", "topleft", "bottomright", "duck", "game")]
+position = Vector2(510, 340)
+texture = ExtResource("6_lw3rs")
+script = ExtResource("7_nghqb")
+black_screen = NodePath("../BlackScreen")
+topleft = NodePath("../TopLeftMarker")
+bottomright = NodePath("../BottomRightMarker")
+duck = NodePath("../Duck")
+game = NodePath("..")
+
+[node name="CrosshairHitbox" type="Area2D" parent="Crosshair"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Crosshair/CrosshairHitbox"]
+shape = SubResource("RectangleShape2D_x7ppw")
+
+[node name="BlackScreen" type="ColorRect" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0)
+offset_right = 1280.0
+offset_bottom = 720.0
+color = Color(0, 0, 0, 1)
+
+[node name="WhiteSquare" type="ColorRect" parent="BlackScreen"]
+layout_mode = 0
+offset_left = 498.0
+offset_top = 321.0
+offset_right = 532.0
+offset_bottom = 352.0
+
+[node name="DuckHitbox" type="Area2D" parent="BlackScreen/WhiteSquare"]
+script = ExtResource("10_x7ppw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BlackScreen/WhiteSquare/DuckHitbox"]
+position = Vector2(17, 15.5)
+shape = SubResource("RectangleShape2D_14j52")
+
+[node name="TopLeftMarker" type="Node2D" parent="."]
+position = Vector2(385, 281)
+
+[node name="BottomRightMarker" type="Node2D" parent="."]
+position = Vector2(639, 487)
+
+[node name="DuckSpawner" type="Node2D" parent="."]
+position = Vector2(513, 437)
+
+[connection signal="area_entered" from="Crosshair/CrosshairHitbox" to="Crosshair" method="_on_crosshair_hitbox_area_entered"]
+[connection signal="area_exited" from="Crosshair/CrosshairHitbox" to="Crosshair" method="_on_crosshair_hitbox_area_exited"]

@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://3khpv3ckleul"]
+
+[ext_resource type="Script" uid="uid://bgakkw64xk4rg" path="res://Scenes/Games/Zelda/ZeldaEnter.gd" id="1_0w7nc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wqdqv"]
+size = Vector2(32, 32)
+
+[node name="ZeldaEnter" type="Node2D"]
+script = ExtResource("1_0w7nc")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 64
+collision_mask = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_wqdqv")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -19,11 +19,15 @@ func _ready() -> void:
 	pass
 	
 func teleport(teleport_pos : Vector2) -> void:
+	TransitionStart.emit()
 	position = teleport_pos
 	left_border = position.x
 	right_border = position.x + width
 	top_border = position.y + 96.0 
-	bottom_border = position.y + height + 96.0 
+	bottom_border = position.y + height + 96.0
+
+func exit() -> void:
+	TransitionComplete.emit()
 
 func _process(_delta: float) -> void:
 	if move:
@@ -48,11 +52,11 @@ func _process(_delta: float) -> void:
 func finish_transition() -> void:
 	position = target_pos
 	move = false
-	TransitionComplete.emit()
 	left_border = position.x
 	right_border = position.x + width
 	top_border = position.y + 96.0 
-	bottom_border = position.y + height + 96.0 
+	bottom_border = position.y + height + 96.0
+	TransitionComplete.emit()
 
 func _on_player_screen_transition(_dir: int):
 	TransitionStart.emit()

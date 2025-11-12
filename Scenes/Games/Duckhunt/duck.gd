@@ -33,6 +33,8 @@ var flying_down = false
 
 @export var dog: DuckHuntDog
 
+@export var duck_hitbox: DuckHitbox
+
 var timer = 0
 
 var random_x_offset = 0
@@ -50,11 +52,22 @@ func _ready():
 	
 
 func _physics_process(_delta: float):
+	if game.gamemode != game.Gamemode.NORMAL:
+		state = DuckState.NEUTRAL
+		hide()
+		duck_hitbox.monitoring = false
+		duck_hitbox.monitorable = false
+		white_square.hide()
+	else:
+		show()
+		duck_hitbox.monitoring = true
+		duck_hitbox.monitorable = true
+		white_square.show()
 	timer -= 1
 	match state:
 		DuckState.NEUTRAL: # cooldown
 			white_square.hide()
-			if timer <= 0:
+			if timer <= 0 and game.gamemode == game.Gamemode.NORMAL:
 				state = DuckState.FLYING
 				timer = time_to_hit * 60
 				reroll_random_offsets()
@@ -97,11 +110,12 @@ func _physics_process(_delta: float):
 			white_square.show()
 			white_square.global_position = global_position + Vector2(-32, -32)
 			if timer <= 0 and global_position.y < topleft.global_position.y + 40:
+				timer = 60
 				state = DuckState.FLY_AWAY
 				fly_away_text.show()
 				white_square.hide()
-				timer = 90
 				dog.miss()
+				game.duck += 1
 		DuckState.HIT:
 			game.flyingcurrently = false
 			if timer <= 0:
@@ -130,7 +144,8 @@ func _physics_process(_delta: float):
 			if timer <= 0:
 				respawn_duck()
 				fly_away_text.hide()
-				
+				game.shots = 3
+				timer = 60
 		DuckState.DOG_CATCH:
 			pass
 		DuckState.DOG_GIGGLE:

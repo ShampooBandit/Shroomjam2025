@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://dfug51uqhl112"]
+
+[ext_resource type="Script" uid="uid://c5r8hmh2j3l1g" path="res://Scenes/Games/Zelda/enemies/ZeldaBossSpawner.gd" id="1_tohul"]
+
+[node name="ZeldaBossSpawner" type="Node2D"]
+script = ExtResource("1_tohul")
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+z_index = 1
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

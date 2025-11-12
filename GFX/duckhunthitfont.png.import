@@ -12,9 +12,9 @@ dest_files=["res://.godot/imported/duckhunthitfont.png-c33dae2ab6097691a9a2f58bf
 
 [params]
 
-character_ranges=PackedStringArray("\'0\'-\'3\'")
+character_ranges=PackedStringArray("\'0\'-\'8\'")
 kerning_pairs=PackedStringArray()
-columns=4
+columns=9
 rows=1
 image_margin=Rect2i(0, 0, 0, 0)
 character_margin=Rect2i(0, 0, 0, 0)

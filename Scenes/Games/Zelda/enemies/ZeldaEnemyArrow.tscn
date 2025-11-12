@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://pao5ren7cc5p"]
+
+[ext_resource type="Texture2D" uid="uid://ci7awt5dj3p1w" path="res://GFX/Zoria Tileset/player.png" id="1_kmpl0"]
+[ext_resource type="Script" uid="uid://ko7qfjhejvgx" path="res://Scenes/Games/Zelda/enemies/ZeldaEnemyArrow.gd" id="1_wwkat"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wwkat"]
+size = Vector2(12, 32)
+
+[node name="ZeldaEnemyArrow" type="CharacterBody2D"]
+top_level = true
+z_index = 1
+collision_layer = 512
+collision_mask = 0
+script = ExtResource("1_wwkat")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_kmpl0")
+region_enabled = true
+region_rect = Rect2(336, 362, 12, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_wwkat")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
