@@ -24,14 +24,14 @@ func _ready() -> void:
 	bus_ids[3] = AudioServer.get_bus_index("World")
 	AudioServer.set_bus_mute(bus_ids[1], true)
 	AudioServer.set_bus_volume_db(bus_ids[1], -5)
-	platformer.visible = true
+	duckhunt.visible = true
 	channel_label_timer = 120
 	# set process_mode = Node.PROCESS_MODE_DISABLED for each game that isn't running and make them not visible
 	zelda.process_mode = Node.PROCESS_MODE_DISABLED
 	zelda.disable_tilemaps()
 	zelda.visible = false
-	duckhunt.process_mode = Node.PROCESS_MODE_DISABLED
-	platformer.find_child("Camera2D").make_current()
+	platformer.process_mode = Node.PROCESS_MODE_DISABLED
+	#platformer.find_child("Camera2D").make_current()
 	
 func _process(_delta: float) -> void:
 	if channel_label_timer > 0:
