@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://b8kqpck7ep2bo"]
+[gd_scene load_steps=55 format=3 uid="uid://b8kqpck7ep2bo"]
 
 [ext_resource type="Texture2D" uid="uid://hd072p64ax2m" path="res://GFX/NES - Duck Hunt - Backgrounds - Backgrounds.png" id="1_4clnm"]
 [ext_resource type="Script" uid="uid://bkjydt42dr3b" path="res://Scenes/Games/Duckhunt/duckhunt_game.gd" id="1_ktv5o"]
@@ -10,7 +10,6 @@
 [ext_resource type="Script" uid="uid://bwb0a422dew3u" path="res://Scenes/Games/Duckhunt/duckhuntdog.gd" id="5_dijtl"]
 [ext_resource type="FontFile" uid="uid://dv18yi1vgwufu" path="res://GFX/duckhunthitfont.png" id="5_lw3rs"]
 [ext_resource type="Texture2D" uid="uid://bxoym16bmp6mv" path="res://GFX/duckhuntcrosshair.png" id="6_lw3rs"]
-[ext_resource type="Script" uid="uid://01jsbdsdtx40" path="res://Scenes/Games/Duckhunt/clay_pigeon_2.gd" id="7_5hr01"]
 [ext_resource type="FontFile" uid="uid://pjyc6fsvj4te" path="res://Resource/STV5730A.ttf" id="7_14j52"]
 [ext_resource type="Texture2D" uid="uid://deqchesvwcu6m" path="res://GFX/claypigeons.png" id="7_bh705"]
 [ext_resource type="Script" uid="uid://418yq83pngnq" path="res://Scenes/Games/Duckhunt/crosshair.gd" id="7_nghqb"]
@@ -248,7 +247,7 @@ animations = [{
 "duration": 1.8,
 "texture": SubResource("AtlasTexture_jnhyu")
 }, {
-"duration": 20.0,
+"duration": 2.0,
 "texture": SubResource("AtlasTexture_tcutu")
 }],
 "loop": true,
@@ -328,13 +327,12 @@ size = Vector2(2, 2)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_14j52"]
 size = Vector2(34, 31)
 
-[node name="DuckhuntGame" type="Node2D" node_paths=PackedStringArray("ammo_label", "score_label", "ducks_label", "threshold_label", "level_label", "foreground", "background", "clay_background")]
+[node name="DuckhuntGame" type="Node2D" node_paths=PackedStringArray("ammo_label", "score_label", "ducks_label", "threshold_label", "foreground", "background", "clay_background")]
 script = ExtResource("1_ktv5o")
 ammo_label = NodePath("AmmoLeft")
 score_label = NodePath("Score")
 ducks_label = NodePath("DucksHit")
 threshold_label = NodePath("Threshold")
-level_label = NodePath("Level")
 foreground = NodePath("Foreground")
 background = NodePath("Background")
 clay_background = NodePath("ClayBackground")
@@ -350,9 +348,7 @@ color = Color(0.3882353, 0.6784314, 1, 1)
 position = Vector2(512, 355.5)
 texture = ExtResource("2_1xkak")
 
-[node name="Duck" type="AnimatedSprite2D" parent="."]
-
-[node name="Duck2" type="AnimatedSprite2D" parent="." node_paths=PackedStringArray("topleft", "bottomright", "white_square", "fly_away_text", "duck_spawner", "game", "dog", "duck_hitbox")]
+[node name="Duck" type="AnimatedSprite2D" parent="." node_paths=PackedStringArray("topleft", "bottomright", "white_square", "fly_away_text", "duck_spawner", "game", "dog")]
 position = Vector2(423, 437)
 sprite_frames = SubResource("SpriteFrames_lw3rs")
 animation = &"green_flying"
@@ -364,59 +360,19 @@ fly_away_text = NodePath("../FlyAwayText")
 duck_spawner = NodePath("../DuckSpawner")
 game = NodePath("..")
 dog = NodePath("../Dog")
-duck_hitbox = NodePath("../BlackScreen/WhiteSquare/DuckHitbox")
 
-[node name="ClayPigeon1" type="AnimatedSprite2D" parent="." node_paths=PackedStringArray("topleft", "bottomright", "white_square", "fly_away_text", "duck_spawner", "game", "second_pigeon", "duck_hitbox")]
-position = Vector2(513, 433)
+[node name="ClayPigeon1" type="AnimatedSprite2D" parent="." node_paths=PackedStringArray("topleft", "bottomright", "white_square", "fly_away_text", "duck_spawner", "game")]
+position = Vector2(510, 378)
 sprite_frames = SubResource("SpriteFrames_xcl4j")
+frame = 5
+frame_progress = 0.52699476
 script = ExtResource("8_v254o")
 topleft = NodePath("../TopLeftMarker")
 bottomright = NodePath("../BottomRightMarker")
-white_square = NodePath("../BlackScreen/WhiteSquareClay1")
+white_square = NodePath("../BlackScreen/WhiteSquare")
 fly_away_text = NodePath("../FlyAwayText")
 duck_spawner = NodePath("../DuckSpawner")
 game = NodePath("..")
-second_pigeon = NodePath("../ClayPigeon2")
-duck_hitbox = NodePath("../BlackScreen/WhiteSquareClay1/DuckHitbox")
-
-[node name="ClayPigeon2" type="AnimatedSprite2D" parent="." node_paths=PackedStringArray("topleft", "bottomright", "white_square", "fly_away_text", "duck_spawner", "game", "other_pigeon", "duck_hitbox")]
-position = Vector2(516, 435)
-sprite_frames = SubResource("SpriteFrames_xcl4j")
-script = ExtResource("7_5hr01")
-topleft = NodePath("../TopLeftMarker")
-bottomright = NodePath("../BottomRightMarker")
-white_square = NodePath("../BlackScreen/WhiteSquareClay2")
-fly_away_text = NodePath("../FlyAwayText")
-duck_spawner = NodePath("../DuckSpawner")
-game = NodePath("..")
-other_pigeon = NodePath("../ClayPigeon1")
-duck_hitbox = NodePath("../BlackScreen/WhiteSquareClay2/DuckHitbox")
-
-[node name="ClayPigeon3" type="AnimatedSprite2D" parent="." node_paths=PackedStringArray("topleft", "bottomright", "white_square", "fly_away_text", "duck_spawner", "game", "second_pigeon", "duck_hitbox")]
-position = Vector2(513, 433)
-sprite_frames = SubResource("SpriteFrames_xcl4j")
-script = ExtResource("8_v254o")
-topleft = NodePath("../TopLeftMarker")
-bottomright = NodePath("../BottomRightMarker")
-white_square = NodePath("../BlackScreen/WhiteSquareClay1")
-fly_away_text = NodePath("../FlyAwayText")
-duck_spawner = NodePath("../DuckSpawner")
-game = NodePath("..")
-second_pigeon = NodePath("../ClayPigeon2")
-duck_hitbox = NodePath("../BlackScreen/WhiteSquareClay1/DuckHitbox")
-
-[node name="ClayPigeon4" type="AnimatedSprite2D" parent="." node_paths=PackedStringArray("topleft", "bottomright", "white_square", "fly_away_text", "duck_spawner", "game", "other_pigeon", "duck_hitbox")]
-position = Vector2(516, 435)
-sprite_frames = SubResource("SpriteFrames_xcl4j")
-script = ExtResource("7_5hr01")
-topleft = NodePath("../TopLeftMarker")
-bottomright = NodePath("../BottomRightMarker")
-white_square = NodePath("../BlackScreen/WhiteSquareClay2")
-fly_away_text = NodePath("../FlyAwayText")
-duck_spawner = NodePath("../DuckSpawner")
-game = NodePath("..")
-other_pigeon = NodePath("../ClayPigeon1")
-duck_hitbox = NodePath("../BlackScreen/WhiteSquareClay2/DuckHitbox")
 
 [node name="DogEndPos" type="Node2D" parent="."]
 position = Vector2(513, 380)
@@ -492,7 +448,7 @@ offset_bottom = 350.0
 theme_override_fonts/font = ExtResource("7_14j52")
 text = "FLY AWAY"
 
-[node name="Crosshair" type="Sprite2D" parent="." node_paths=PackedStringArray("black_screen", "topleft", "bottomright", "duck", "clay1", "clay2", "game")]
+[node name="Crosshair" type="Sprite2D" parent="." node_paths=PackedStringArray("black_screen", "topleft", "bottomright", "duck", "game")]
 position = Vector2(510, 340)
 texture = ExtResource("6_lw3rs")
 script = ExtResource("7_nghqb")
@@ -500,8 +456,6 @@ black_screen = NodePath("../BlackScreen")
 topleft = NodePath("../TopLeftMarker")
 bottomright = NodePath("../BottomRightMarker")
 duck = NodePath("../Duck")
-clay1 = NodePath("../ClayPigeon1")
-clay2 = NodePath("../ClayPigeon2")
 game = NodePath("..")
 
 [node name="CrosshairHitbox" type="Area2D" parent="Crosshair"]
@@ -510,6 +464,7 @@ game = NodePath("..")
 shape = SubResource("RectangleShape2D_x7ppw")
 
 [node name="BlackScreen" type="ColorRect" parent="."]
+visible = false
 modulate = Color(1, 1, 1, 0)
 offset_right = 1280.0
 offset_bottom = 720.0
@@ -526,36 +481,6 @@ offset_bottom = 352.0
 script = ExtResource("10_x7ppw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BlackScreen/WhiteSquare/DuckHitbox"]
-position = Vector2(17, 15.5)
-shape = SubResource("RectangleShape2D_14j52")
-
-[node name="WhiteSquareClay1" type="ColorRect" parent="BlackScreen"]
-layout_mode = 0
-offset_left = 498.0
-offset_top = 321.0
-offset_right = 532.0
-offset_bottom = 352.0
-
-[node name="DuckHitbox" type="Area2D" parent="BlackScreen/WhiteSquareClay1"]
-script = ExtResource("10_x7ppw")
-hitbox_type = 1
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BlackScreen/WhiteSquareClay1/DuckHitbox"]
-position = Vector2(17, 15.5)
-shape = SubResource("RectangleShape2D_14j52")
-
-[node name="WhiteSquareClay2" type="ColorRect" parent="BlackScreen"]
-layout_mode = 0
-offset_left = 498.0
-offset_top = 321.0
-offset_right = 532.0
-offset_bottom = 352.0
-
-[node name="DuckHitbox" type="Area2D" parent="BlackScreen/WhiteSquareClay2"]
-script = ExtResource("10_x7ppw")
-hitbox_type = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BlackScreen/WhiteSquareClay2/DuckHitbox"]
 position = Vector2(17, 15.5)
 shape = SubResource("RectangleShape2D_14j52")
 

@@ -7,10 +7,12 @@ var timer = 0
 @export var dog_start_pos: Node2D
 @export var dog_end_pos: Node2D
 
+@export var game: DuckHuntGame
+
 func _ready():
 	play()
 
-func _physics_process(_delta: float):
+func _physics_process(delta: float):
 	if moving_up and global_position > dog_end_pos.global_position:
 		position.y -= 1
 	elif !moving_up and global_position < dog_start_pos.global_position:
@@ -18,6 +20,11 @@ func _physics_process(_delta: float):
 	timer -= 1
 	if timer <= 0:
 		moving_up = false
+		
+	if game.gamemode != game.Gamemode.NORMAL:
+		hide()
+	else:
+		show()
 	
 func hit():
 	animation = "happy_1"
