@@ -1,6 +1,7 @@
 extends Node2D
 
 @export var item_id : int = 0
+@export var morshu : bool = false
 @onready var anim_player : AnimationPlayer = $AnimationPlayer
 @onready var sprite : Sprite2D = $Sprite2D
 

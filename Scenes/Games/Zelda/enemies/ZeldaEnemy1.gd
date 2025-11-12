@@ -1,5 +1,10 @@
 extends CharacterBody2D
 
+@onready var pickup := preload("res://Scenes/Games/Zelda/pickups/ZeldaPickup.tscn")
+
+var hurt_sfx := preload("res://SFX/Zelda/enemy_hurt.wav")
+var die_sfx := preload("res://SFX/Zelda/enemy_die.wav")
+
 var dir := 0
 var timer := 120
 var move : bool = false
@@ -100,8 +105,15 @@ func take_damage(_dir : int, _dmg : int):
 		STATE = 1
 		invuln_timer = 30
 		timer = 5
+		SoundPlayer.play_sound(hurt_sfx, "Console")
 
 func die():
 	#Add item drop as child of parent so it gets cleaned on screen transition
-	
+	var chance = randi() % 100
+	SoundPlayer.play_sound(die_sfx, "Console")
+	if chance < 25:
+		var p = pickup.instantiate()
+		get_parent().add_child(p)
+		get_parent().pickup = p
+		p.position = position
 	queue_free()

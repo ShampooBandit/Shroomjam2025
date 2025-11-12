@@ -1,6 +1,9 @@
 class_name ZeldaBomb extends Node2D
 
-var timer = 120
+var lay_sfx := preload("res://SFX/Zelda/bomb_lay.wav")
+var explode_sfx := preload("res://SFX/Zelda/bomb_explode.wav")
+
+var timer = 60
 var exploding = false
 @onready var anim_player : AnimationPlayer = $AnimationPlayer
 @onready var enemy_area : Area2D = $EnemyArea
@@ -8,13 +11,14 @@ var exploding = false
 @onready var sprite : Sprite2D = $Sprite2D
 
 func _ready() -> void:
-	pass
+	SoundPlayer.play_sound(lay_sfx, "Console")
 
 func _physics_process(_delta: float) -> void:
 	timer -= 1
 	
 	if timer <= 0 and !exploding:
 		#bomb explode
+		SoundPlayer.play_sound(explode_sfx, "Console")
 		exploding = true
 		anim_player.play("explode")
 		sprite.visible = false

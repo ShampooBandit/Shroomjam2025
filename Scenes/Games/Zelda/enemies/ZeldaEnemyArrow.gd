@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 var dir = 1
 var damage = 1
-var speed = 100.0
+var speed = 125.0
 
 @onready var sprite : Sprite2D = $Sprite2D
 

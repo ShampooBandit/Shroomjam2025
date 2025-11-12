@@ -10,7 +10,7 @@ size = Vector2(12, 32)
 top_level = true
 z_index = 1
 collision_layer = 512
-collision_mask = 512
+collision_mask = 0
 script = ExtResource("1_wwkat")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

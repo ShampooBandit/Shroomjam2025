@@ -378,6 +378,7 @@ _data = {
 size = Vector2(24, 28)
 
 [node name="ZeldaPlayer" type="CharacterBody2D"]
+z_index = 1
 collision_layer = 65
 collision_mask = 65
 script = ExtResource("1_21olf")
