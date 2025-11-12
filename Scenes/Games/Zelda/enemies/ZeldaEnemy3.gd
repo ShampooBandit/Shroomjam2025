@@ -1,6 +1,10 @@
 extends CharacterBody2D
 
 @onready var arrow := preload("res://Scenes/Games/Zelda/enemies/ZeldaEnemyArrow.tscn")
+@onready var pickup := preload("res://Scenes/Games/Zelda/pickups/ZeldaPickup.tscn")
+
+var hurt_sfx := preload("res://SFX/Zelda/enemy_hurt.wav")
+var die_sfx := preload("res://SFX/Zelda/enemy_die.wav")
 
 var dir := 3
 var timer := 120
@@ -85,11 +89,19 @@ func _idle_process(_delta: float) -> void:
 	else:
 		if randi() % 100 < 50:
 			timer = randi_range(60, 120)
+			match dir:
+				1:
+					anim_player.play("walk_left")
+				2:
+					anim_player.play("walk_up")
+				3:
+					anim_player.play("walk_right")
+				4:
+					anim_player.play("walk_down")
 			STATE = 2
 			return
 		timer = randi_range(60, 180)
 		dir = check_wall_direction()
-		print("Dir = " + str(dir))
 		match dir:
 			1:
 				velocity = Vector2(-speed, 0.0)
@@ -155,8 +167,15 @@ func take_damage(_dir : int, _dmg : int):
 		STATE = 1
 		invuln_timer = 30
 		timer = 5
+		SoundPlayer.play_sound(hurt_sfx, "Console")
 
 func die():
 	#Add item drop as child of parent so it gets cleaned on screen transition
-	
+	var chance = randi() % 100
+	SoundPlayer.play_sound(die_sfx, "Console")
+	if chance < 25:
+		var p = pickup.instantiate()
+		get_parent().add_child(p)
+		get_parent().pickup = p
+		p.position = position
 	queue_free()

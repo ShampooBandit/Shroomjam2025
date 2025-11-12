@@ -4,7 +4,7 @@ class_name GameLoop
 @onready var commercials : CanvasLayer = find_child("Commercials")
 @onready var platformer : Node2D = find_child("PlatformerGame")
 @onready var duckhunt : Node2D = find_child("DuckhuntGame")
-@onready var zelda : Node2D = find_child("ZeldaGame")
+@onready var zelda : ZeldaGame = find_child("ZeldaGame")
 @onready var channel_label : CanvasLayer = find_child("ChannelLabel")
 
 #0 - Platformer
@@ -20,6 +20,8 @@ var show_game : bool = true
 var channel_label_timer : int = 0
 
 func _ready() -> void:
+	zelda.ZeldaGameBeat.connect(go_to_next_game)
+	
 	bus_ids[0] = AudioServer.get_bus_index("Master")
 	bus_ids[1] = AudioServer.get_bus_index("Commercial")
 	bus_ids[2] = AudioServer.get_bus_index("Console")

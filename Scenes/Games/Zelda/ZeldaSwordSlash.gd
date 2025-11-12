@@ -1,12 +1,15 @@
-extends Node2D
+class_name ZeldaSwordSlash extends Node2D
 
 signal SlashFinished
+
+var slash_sfx := preload("res://SFX/Zelda/sword_slash.wav")
 
 var dir : int = 0
 var damage : int = 1
 @onready var anim_player : AnimationPlayer = $AnimationPlayer
 
 func _ready() -> void:
+	SoundPlayer.play_sound(slash_sfx, "Console")
 	match dir:
 		1:
 			anim_player.play("slash_left")
