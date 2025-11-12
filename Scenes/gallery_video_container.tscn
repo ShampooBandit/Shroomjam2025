@@ -3,11 +3,12 @@
 [ext_resource type="Texture2D" uid="uid://lx7rxlfco8m8" path="res://GFX/play-button.png" id="1_1qyrp"]
 [ext_resource type="Script" uid="uid://ds1b1uqgfrklq" path="res://Scenes/gallery_video_container.gd" id="1_vrjko"]
 
-[node name="VideoContainer" type="VBoxContainer"]
+[node name="VideoContainer" type="VBoxContainer" node_paths=PackedStringArray("label")]
 custom_minimum_size = Vector2(0, 100.805)
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_vrjko")
+label = NodePath("Label")
 
 [node name="TextureRect" type="Button" parent="."]
 layout_mode = 2

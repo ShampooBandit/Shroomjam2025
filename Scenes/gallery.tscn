@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://bi0pfgl2bnbki"]
+[gd_scene load_steps=8 format=3 uid="uid://bi0pfgl2bnbki"]
 
 [ext_resource type="Script" uid="uid://dpvfedut3c734" path="res://Scenes/gallery_video_list.gd" id="1_s4i5e"]
 [ext_resource type="Script" uid="uid://u7j7yhvlt8ab" path="res://Scenes/gallery_player.gd" id="2_c4y5e"]
 [ext_resource type="VideoStream" uid="uid://lipqcx5ow2fm" path="res://Videos/90s Commercials - S01.E1.ogv" id="2_e6kyq"]
+[ext_resource type="PackedScene" uid="uid://bg3s3oi38dg6i" path="res://Scenes/gallery_video_container.tscn" id="2_qynqv"]
 [ext_resource type="Texture2D" uid="uid://lx7rxlfco8m8" path="res://GFX/play-button.png" id="3_c4y5e"]
 [ext_resource type="Texture2D" uid="uid://bptx2gc680fe3" path="res://GFX/cross.png" id="5_s4i5e"]
 
@@ -30,19 +31,26 @@ text = "Gallery"
 label_settings = SubResource("LabelSettings_vpk6y")
 horizontal_alignment = 1
 
-[node name="GridContainer" type="GridContainer" parent="."]
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 23.0
-offset_top = 86.0
-offset_right = -23.0
-offset_bottom = -461.0
+offset_left = 49.0
+offset_top = 90.0
+offset_right = -49.0
+offset_bottom = -43.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="GridContainer" type="GridContainer" parent="ScrollContainer" node_paths=PackedStringArray("video_player")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 columns = 5
 script = ExtResource("1_s4i5e")
+container_scene = ExtResource("2_qynqv")
+video_player = NodePath("../../Player")
 
 [node name="BackButton" type="Button" parent="."]
 layout_mode = 0
@@ -80,6 +88,7 @@ grow_vertical = 2
 mouse_filter = 2
 stream = ExtResource("2_e6kyq")
 expand = true
+bus = &"Gallery"
 
 [node name="PlayPauseButton" type="Button" parent="Player"]
 layout_mode = 1
