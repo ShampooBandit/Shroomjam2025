@@ -67,7 +67,6 @@ func _ready() -> void:
 	bgm_player = AudioStreamPlayer.new()
 	bgm_player.bus = "Console"
 	add_child(bgm_player)
-	play_bgm(overworld_bgm)
 
 func play_bgm(_bgm: AudioStream) -> void:
 	bgm_player.stream = _bgm

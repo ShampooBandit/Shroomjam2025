@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://sf2oei2qqhjc"]
+[gd_scene load_steps=23 format=4 uid="uid://sf2oei2qqhjc"]
 
 [ext_resource type="Texture2D" uid="uid://b05gmrhxmrypq" path="res://GFX/Zoria Tileset/overworld.png" id="1_4sawl"]
 [ext_resource type="Script" uid="uid://curnvev485ktx" path="res://Scenes/Games/Zelda/ZeldaGame.gd" id="1_yeeau"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://bt56pdtu4awca" path="res://Scenes/Games/Zelda/ZeldaBigKey.tscn" id="13_0ob8l"]
 [ext_resource type="PackedScene" uid="uid://chmi7pho5axri" path="res://Scenes/Games/Zelda/ZeldaMorshu.tscn" id="13_rnx3r"]
 [ext_resource type="PackedScene" uid="uid://dfug51uqhl112" path="res://Scenes/Games/Zelda/enemies/ZeldaBossSpawner.tscn" id="15_n07u2"]
+[ext_resource type="Texture2D" uid="uid://dmmif4uab66vn" path="res://GFX/quest_of_glongo.png" id="16_l2ong"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k84ew"]
 atlas = ExtResource("3_4c0cq")
@@ -1508,6 +1509,7 @@ sources/1 = SubResource("TileSetAtlasSource_yeeau")
 script = ExtResource("1_yeeau")
 
 [node name="GUI" type="CanvasLayer" parent="." node_paths=PackedStringArray("player")]
+visible = false
 script = ExtResource("2_lno4i")
 player = NodePath("../Container/ZeldaPlayer")
 
@@ -1943,6 +1945,14 @@ player = NodePath("../ZeldaPlayer")
 z_as_relative = false
 position = Vector2(176, 120)
 camera = NodePath("../Camera2D")
+
+[node name="TitleCanvas" type="CanvasLayer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="TitleCanvas"]
+z_index = 2
+offset_right = 512.0
+offset_bottom = 416.0
+texture = ExtResource("16_l2ong")
 
 [connection signal="visibility_changed" from="." to="GUI" method="_on_zelda_game_visibility_changed"]
 [connection signal="TransitionComplete" from="Container/Camera2D" to="Container/ZeldaPlayer" method="_on_camera_transition_complete"]

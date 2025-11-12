@@ -3,13 +3,13 @@
 [ext_resource type="Script" uid="uid://ub3367t5lo43" path="res://Scripts/main.gd" id="1_8gbba"]
 [ext_resource type="PackedScene" uid="uid://bkhwbueajubi7" path="res://Scenes/Games/Platformer/PlatformerGame.tscn" id="1_jjgbg"]
 [ext_resource type="Texture2D" uid="uid://cmwloolsabwhy" path="res://GFX/background.jpeg" id="2_21xkr"]
-[ext_resource type="VideoStream" uid="uid://lipqcx5ow2fm" path="res://Videos/90s Commercials - S01.E1.ogv" id="2_bo1nx"]
 [ext_resource type="Script" uid="uid://cym2oh0esmntw" path="res://Scripts/commercials.gd" id="2_jjvhh"]
 [ext_resource type="FontFile" uid="uid://pjyc6fsvj4te" path="res://Resource/STV5730A.ttf" id="5_kry3j"]
 [ext_resource type="PackedScene" uid="uid://b8kqpck7ep2bo" path="res://Scenes/Games/Duckhunt/DuckhuntGame.tscn" id="6_6bp64"]
 [ext_resource type="PackedScene" uid="uid://sf2oei2qqhjc" path="res://Scenes/Games/Zelda/ZeldaGame.tscn" id="7_ynf5e"]
 [ext_resource type="Shader" uid="uid://p5qwhgmiideg" path="res://GFX/Shaders/crt.gdshader" id="8_344ge"]
 [ext_resource type="Script" uid="uid://b4ijsa6rbewmc" path="res://Scenes/detection.gd" id="9_ynf5e"]
+[ext_resource type="PackedScene" uid="uid://cidu46v48wg8y" path="res://Scenes/hands.tscn" id="11_d1ilt"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ynf5e"]
 shader = ExtResource("8_344ge")
@@ -206,6 +206,7 @@ render_target_update_mode = 4
 
 [node name="Commercials" type="CanvasLayer" parent="CanvasLayer/Container/TVScreen/SubViewport"]
 visible = false
+script = ExtResource("2_jjvhh")
 
 [node name="Control" type="Control" parent="CanvasLayer/Container/TVScreen/SubViewport/Commercials"]
 layout_mode = 3
@@ -214,7 +215,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("2_jjvhh")
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer/Container/TVScreen/SubViewport/Commercials/Control"]
 layout_mode = 0
@@ -239,10 +239,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-stream = ExtResource("2_bo1nx")
 autoplay = true
 expand = true
-loop = true
 bus = &"Commercial"
 
 [node name="DuckhuntGame" parent="CanvasLayer/Container/TVScreen/SubViewport" instance=ExtResource("6_6bp64")]
@@ -297,6 +295,16 @@ offset_right = 1104.0
 offset_bottom = 800.0
 color = Color(1, 1, 0.84000003, 0.2784314)
 
+[node name="ScreenCover" type="ColorRect" parent="CanvasLayer2"]
+top_level = true
+material = SubResource("CanvasItemMaterial_hptm8")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
 [node name="Detection" type="Node" parent="." node_paths=PackedStringArray("game_loop")]
 script = ExtResource("9_ynf5e")
 game_loop = NodePath("..")
@@ -306,3 +314,9 @@ root_node = NodePath("../../CanvasLayer2/LightFromDoor")
 libraries = {
 &"": SubResource("AnimationLibrary_d1ilt")
 }
+
+[node name="Hands" parent="." instance=ExtResource("11_d1ilt")]
+z_index = 2
+position = Vector2(620, 645)
+
+[connection signal="finished" from="CanvasLayer/Container/TVScreen/SubViewport/Commercials/Control/CenterContainer/VideoStreamPlayer" to="CanvasLayer/Container/TVScreen/SubViewport/Commercials/Control/CenterContainer" method="_on_video_stream_player_finished"]
