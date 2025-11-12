@@ -23,6 +23,7 @@ var counter = 0
 @export var ducks_label: Label
 @export var threshold_label: Label
 @export var level_label: Label
+<<<<<<< Updated upstream
 
 @export var foreground: Sprite2D
 @export var background: ColorRect
@@ -40,6 +41,13 @@ func _process(delta: float):
 		0:
 			ammo_label.text = "000"
 =======
+=======
+
+@export var foreground: Sprite2D
+@export var background: ColorRect
+@export var clay_background: Sprite2D
+
+>>>>>>> Stashed changes
 func _process(_delta: float):
 	match level:
 		1, 4:
@@ -75,6 +83,9 @@ func _process(_delta: float):
 					ammo_label.text = "700"
 				0:
 					ammo_label.text = "000"
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 			
 	if duck >= 10:
@@ -113,8 +124,11 @@ func _process(_delta: float):
 	score_label.text = scoretext
 	
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 func _physics_process(delta: float):
 =======
+=======
+>>>>>>> Stashed changes
 	var thresholdtext = ""
 	for i in range(10):
 		if threshold > i:

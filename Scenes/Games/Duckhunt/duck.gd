@@ -66,6 +66,9 @@ func _physics_process(_delta: float):
 		duck_hitbox.monitoring = true
 		duck_hitbox.monitorable = true
 		white_square.show()
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 	timer -= 1
 	match state:
