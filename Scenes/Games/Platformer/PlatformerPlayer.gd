@@ -313,6 +313,7 @@ func respawn() -> void:
 		invuln = false
 		invuln_timer = 0
 		sprite.visible = true
+		sprite.flip_h = true
 		hp = 1
 		anim_player.play("RESET")
 		anim_player.speed_scale = 1

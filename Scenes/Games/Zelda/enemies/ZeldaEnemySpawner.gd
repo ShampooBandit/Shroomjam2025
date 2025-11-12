@@ -26,7 +26,10 @@ func _on_transition_start() -> void:
 
 func _on_transition_complete() -> void:
 	if (global_position.y > camera.top_border + 96.0 and 
-	global_position.y < camera.bottom_border + 96.0):
+	global_position.y < camera.bottom_border + 96.0) and (
+		global_position.x > camera.left_border and 
+	global_position.x < camera.right_border
+	):
 		match enemy_id:
 			0:
 				var enemy = enemy1.instantiate()

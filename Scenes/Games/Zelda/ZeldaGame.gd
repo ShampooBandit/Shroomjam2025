@@ -7,22 +7,33 @@ class_name ZeldaGame extends Node2D
 @onready var gameViewport := $Container
 @onready var gui := $GUI
 @onready var player := $Container/ZeldaPlayer
+@onready var title := $TitleCanvas
 
 var end_timer = 300
 var do_end_timer = false
+var on_title = true
 
 signal ZeldaGameBeat
 
 func _ready() -> void:
-	pass
+	player.process_mode = Node.PROCESS_MODE_DISABLED
+	gui.visible = false
+
+func start_game() -> void:
+	gui.visible = true
+	title.visible = false
+	player.process_mode = Node.PROCESS_MODE_INHERIT
 
 func hide_game() -> void:
 	visible = false
 	gui.visible = false
+	title.visible = false
 	
 func show_game() -> void:
 	visible = true
 	gui.visible = true
+	if on_title:
+		title.visible = true
 
 func disable_tilemaps() -> void:
 	for t in tilemaps:
@@ -32,16 +43,22 @@ func enable_tilemaps() -> void:
 	for t in tilemaps:
 		t.collision_enabled = true
 
-func restart_game() -> void:
+func reset_game() -> void:
 	player.respawn()
 
 func _process(_delta: float) -> void:
-	if do_end_timer:
-		end_timer -= 1
-		
-		if end_timer <= 0:
-			ZeldaGameBeat.emit()
-			process_mode = Node.PROCESS_MODE_DISABLED
+	print(on_title)
+	if on_title:
+		gui.visible = false
+		if Input.is_action_just_pressed("Start"):
+			start_game()
+	else:
+		if do_end_timer:
+			end_timer -= 1
+			
+			if end_timer <= 0:
+				ZeldaGameBeat.emit()
+				process_mode = Node.PROCESS_MODE_DISABLED
 
 func _beat_game() -> void:
 	do_end_timer = true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bt5r7n1w3eui5"]
+[gd_scene load_steps=19 format=3 uid="uid://bt5r7n1w3eui5"]
 
 [ext_resource type="Script" uid="uid://ub3367t5lo43" path="res://Scripts/main.gd" id="1_8gbba"]
 [ext_resource type="PackedScene" uid="uid://bkhwbueajubi7" path="res://Scenes/Games/Platformer/PlatformerGame.tscn" id="1_jjgbg"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://sf2oei2qqhjc" path="res://Scenes/Games/Zelda/ZeldaGame.tscn" id="7_ynf5e"]
 [ext_resource type="Shader" uid="uid://p5qwhgmiideg" path="res://GFX/Shaders/crt.gdshader" id="8_344ge"]
 [ext_resource type="Script" uid="uid://b4ijsa6rbewmc" path="res://Scenes/detection.gd" id="9_ynf5e"]
+[ext_resource type="PackedScene" uid="uid://cidu46v48wg8y" path="res://Scenes/hands.tscn" id="11_d1ilt"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ynf5e"]
 shader = ExtResource("8_344ge")
@@ -297,6 +298,16 @@ offset_right = 1104.0
 offset_bottom = 800.0
 color = Color(1, 1, 0.84000003, 0.2784314)
 
+[node name="ScreenCover" type="ColorRect" parent="CanvasLayer2"]
+top_level = true
+material = SubResource("CanvasItemMaterial_hptm8")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
 [node name="Detection" type="Node" parent="." node_paths=PackedStringArray("game_loop")]
 script = ExtResource("9_ynf5e")
 game_loop = NodePath("..")
@@ -306,3 +317,7 @@ root_node = NodePath("../../CanvasLayer2/LightFromDoor")
 libraries = {
 &"": SubResource("AnimationLibrary_d1ilt")
 }
+
+[node name="Hands" parent="." instance=ExtResource("11_d1ilt")]
+z_index = 2
+position = Vector2(620, 645)

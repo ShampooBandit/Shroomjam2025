@@ -107,3 +107,6 @@ func _on_player_respawn() -> void:
 
 func _on_player_next_level():
 	goToNextLevel()
+
+func reset_game() -> void:
+	player.respawn()

@@ -2,10 +2,14 @@ extends Node2D
 class_name GameLoop
 
 @onready var commercials : CanvasLayer = find_child("Commercials")
-@onready var platformer : Node2D = find_child("PlatformerGame")
+@onready var platformer : PlatformerGame = find_child("PlatformerGame")
 @onready var duckhunt : Node2D = find_child("DuckhuntGame")
 @onready var zelda : ZeldaGame = find_child("ZeldaGame")
 @onready var channel_label : CanvasLayer = find_child("ChannelLabel")
+@onready var detection : Detection = find_child("Detection")
+@onready var screen_cover : ColorRect = find_child("ScreenCover")
+@onready var canvas2 : CanvasLayer = find_child("CanvasLayer2")
+@onready var hands : Hands = find_child("Hands")
 
 #0 - Platformer
 #1 - Duck Hunt
@@ -18,9 +22,16 @@ var current_game : int = 0
 var bus_ids : Array = [0,0,0,0]
 var show_game : bool = true
 var channel_label_timer : int = 0
+var is_caught : bool = false
+var hiding_screen : bool = false
+var timer : int = 0
 
 func _ready() -> void:
+	screen_cover.modulate.a = 0.0
+	
+	platformer.beatGame.connect(go_to_next_game)
 	zelda.ZeldaGameBeat.connect(go_to_next_game)
+	detection.CaughtGaming.connect(lose_game)
 	
 	bus_ids[0] = AudioServer.get_bus_index("Master")
 	bus_ids[1] = AudioServer.get_bus_index("Commercial")
@@ -44,27 +55,57 @@ func _process(_delta: float) -> void:
 	else:
 		channel_label.visible = false
 	
-	if Input.is_action_just_pressed("Switch Game"):
-		go_to_next_game()
-	elif Input.is_action_just_pressed("ToggleCommercial"):
-		if show_game:
-			game_list[current_game].hide_game()
-			commercials.visible = true
-			AudioServer.set_bus_mute(bus_ids[2], true)
-			AudioServer.set_bus_mute(bus_ids[1], false)
-			channel_label.get_child(0).text = "Ch. 4"
-			channel_label.visible = true
-			channel_label_timer = 120
-			show_game = false
+	if is_caught:
+		if hiding_screen:
+			var tween = get_tree().create_tween()
+			tween.tween_property(screen_cover, "modulate:a", 1.0, 1.0)
+			tween.play()
+			await tween.finished
+			tween.kill()
+			hiding_screen = false
+			timer = 120
+			detection.reset_anim()
 		else:
-			game_list[current_game].show_game()
-			commercials.visible = false
-			AudioServer.set_bus_mute(bus_ids[2], false)
-			AudioServer.set_bus_mute(bus_ids[1], true)
-			channel_label.get_child(0).text = "Ch. 3"
-			channel_label.visible = true
-			channel_label_timer = 120
-			show_game = true
+			timer -= 1
+			if timer <= 0:
+				is_caught = false
+				game_list[current_game].reset_game()
+				AudioServer.set_bus_mute(bus_ids[2], false)
+				game_list[current_game].process_mode = Node.PROCESS_MODE_INHERIT
+				var tween = get_tree().create_tween()
+				tween.tween_property(screen_cover, "modulate:a", 0.0, 1.0)
+				tween.play()
+				await tween.finished
+				tween.kill()
+				detection.reset_ai()
+				hands.anim_player.play(hands.anim_player.current_animation)
+	else:
+		if Input.is_action_just_pressed("Switch Game"):
+			go_to_next_game()
+		elif Input.is_action_just_pressed("ToggleCommercial"):
+			if show_game:
+				hands.anim_player.play("remote")
+				game_list[current_game].hide_game()
+				commercials.visible = true
+				AudioServer.set_bus_mute(bus_ids[2], true)
+				AudioServer.set_bus_mute(bus_ids[1], false)
+				channel_label.get_child(0).text = "Ch. 4"
+				channel_label.visible = true
+				channel_label_timer = 120
+				show_game = false
+			else:
+				if current_game == 0:
+					hands.anim_player.play("zapper")
+				else:
+					hands.anim_player.play("nes")
+				game_list[current_game].show_game()
+				commercials.visible = false
+				AudioServer.set_bus_mute(bus_ids[2], false)
+				AudioServer.set_bus_mute(bus_ids[1], true)
+				channel_label.get_child(0).text = "Ch. 3"
+				channel_label.visible = true
+				channel_label_timer = 120
+				show_game = true
 
 func go_to_next_game() -> void:
 	match current_game:
@@ -76,6 +117,7 @@ func go_to_next_game() -> void:
 			platformer.enable_tilemaps()
 			platformer.show_game()
 			platformer.find_child("Camera2D").make_current()
+			hands.anim_player.play("nes")
 		1:
 			platformer.disable_tilemaps()
 			platformer.hide_game()
@@ -90,3 +132,10 @@ func go_to_next_game() -> void:
 			
 func win_game() -> void:
 	get_tree().change_scene_to_file("res://Scenes/end.tscn")
+
+func lose_game() -> void:
+	game_list[current_game].process_mode = Node.PROCESS_MODE_DISABLED
+	AudioServer.set_bus_mute(bus_ids[2], true)
+	hands.anim_player.pause()
+	is_caught = true
+	hiding_screen = true
