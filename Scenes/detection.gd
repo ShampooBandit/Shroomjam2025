@@ -67,7 +67,7 @@ func reset_anim() -> void:
 	anim_player.play("RESET")
 
 func reset_ai() -> void:
-	timer = 60
+	timer = randi_range(min_time_between_attacks * 60, max_time_between_attacks * 60)
 	attack_state = AttackState.IDLE
 	start_ai()
 

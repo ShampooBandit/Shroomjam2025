@@ -1,7 +1,7 @@
 extends Node2D
 class_name GameLoop
 
-@onready var commercials : CanvasLayer = find_child("Commercials")
+@onready var commercials : Commercials = find_child("Commercials")
 @onready var platformer : PlatformerGame = find_child("PlatformerGame")
 @onready var duckhunt : Node2D = find_child("DuckhuntGame")
 @onready var zelda : ZeldaGame = find_child("ZeldaGame")
@@ -25,6 +25,7 @@ var channel_label_timer : int = 0
 var is_caught : bool = false
 var hiding_screen : bool = false
 var timer : int = 0
+var is_currentgame_complete : bool = false
 
 func _ready() -> void:
 	screen_cover.modulate.a = 0.0
@@ -50,6 +51,23 @@ func _ready() -> void:
 	duckhunt.visible = true
 	
 func _process(_delta: float) -> void:
+	if is_currentgame_complete:
+		_between_game_process(_delta)
+	else:
+		_gameplay_process(_delta)
+	
+func _between_game_process(_delta: float) -> void:
+	if timer > 0:
+		timer -= 1
+		if timer <= 1:
+			is_currentgame_complete = false
+			go_to_next_game()
+	else:
+		if Input.is_action_just_pressed("Start"):
+			detection.reset_ai()
+			timer = 15
+	
+func _gameplay_process(_delta: float) -> void:
 	if channel_label_timer > 0:
 		channel_label_timer -= 1
 	else:
@@ -81,7 +99,7 @@ func _process(_delta: float) -> void:
 				hands.anim_player.play(hands.anim_player.current_animation)
 	else:
 		if Input.is_action_just_pressed("Switch Game"):
-			go_to_next_game()
+			beat_nes_game()
 		elif Input.is_action_just_pressed("ToggleCommercial"):
 			if show_game:
 				hands.anim_player.play("remote")
@@ -106,6 +124,13 @@ func _process(_delta: float) -> void:
 				channel_label.visible = true
 				channel_label_timer = 120
 				show_game = true
+		elif Input.is_action_just_pressed("NextCommercial"):
+			commercials._go_to_next_commercial()
+
+func beat_nes_game() -> void:
+	is_currentgame_complete = true
+	detection.reset_anim()
+	detection.stop_ai()
 
 func go_to_next_game() -> void:
 	match current_game:
@@ -129,7 +154,7 @@ func go_to_next_game() -> void:
 		2:
 			win_game()
 	current_game += 1
-			
+
 func win_game() -> void:
 	get_tree().change_scene_to_file("res://Scenes/end.tscn")
 

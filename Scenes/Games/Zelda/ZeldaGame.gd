@@ -22,7 +22,9 @@ func _ready() -> void:
 func start_game() -> void:
 	gui.visible = true
 	title.visible = false
+	on_title = false
 	player.process_mode = Node.PROCESS_MODE_INHERIT
+	player.play_bgm(player.overworld_bgm)
 
 func hide_game() -> void:
 	visible = false
