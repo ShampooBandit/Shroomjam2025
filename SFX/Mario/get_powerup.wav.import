@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://dndd50xe31g3q"
-path="res://.godot/imported/enemy_stomp.wav-27316586b01fa2183f079e6a308581bf.sample"
+uid="uid://cfwvjvjtuyva2"
+path="res://.godot/imported/get_powerup.wav-7eccd1395b9f380814daad35aa679798.sample"
 
 [deps]
 
-source_file="res://SFX/enemy_stomp.wav"
-dest_files=["res://.godot/imported/enemy_stomp.wav-27316586b01fa2183f079e6a308581bf.sample"]
+source_file="res://SFX/Mario/get_powerup.wav"
+dest_files=["res://.godot/imported/get_powerup.wav-7eccd1395b9f380814daad35aa679798.sample"]
 
 [params]
 

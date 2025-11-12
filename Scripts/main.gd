@@ -69,20 +69,21 @@ func _process(_delta: float) -> void:
 func go_to_next_game() -> void:
 	match current_game:
 		0:
-			duckhunt.visible = false
+			duckhunt.disable_tilemaps()
+			duckhunt.hide_game()
 			duckhunt.process_mode = Node.PROCESS_MODE_DISABLED
+			platformer.process_mode = Node.PROCESS_MODE_ALWAYS
 			platformer.enable_tilemaps()
 			platformer.show_game()
-			platformer.process_mode = Node.PROCESS_MODE_ALWAYS
 			platformer.find_child("Camera2D").make_current()
 		1:
 			platformer.disable_tilemaps()
 			platformer.hide_game()
 			platformer.process_mode = Node.PROCESS_MODE_DISABLED
+			zelda.process_mode = Node.PROCESS_MODE_ALWAYS
 			zelda.enable_tilemaps()
 			zelda.show_game()
 			zelda.find_child("Camera2D").make_current()
-			zelda.process_mode = Node.PROCESS_MODE_ALWAYS
 		2:
 			win_game()
 	current_game += 1

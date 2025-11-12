@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://c37f3plya2xgv"
-path="res://.godot/imported/big_scoot_jump.wav-9365d773870d8d2f4f117f40d3e42593.sample"
+path="res://.godot/imported/big_scoot_jump.wav-9c790b0fdeb020cf021b0831c300d041.sample"
 
 [deps]
 
-source_file="res://SFX/big_scoot_jump.wav"
-dest_files=["res://.godot/imported/big_scoot_jump.wav-9365d773870d8d2f4f117f40d3e42593.sample"]
+source_file="res://SFX/Mario/big_scoot_jump.wav"
+dest_files=["res://.godot/imported/big_scoot_jump.wav-9c790b0fdeb020cf021b0831c300d041.sample"]
 
 [params]
 

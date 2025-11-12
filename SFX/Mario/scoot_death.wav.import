@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://cobcdkk2bgs4r"
-path="res://.godot/imported/lose_powerup.wav-f12dcf3af78ecb309084bcfc7310d074.sample"
+uid="uid://b18kr5qa25rla"
+path="res://.godot/imported/scoot_death.wav-a6ec3cfc0b2e5fd65d830e90890f304d.sample"
 
 [deps]
 
-source_file="res://SFX/lose_powerup.wav"
-dest_files=["res://.godot/imported/lose_powerup.wav-f12dcf3af78ecb309084bcfc7310d074.sample"]
+source_file="res://SFX/Mario/scoot_death.wav"
+dest_files=["res://.godot/imported/scoot_death.wav-a6ec3cfc0b2e5fd65d830e90890f304d.sample"]
 
 [params]
 

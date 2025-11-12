@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://cfwvjvjtuyva2"
-path="res://.godot/imported/get_powerup.wav-bdebcdad19e0ba618e8532a2b95363ac.sample"
+uid="uid://p7es54p7ybbr"
+path="res://.godot/imported/ufo_hit.wav-24176d175c114db34853948790ada6bc.sample"
 
 [deps]
 
-source_file="res://SFX/get_powerup.wav"
-dest_files=["res://.godot/imported/get_powerup.wav-bdebcdad19e0ba618e8532a2b95363ac.sample"]
+source_file="res://SFX/ufo_hit.wav"
+dest_files=["res://.godot/imported/ufo_hit.wav-24176d175c114db34853948790ada6bc.sample"]
 
 [params]
 

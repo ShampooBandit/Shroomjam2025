@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://b18kr5qa25rla"
-path="res://.godot/imported/scoot_death.wav-645e93449628fccd73643610e3507714.sample"
+uid="uid://snoquhfa63d2"
+path="res://.godot/imported/ufo_fall.wav-1bd44cff13f9d696d00d725bd7871b4d.sample"
 
 [deps]
 
-source_file="res://SFX/scoot_death.wav"
-dest_files=["res://.godot/imported/scoot_death.wav-645e93449628fccd73643610e3507714.sample"]
+source_file="res://SFX/ufo_fall.wav"
+dest_files=["res://.godot/imported/ufo_fall.wav-1bd44cff13f9d696d00d725bd7871b4d.sample"]
 
 [params]
 

@@ -102,7 +102,7 @@ _data = {
 }
 
 [node name="PlantEnemy" type="CharacterBody2D"]
-z_index = 1
+z_index = -1
 collision_layer = 4
 collision_mask = 4
 script = ExtResource("1_81akq")

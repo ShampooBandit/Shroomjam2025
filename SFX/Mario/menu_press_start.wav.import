@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://b24mb4n68728h"
-path="res://.godot/imported/menu_press_start.wav-a38701946bf72c627a0886333864c1b0.sample"
+path="res://.godot/imported/menu_press_start.wav-3f43ad4b2380112a87abd8f833eefdb0.sample"
 
 [deps]
 
-source_file="res://SFX/menu_press_start.wav"
-dest_files=["res://.godot/imported/menu_press_start.wav-a38701946bf72c627a0886333864c1b0.sample"]
+source_file="res://SFX/Mario/menu_press_start.wav"
+dest_files=["res://.godot/imported/menu_press_start.wav-3f43ad4b2380112a87abd8f833eefdb0.sample"]
 
 [params]
 

@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://66lft0t3mj81"
-path="res://.godot/imported/slide_down_pole.wav-71504acc2d04bad6a2ac54fbd62bd810.sample"
+path="res://.godot/imported/slide_down_pole.wav-b0cc67f927d1384a6f41a4eb54e778a5.sample"
 
 [deps]
 
-source_file="res://SFX/slide_down_pole.wav"
-dest_files=["res://.godot/imported/slide_down_pole.wav-71504acc2d04bad6a2ac54fbd62bd810.sample"]
+source_file="res://SFX/Mario/slide_down_pole.wav"
+dest_files=["res://.godot/imported/slide_down_pole.wav-b0cc67f927d1384a6f41a4eb54e778a5.sample"]
 
 [params]
 

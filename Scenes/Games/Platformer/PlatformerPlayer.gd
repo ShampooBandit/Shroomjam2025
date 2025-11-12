@@ -1,5 +1,15 @@
 class_name PlatformerPlayer extends CharacterBody2D
 
+var pole_sfx := preload("res://SFX/Mario/slide_down_pole.wav")
+var death_sfx := preload("res://SFX/Mario/scoot_death.wav")
+var big_jump_sfx := preload("res://SFX/Mario/big_scoot_jump.wav")
+var small_jump_sfx := preload("res://SFX/Mario/small_scoot_jump.wav")
+var get_powerup_sfx := preload("res://SFX/Mario/get_powerup.wav")
+var lose_powerup_sfx := preload("res://SFX/Mario/lose_powerup.wav")
+var enemy_stomp_sfx := preload("res://SFX/Mario/enemy_stomp.wav")
+
+var sfx_player : AudioStreamPlayer
+
 @export var speed : int = 150
 @export var gravity : int = 500
 @export var jump_impulse : int = -375
@@ -17,6 +27,7 @@ class_name PlatformerPlayer extends CharacterBody2D
 
 signal respawned
 signal nextLevel
+signal grabbedPole
 
 var input_axis : float = 0.0
 var invuln : bool = false
@@ -27,8 +38,14 @@ var run : bool = false
 var beat_level : bool = false
 var flag_bottom : float = 0.0
 var getting_powerup : bool = false
+var crouch : bool = false
 
 func _ready() -> void:
+	sfx_player = AudioStreamPlayer.new()
+	sfx_player.bus = "Console"
+	sfx_player.volume_linear = 0.25
+	sfx_player.stream = pole_sfx
+	add_child(sfx_player)
 	#getPowerup()
 	pass
 	
@@ -47,6 +64,7 @@ func levelEnd() -> void:
 	if position.y < flag_bottom:
 		position.y += 2.0
 		if position.y >= flag_bottom:
+			sfx_player.stop()
 			invuln_timer = 60
 	else:
 		invuln_timer -= 1
@@ -54,34 +72,24 @@ func levelEnd() -> void:
 			nextLevel.emit()
 	return
 
+func changeHitbox(_hurt_size, _hurt_pos, _wall_size, _wall_pos, _head_pos) -> void:
+	hurtbox.shape.size = _hurt_size
+	hurtbox.position = _hurt_pos
+	wallbox.shape.size = _wall_size
+	wallbox.position = _wall_pos
+	headbox.position = _head_pos
+
 func getPowerup() -> void:
 	if hp == 1:
 		hp = 2
-		#speed = 150
-		#gravity = 500
-		#jump_impulse = -375
-		#terminal_velocity = 500
-		#top_speed = 150
-		#fall_impulse = 100
-		hurtbox.shape.size = Vector2(24.0, 50.0)
-		hurtbox.position = Vector2(0.0, 4.0)
-		wallbox.shape.size = Vector2(24.0, 50.0)
-		wallbox.position = Vector2(0.0, 4.0)
-		headbox.position = Vector2(0.0, -24.0)
+		changeHitbox(Vector2(24.0, 48.0), Vector2(0.0, 4.0), 
+		Vector2(24.0, 52.0), Vector2(0.0, 6.0), Vector2(0.0, -22.0))
 	getting_powerup = false
 		
 func losePowerup() -> void:
-	#speed = 150
-	#gravity = 500
-	#jump_impulse = -375
-	#terminal_velocity = 500
-	#top_speed = 150
 	fall_impulse = 100
-	hurtbox.shape.size = Vector2(24.0, 24.0)
-	hurtbox.position = Vector2(0.0, 16.0)
-	wallbox.shape.size = Vector2(24.0, 28.0)
-	wallbox.position = Vector2(0.0, 18.0)
-	headbox.position = Vector2(0.0, 2.0)
+	changeHitbox(Vector2(24.0, 24.0), Vector2(0.0, 16.0), 
+	Vector2(24.0, 28.0), Vector2(0.0, 18.0), Vector2(0.0, 2.0))
 	anim_player.play("RESET")
 
 func _small_physics_process(delta: float) -> void:
@@ -127,6 +135,7 @@ func _small_physics_process(delta: float) -> void:
 			speed = 150
 		
 		if Input.is_action_just_pressed("A") and is_on_floor():
+			SoundPlayer.play_sound(small_jump_sfx, "Console", 0.35)
 			velocity.y += jump_impulse
 			anim_player.play("jump")
 			
@@ -147,7 +156,9 @@ func _small_physics_process(delta: float) -> void:
 		if position.x < 8 and input_axis < 0:
 			velocity.x = 0
 			
-		if position.y > pit_y:
+		if position.y > pit_y and hp > 0:
+			hp = 0
+			SoundPlayer.play_sound(death_sfx, "Console", 0.35)
 			velocity.y = 0
 			velocity.x = 0
 			anim_player.speed_scale = 1
@@ -172,7 +183,16 @@ func _big_physics_process(delta: float) -> void:
 		if abs(input_axis) < 0.1:
 			if is_on_floor():
 				velocity.x += -velocity.x / 5
-				anim_player.play("BIG_RESET")
+				if Input.is_action_pressed("Down"):
+					changeHitbox(Vector2(24.0, 24.0), Vector2(0.0, 16.0), 
+					Vector2(24.0, 28.0), Vector2(0.0, 18.0), Vector2(0.0, 2.0))
+					crouch = true
+					anim_player.play("crouch")
+				else:
+					changeHitbox(Vector2(24.0, 48.0), Vector2(0.0, 4.0), 
+					Vector2(24.0, 52.0), Vector2(0.0, 6.0), Vector2(0.0, -22.0))
+					crouch = false
+					anim_player.play("BIG_RESET")
 				anim_player.speed_scale = 1
 			else:
 				velocity.x += -velocity.x / 10
@@ -198,6 +218,11 @@ func _big_physics_process(delta: float) -> void:
 			speed = 150
 		
 		if Input.is_action_just_pressed("A") and is_on_floor():
+			SoundPlayer.play_sound(big_jump_sfx, "Console", 0.35)
+			if crouch:
+				changeHitbox(Vector2(24.0, 48.0), Vector2(0.0, 4.0), 
+				Vector2(24.0, 52.0), Vector2(0.0, 6.0), Vector2(0.0, -22.0))
+				crouch = false
 			velocity.y += jump_impulse
 			anim_player.play("big_jump")
 			
@@ -218,7 +243,9 @@ func _big_physics_process(delta: float) -> void:
 		if position.x < 8 and input_axis < 0:
 			velocity.x = 0
 			
-		if position.y > pit_y:
+		if position.y > pit_y and hp > 0:
+			hp = 0
+			SoundPlayer.play_sound(death_sfx, "Console", 0.35)
 			velocity.y = 0
 			velocity.x = 0
 			anim_player.speed_scale = 1
@@ -232,16 +259,23 @@ func _on_hurtbox_body_entered(_body):
 		anim_player.speed_scale = 1
 		anim_player.play("powerup")
 		getting_powerup = true
+		SoundPlayer.play_sound(get_powerup_sfx, "Console", 0.35)
 		_body.queue_free()
 	else:
-		if !invuln and !_body.stomped:
+		if !invuln and !_body.stomped and hp > 0:
 			hp -= 1
 			if hp <= 0:
+				SoundPlayer.play_sound(death_sfx, "Console", 0.35)
 				velocity.y = 0
 				velocity.x = 0
 				anim_player.speed_scale = 1
 				anim_player.play("die")
 			elif hp == 1:
+				SoundPlayer.play_sound(lose_powerup_sfx, "Console", 0.35)
+				if crouch:
+					changeHitbox(Vector2(24.0, 48.0), Vector2(0.0, 4.0), 
+					Vector2(24.0, 52.0), Vector2(0.0, 6.0), Vector2(0.0, -22.0))
+					crouch = false
 				invuln = true
 				invuln_timer = 45
 				anim_player.speed_scale = 1
@@ -249,6 +283,7 @@ func _on_hurtbox_body_entered(_body):
 
 func _on_turtbox_area_entered(_area):
 	if !_area.get_parent().stomped and anim_player.current_animation != "die":
+		SoundPlayer.play_sound(enemy_stomp_sfx, "Console", 0.35)
 		if hp == 2:
 			anim_player.play("big_jump")
 		else:
@@ -295,6 +330,8 @@ func _on_animation_player_animation_finished(anim_name) -> void:
 		getPowerup()
 
 func _on_hurtbox_area_entered(_area) -> void:
+	sfx_player.play()
+	grabbedPole.emit()
 	beat_level = true
 	position.x = _area.position.x - 8
 	flag_bottom = _area.position.y + (_area.get_child(0).shape.size.y / 2) - 32.0
