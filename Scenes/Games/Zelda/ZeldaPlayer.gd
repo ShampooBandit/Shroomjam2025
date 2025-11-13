@@ -19,6 +19,7 @@ var bomb_resource : Resource = preload("res://Scenes/Games/Zelda/ZeldaBomb.tscn"
 @onready var sprite : Sprite2D = $Sprite2D
 @onready var hurtbox : Area2D = $Hurtbox
 
+@export var final_boss_trap : ZeldaTrapPlayer
 @export var camera : ZeldaCamera
 
 var STATE_NAMES : Array = [&"idle_state_process", &"walk_state_process",
@@ -353,6 +354,9 @@ func screen_state_process(_delta: float) -> void:
 	if transition_done:
 		TARGET_STATE = PlayerState.IDLE
 		transition_done = false
+		
+		if global_position.x > 2720.0 and global_position.y < 300.0:
+			final_boss_trap.enable()
 		return
 	
 	move_and_slide()
@@ -380,6 +384,7 @@ func respawn() -> void:
 			camera.teleport(Vector2(2208.0, -96.0))
 			position = Vector2(2640.0, 176.0)
 			in_boss = false
+			final_boss_trap.disable()
 			stop_bgm()
 			play_bgm(dungeon_bgm)
 		else:

@@ -27,6 +27,9 @@ func _ready() -> void:
 	player.play_bgm(player.boss_bgm)
 	player.in_boss = true
 	player.Respawn.connect(_on_player_respawn)
+	player.final_boss_trap.enable()
+	if player.global_position.x < player.camera.left_border + 46:
+		player.global_position.x = player.camera.left_border + 46
 
 func _physics_process(_delta: float) -> void:
 	match STATE:

@@ -10,6 +10,7 @@ class_name GameLoop
 @onready var screen_cover : ColorRect = find_child("ScreenCover")
 @onready var canvas2 : CanvasLayer = find_child("CanvasLayer2")
 @onready var hands : Hands = find_child("Hands")
+@onready var end_screen : Control = find_child("MainEndScreen")
 
 #0 - Platformer
 #1 - Duck Hunt
@@ -27,6 +28,7 @@ var hiding_screen : bool = false
 var timer : int = 0
 var is_currentgame_complete : bool = false
 var going_to_next_game : bool = false
+var won_the_game : bool = false
 
 func _ready() -> void:
 	screen_cover.modulate.a = 0.0
@@ -102,35 +104,36 @@ func _gameplay_process(_delta: float) -> void:
 				detection.reset_ai()
 				hands.anim_player.play(hands.anim_player.current_animation)
 	else:
-		if Input.is_action_just_pressed("Switch Game"):
-			beat_nes_game()
-		elif Input.is_action_just_pressed("ToggleCommercial"):
-			if show_game:
-				hands.anim_player.play("remote")
-				game_list[current_game].hide_game()
-				commercials.visible = true
-				AudioServer.set_bus_mute(bus_ids[2], true)
-				AudioServer.set_bus_mute(bus_ids[1], false)
-				channel_label.get_child(0).text = "Ch. 4"
-				channel_label.visible = true
-				channel_label_timer = 120
-				show_game = false
-			else:
-				if current_game == 0:
-					hands.anim_player.play("zapper")
+		if !won_the_game:
+			if Input.is_action_just_pressed("Switch Game"):
+				beat_nes_game()
+			elif Input.is_action_just_pressed("ToggleCommercial"):
+				if show_game:
+					hands.anim_player.play("remote")
+					game_list[current_game].hide_game()
+					commercials.visible = true
+					AudioServer.set_bus_mute(bus_ids[2], true)
+					AudioServer.set_bus_mute(bus_ids[1], false)
+					channel_label.get_child(0).text = "Ch. 4"
+					channel_label.visible = true
+					channel_label_timer = 120
+					show_game = false
 				else:
-					hands.anim_player.play("nes")
-				game_list[current_game].show_game()
-				commercials.visible = false
-				AudioServer.set_bus_mute(bus_ids[2], false)
-				AudioServer.set_bus_mute(bus_ids[1], true)
-				channel_label.get_child(0).text = "Ch. 3"
-				channel_label.visible = true
-				channel_label_timer = 120
-				show_game = true
-		elif Input.is_action_just_pressed("NextCommercial") and commercials.visible:
-			#commercials._go_to_next_commercial()
-			commercials._go_to_random_commercial()
+					if current_game == 0:
+						hands.anim_player.play("zapper")
+					else:
+						hands.anim_player.play("nes")
+					game_list[current_game].show_game()
+					commercials.visible = false
+					AudioServer.set_bus_mute(bus_ids[2], false)
+					AudioServer.set_bus_mute(bus_ids[1], true)
+					channel_label.get_child(0).text = "Ch. 3"
+					channel_label.visible = true
+					channel_label_timer = 120
+					show_game = true
+			elif Input.is_action_just_pressed("NextCommercial") and commercials.visible:
+				#commercials._go_to_next_commercial()
+				commercials._go_to_random_commercial()
 
 func beat_nes_game() -> void:
 	is_currentgame_complete = true
@@ -162,7 +165,19 @@ func go_to_next_game() -> void:
 	current_game += 1
 
 func win_game() -> void:
-	get_tree().change_scene_to_file("res://Scenes/end.tscn")
+	won_the_game = true
+	var tween = get_tree().create_tween()
+	tween.tween_property(screen_cover, "modulate:a", 1.0, 2.0)
+	tween.play()
+	await tween.finished
+	end_screen.visible = true
+	tween.kill()
+	go_to_end()
+
+func go_to_end() -> void:
+	var tween = get_tree().create_tween()
+	tween.tween_property(screen_cover, "modulate:a", 0.0, 2.0)
+	tween.play()
 
 func lose_game() -> void:
 	game_list[current_game].process_mode = Node.PROCESS_MODE_DISABLED
