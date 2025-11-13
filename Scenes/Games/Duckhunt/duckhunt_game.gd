@@ -3,14 +3,14 @@ class_name DuckHuntGame
 
 signal beat_game
 
-var level = 6
+var level = 1
 var hogan_level = 1
 var shots = 3
-var duck = 9
+var duck = 0
 var clay1 = 0
 var clay2 = 0
 var successes = [false, false, false, false, false, false, false, false, false, false]
-var score = 9
+var score = 0
 var pointscore = 0
 var highscore = 0
 var flyingcurrently = false
@@ -261,6 +261,10 @@ func reset_game() -> void:
 	clay1_obj.reset_pigeon()
 	#clay2_obj.state = clay2_obj.ClayState.INTRO
 	carriage_obj.state = carriage_obj.HoganState.WAITING
+	if carriage_obj.hit_player:
+		carriage_obj.hit_player.stop()
+	if carriage_obj.slide_player:
+		carriage_obj.slide_player.stop()
 	if gamemode == Gamemode.HOGAN:
 		carriage_obj.reset()
 	duck = 0
