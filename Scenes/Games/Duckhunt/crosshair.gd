@@ -1,5 +1,7 @@
 extends Sprite2D
 
+var shot_sfx := preload("res://SFX/Duckhunt/gunshot.wav")
+
 @export var black_screen: ColorRect
 
 @export var topleft: Node2D
@@ -50,13 +52,14 @@ func _process(delta: float):
 			carriage.hit(2)
 
 
-func _physics_process(delta: float):
+func _physics_process(_delta: float):
 	#black_screen.hide()
 	if black_screen.modulate.a > 0:
 		black_screen.modulate.a -= 0.05
 	
 	if Input.is_action_just_pressed("A") and game.shots > 0:
 	#	black_screen.show()
+		SoundPlayer.play_sound(shot_sfx, "Console")
 		black_screen.modulate.a = 0.5
 		game.shots -= 1
 

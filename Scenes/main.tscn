@@ -319,4 +319,4 @@ libraries = {
 z_index = 2
 position = Vector2(620, 645)
 
-[connection signal="finished" from="CanvasLayer/Container/TVScreen/SubViewport/Commercials/Control/CenterContainer/VideoStreamPlayer" to="CanvasLayer/Container/TVScreen/SubViewport/Commercials/Control/CenterContainer" method="_on_video_stream_player_finished"]
+[connection signal="finished" from="CanvasLayer/Container/TVScreen/SubViewport/Commercials/Control/CenterContainer/VideoStreamPlayer" to="CanvasLayer/Container/TVScreen/SubViewport/Commercials" method="_on_video_stream_player_finished"]

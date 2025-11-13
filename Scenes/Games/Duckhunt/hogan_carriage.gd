@@ -1,6 +1,11 @@
 extends Node2D
 class_name Carriage
 
+var slide_sfx := preload("res://SFX/Duckhunt/cutout_slide.wav")
+var hit_sfx := preload("res://SFX/Duckhunt/cutout_shot.wav")
+var slide_player : AudioStreamPlayer
+var hit_player : AudioStreamPlayer
+
 enum HoganState {WAITING, SHOWN, MISS, EXITING, TRANSITION, PASS}
 
 var hogan_enemy = ["gang1", "gang2", "gang3"]
@@ -29,7 +34,7 @@ var state = HoganState.WAITING
 
 var timer = 0
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if game.gamemode != game.Gamemode.HOGAN:
 		state = HoganState.WAITING # Don't do anything if not the right gamemode
 		hide()
@@ -76,6 +81,8 @@ func _physics_process(delta: float) -> void:
 					timer = 3 * 60
 		HoganState.MISS:
 			if timer <= 0:
+				if hit_player:
+					hit_player.stop()
 				state = HoganState.EXITING
 				left_cutout.animation = "revealing"
 				center_cutout.animation = "revealing"
@@ -83,6 +90,8 @@ func _physics_process(delta: float) -> void:
 				timer = 30
 		HoganState.PASS:
 			if timer <= 0:
+				if hit_player:
+					hit_player.stop()
 				state = HoganState.EXITING
 				left_cutout.animation = "revealing"
 				center_cutout.animation = "revealing"
@@ -99,8 +108,11 @@ func _physics_process(delta: float) -> void:
 				# Win condition
 				if game.hogan_level > 9 and game.misses <= 5:
 					game.add_level()
+				else:
+					slide_player = SoundPlayer.play_sound(slide_sfx, "Console")
 		HoganState.TRANSITION:
 			if position.x < 1:
+				slide_player.stop()
 				state = HoganState.WAITING
 				timer = randf_range(1.0, 2.0) * 60 # Wait for a random time before showing the enemies
 				game.timetohit = snapped(randf_range(2.0, 4.0), 0.1) # Set a random time to hit the enemies
@@ -135,6 +147,7 @@ func update_anim(cutout: AnimatedSprite2D, evil: bool):
 	
 func hit(which: int):
 	if badguys[which] == true:
+		hit_player = SoundPlayer.play_sound(hit_sfx, "Console")
 		match which:
 			0:
 				left_cutout.animation = "spinning"

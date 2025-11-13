@@ -126,7 +126,8 @@ func _gameplay_process(_delta: float) -> void:
 				channel_label_timer = 120
 				show_game = true
 		elif Input.is_action_just_pressed("NextCommercial"):
-			commercials._go_to_next_commercial()
+			#commercials._go_to_next_commercial()
+			commercials._go_to_random_commercial()
 
 func beat_nes_game() -> void:
 	is_currentgame_complete = true
