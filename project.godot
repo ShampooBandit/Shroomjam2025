@@ -10,10 +10,10 @@ config_version=5
 
 [application]
 
-config/name="Shroomjam 2025 Game"
+config/name="Late Night Gaming"
 run/main_scene="uid://566cjaism5dv"
 config/features=PackedStringArray("4.5", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="uid://uodu7ev8te3d"
 
 [autoload]
 

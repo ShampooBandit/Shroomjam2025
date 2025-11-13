@@ -1912,7 +1912,7 @@ in_building = false
 dungeon_entrance = true
 
 [node name="ZeldaBigKey" parent="Container" node_paths=PackedStringArray("locked_door") instance=ExtResource("13_0ob8l")]
-position = Vector2(1777, 115)
+position = Vector2(1777, 107)
 locked_door = NodePath("../ZeldaLockedDoor")
 
 [node name="ZeldaCrumbleWall" parent="Container" instance=ExtResource("11_s55pp")]

@@ -112,9 +112,9 @@ func _gameplay_process(_delta: float) -> void:
 				hands.anim_player.play(hands.anim_player.current_animation)
 	else:
 		if !won_the_game:
-			if Input.is_action_just_pressed("Switch Game"):
-				beat_nes_game()
-			elif Input.is_action_just_pressed("ToggleCommercial"):
+			#if Input.is_action_just_pressed("Switch Game"):
+			#	beat_nes_game()
+			if Input.is_action_just_pressed("ToggleCommercial"):
 				if show_game:
 					hands.anim_player.play("remote")
 					game_list[current_game].hide_game()
