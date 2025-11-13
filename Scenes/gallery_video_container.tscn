@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://bg3s3oi38dg6i"]
+[gd_scene load_steps=4 format=3 uid="uid://bg3s3oi38dg6i"]
 
 [ext_resource type="Texture2D" uid="uid://lx7rxlfco8m8" path="res://GFX/play-button.png" id="1_1qyrp"]
 [ext_resource type="Script" uid="uid://ds1b1uqgfrklq" path="res://Scripts/gallery_video_container.gd" id="1_vrjko"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_vrjko"]
+outline_size = 12
+outline_color = Color(0, 0, 0, 1)
 
 [node name="VideoContainer" type="VBoxContainer" node_paths=PackedStringArray("label")]
 custom_minimum_size = Vector2(0, 100.805)
@@ -34,6 +38,7 @@ expand_mode = 1
 [node name="Label" type="Label" parent="."]
 layout_mode = 2
 text = "Blockbuster Commercial"
+label_settings = SubResource("LabelSettings_vrjko")
 horizontal_alignment = 1
 
 [connection signal="pressed" from="TextureRect" to="." method="_on_texture_rect_pressed"]
