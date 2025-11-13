@@ -156,6 +156,7 @@ func go_to_next_game() -> void:
 			zelda.enable_tilemaps()
 			zelda.show_game()
 			zelda.find_child("Camera2D").make_current()
+			detection.change_ai(25, 45, 1.75, 2, 4)
 		2:
 			win_game()
 	current_game += 1

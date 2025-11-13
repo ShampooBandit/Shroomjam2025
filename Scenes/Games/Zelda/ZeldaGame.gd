@@ -8,6 +8,7 @@ class_name ZeldaGame extends Node2D
 @onready var gui := $GUI
 @onready var player := $Container/ZeldaPlayer
 @onready var title := $TitleCanvas
+@onready var ending := $EndingCanvas
 
 var end_timer = 300
 var do_end_timer = false
@@ -18,10 +19,13 @@ signal ZeldaGameBeat
 func _ready() -> void:
 	player.process_mode = Node.PROCESS_MODE_DISABLED
 	gui.visible = false
+	ending.visible = false
+	title.visible = false
 
 func start_game() -> void:
 	gui.visible = true
 	title.visible = false
+	ending.visible = false
 	on_title = false
 	player.process_mode = Node.PROCESS_MODE_INHERIT
 	player.play_bgm(player.overworld_bgm)
@@ -30,6 +34,7 @@ func hide_game() -> void:
 	visible = false
 	gui.visible = false
 	title.visible = false
+	ending.visible = false
 	
 func show_game() -> void:
 	visible = true
@@ -59,6 +64,7 @@ func _process(_delta: float) -> void:
 			
 			if end_timer <= 0:
 				ZeldaGameBeat.emit()
+				ending.show()
 				process_mode = Node.PROCESS_MODE_DISABLED
 
 func _beat_game() -> void:
