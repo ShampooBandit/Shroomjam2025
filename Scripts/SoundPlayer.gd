@@ -15,9 +15,10 @@ func play_sound(_sound: AudioStream, _bus: String, _volume_level: float = 1.0) -
 
 func title_music(_sound: AudioStream) -> AudioStreamPlayer:
 	if !title_player.playing:
-		add_child(title_player)
+		if !title_player.get_parent():
+			add_child(title_player)
 		title_player.stream = _sound
-		title_player.volume_linear = 0.2
+		title_player.volume_linear = 0.8
 		title_player.bus = "Master"
 		title_player.play()
 	return title_player

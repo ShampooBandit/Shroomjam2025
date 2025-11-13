@@ -1,6 +1,8 @@
 extends Node2D
 class_name GameLoop
 
+var title_song : AudioStream = preload("res://SFX/title.ogg")
+
 @onready var commercials : Commercials = find_child("Commercials")
 @onready var platformer : PlatformerGame = find_child("PlatformerGame")
 @onready var duckhunt : DuckHuntGame = find_child("DuckhuntGame")
@@ -176,6 +178,7 @@ func win_game() -> void:
 	go_to_end()
 
 func go_to_end() -> void:
+	SoundPlayer.title_music(title_song)
 	var tween = get_tree().create_tween()
 	tween.tween_property(screen_cover, "modulate:a", 0.0, 2.0)
 	tween.play()

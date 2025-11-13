@@ -1,7 +1,7 @@
 extends AnimatedSprite2D
 class_name Duck
 
-var fall_sfx := preload("res://SFX/Duckhunt/duck_fall.wav")
+var fall_sfx := preload("res://SFX/ufo_fall.wav")
 var sfx_player : AudioStreamPlayer
 
 enum DuckState {NEUTRAL, FLYING, HIT, FALLING, FLY_AWAY, DOG_CATCH, DOG_GIGGLE}

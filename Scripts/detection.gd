@@ -1,10 +1,8 @@
 extends Node
 class_name Detection
 
-var approach_sfx := preload("res://SFX/steps_approach.ogg")
-var leave_sfx := preload("res://SFX/steps_leave.ogg")
 var closing_sfx := preload("res://SFX/door_closing2.ogg")
-var opening_sfx := preload("res://SFX/door_opening.mp3")
+var opening_sfx := preload("res://SFX/door_opening.ogg")
 
 ## The least time possible between two attacks.
 @export var min_time_between_attacks = 10
@@ -56,8 +54,8 @@ func _physics_process(_delta: float) -> void:
 					# Show silhouette
 			AttackState.ATTACKING:
 				if game_loop.show_game == true:
-					#lose()
-					pass
+					lose()
+					#pass
 				if timer <= 0:
 					# Transition to recovery
 					attack_state = AttackState.RECOVERY
