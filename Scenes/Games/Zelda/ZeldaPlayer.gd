@@ -64,6 +64,10 @@ var game_done : bool = false
 var touching_enemy : Array
 var bomb : Node2D
 
+func _notification(what):
+	if what == NOTIFICATION_PREDELETE:
+		bgm_player.stop()
+
 func _ready() -> void:
 	bgm_player = AudioStreamPlayer.new()
 	bgm_player.bus = "Console"

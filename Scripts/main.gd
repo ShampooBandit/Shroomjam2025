@@ -171,6 +171,7 @@ func win_game() -> void:
 	tween.play()
 	await tween.finished
 	end_screen.visible = true
+	zelda.queue_free()
 	tween.kill()
 	go_to_end()
 
