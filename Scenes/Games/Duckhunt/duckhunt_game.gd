@@ -6,11 +6,11 @@ signal beat_game
 var level = 1
 var hogan_level = 1
 var shots = 3
-var duck = 0
+var duck = 9
 var clay1 = 0
 var clay2 = 0
 var successes = [false, false, false, false, false, false, false, false, false, false]
-var score = 0
+var score = 9
 var pointscore = 0
 var highscore = 0
 var flyingcurrently = false
@@ -48,6 +48,7 @@ var counter = 0
 @export var hogan_foreground: Sprite2D
 
 @export var success_text: Label
+@export var fly_away_text: Label
 
 @export var duck_obj: Duck
 @export var clay1_obj: ClayPigeon
@@ -58,6 +59,10 @@ var counter = 0
 @export var title_screen: TextureRect
 @export var end_screen: TextureRect
 @export var end_screen_label: Label
+
+func _ready() -> void:
+	clay1_obj.state = clay1_obj.ClayState.NEUTRAL
+	clay2_obj.state = clay1_obj.ClayState.NEUTRAL
 
 func _process(_delta: float):
 	match gamemode:
@@ -132,6 +137,7 @@ func _process(_delta: float):
 			
 		Gamemode.TRANSITION:
 			successtimer -= 1
+			fly_away_text.hide()
 			success_text.show()
 			if successtimer <= 0:
 				success_text.hide()
@@ -146,7 +152,7 @@ func _process(_delta: float):
 		Gamemode.END:
 			end_screen.show()
 			
-	if duck >= 10:
+	if duck >= 10 and !dog.is_laughing:
 		if score >= threshold:
 			success()
 		reset_game()
@@ -180,7 +186,7 @@ func _process(_delta: float):
 				else:
 					finalstring += "5"
 		
-	if flyingcurrently and gamemode == Gamemode.NORMAL and counter % 32 > 15:
+	if flyingcurrently and gamemode == Gamemode.NORMAL and counter % 32 > 15 and !dog.is_laughing:
 		finalstring[duck] = "0"
 	if gamemode == Gamemode.CLAY and counter % 32 > 15:
 		finalstring[duck] = "0"
@@ -250,10 +256,8 @@ func reset_game() -> void:
 	successes = [false, false, false, false, false, false, false, false, false, false]
 	duck_obj.state = duck_obj.DuckState.NEUTRAL
 	duck_obj.respawn_duck()
-	clay1_obj.state = clay1_obj.ClayState.NEUTRAL
-	clay1_obj.respawn_pigeon()
-	clay2_obj.state = clay2_obj.ClayState.NEUTRAL
-	clay2_obj.respawn_pigeon()
+	clay1_obj.reset_pigeon()
+	#clay2_obj.state = clay2_obj.ClayState.INTRO
 	carriage_obj.state = carriage_obj.HoganState.WAITING
 	duck = 0
 	carriage_obj.position.x = 0
@@ -286,10 +290,16 @@ func add_level() -> void:
 	level += 1
 	match level:
 		1, 4:
+			clay1_obj.state = clay1_obj.ClayState.NEUTRAL
+			clay2_obj.state = clay1_obj.ClayState.NEUTRAL
 			gamemode = Gamemode.NORMAL
 		2, 5:
+			clay1_obj.reset_pigeon()
+			#clay2_obj.reset_pigeon()
 			gamemode = Gamemode.CLAY
 		3, 6:
+			clay1_obj.state = clay1_obj.ClayState.NEUTRAL
+			clay2_obj.state = clay1_obj.ClayState.NEUTRAL
 			gamemode = Gamemode.HOGAN
 		7:
 			win_game()

@@ -1,7 +1,7 @@
 extends AnimatedSprite2D
 class_name ClayPigeon
 
-enum ClayState {NEUTRAL, FLYING, HIT, TOOLATE}
+enum ClayState {NEUTRAL, FLYING, HIT, TOOLATE, INTRO}
 
 var hard = false
 
@@ -81,6 +81,10 @@ func _physics_process(_delta: float):
 	timer -= 1
 	v_velocity *= 0.95
 	match state:
+		ClayState.INTRO:
+			white_square.hide()
+			if timer <= 0:
+				respawn_pigeon()
 		ClayState.FLYING:
 			# Move the character
 			if flying_left:
@@ -131,6 +135,15 @@ func respawn_pigeon():
 	v_velocity = 1
 	frame = 0
 	play()
+	
+func reset_pigeon():
+	game.shots = 3
+	global_position = duck_spawner.global_position + Vector2(randi_range(-50, 50), 0)
+	hide()
+	respawn_timer = 120
+	v_velocity = 1
+	state = ClayState.INTRO
+	frame = 0
 	
 func spawn_pigeon():
 	game.shots = 3

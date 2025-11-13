@@ -505,7 +505,7 @@ size = Vector2(22, 20)
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_iu5i7"]
 
-[node name="DuckhuntGame" type="Node2D" node_paths=PackedStringArray("ammo_label", "score_label", "ducks_label", "threshold_label", "level_label", "score_label_hogan", "high_score_label_hogan", "level_label_hogan", "tth_label_hogan", "tth_label_second_hogan", "misses_label_hogan", "foreground", "background", "clay_background", "hogan_foreground", "success_text", "duck_obj", "clay1_obj", "clay2_obj", "dog", "carriage_obj", "title_screen", "end_screen", "end_screen_label")]
+[node name="DuckhuntGame" type="Node2D" node_paths=PackedStringArray("ammo_label", "score_label", "ducks_label", "threshold_label", "level_label", "score_label_hogan", "high_score_label_hogan", "level_label_hogan", "tth_label_hogan", "tth_label_second_hogan", "misses_label_hogan", "foreground", "background", "clay_background", "hogan_foreground", "success_text", "fly_away_text", "duck_obj", "clay1_obj", "clay2_obj", "dog", "carriage_obj", "title_screen", "end_screen", "end_screen_label")]
 script = ExtResource("1_ktv5o")
 ammo_label = NodePath("AmmoLeft")
 score_label = NodePath("Score")
@@ -523,6 +523,7 @@ background = NodePath("Background")
 clay_background = NodePath("ClayBackground")
 hogan_foreground = NodePath("HoganForeground")
 success_text = NodePath("SuccessText")
+fly_away_text = NodePath("FlyAwayText")
 duck_obj = NodePath("Duck")
 clay1_obj = NodePath("ClayPigeon1")
 clay2_obj = NodePath("ClayPigeon2")
