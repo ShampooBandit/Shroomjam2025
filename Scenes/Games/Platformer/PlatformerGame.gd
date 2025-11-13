@@ -31,7 +31,7 @@ func _ready() -> void:
 	bgm_player.volume_linear = 0.7
 	add_child(bgm_player)
 
-func _process(_delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if level == 0 and Input.is_action_just_pressed("Start"):
 		title.visible = false
 		player.process_mode = Node.PROCESS_MODE_INHERIT

@@ -28,7 +28,7 @@ var attack_state = AttackState.IDLE
 @onready var anim_player : AnimationPlayer = $AnimationPlayer
 
 func _ready() -> void:
-	pass
+	reset_ai()
 
 func _physics_process(_delta: float) -> void:
 	if !is_stopped:

@@ -49,7 +49,6 @@ func reset_game() -> void:
 	player.respawn()
 
 func _process(_delta: float) -> void:
-	print(on_title)
 	if on_title:
 		gui.visible = false
 		if Input.is_action_just_pressed("Start"):

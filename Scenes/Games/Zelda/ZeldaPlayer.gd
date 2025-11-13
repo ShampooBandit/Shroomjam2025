@@ -80,7 +80,8 @@ func _physics_process(_delta: float) -> void:
 	if !game_done:
 		check_screen_transition()
 		
-		if Input.is_action_just_pressed("B"):
+		if Input.is_action_just_pressed("B") and bgm_player.stream != boss_bgm:
+			in_dungeon = true
 			camera.teleport(Vector2(2208.0, -96.0))
 			position = Vector2(2400.0, 200.0)
 		
@@ -213,6 +214,7 @@ func enter_state() -> void:
 		PlayerState.EXIT: #exit
 			HideScreen.emit()
 		PlayerState.SCREEN: #screen
+			transition_done = false
 			match dir:
 				1:
 					anim_player.play("walk_left")
@@ -272,7 +274,7 @@ func idle_state_process(_delta: float) -> void:
 		
 	if Input.is_action_just_pressed("A"):
 		TARGET_STATE = PlayerState.ATTACK
-	elif Input.is_action_just_pressed("B"):
+	elif Input.is_action_just_pressed("B") and bombs:
 		drop_bomb()
 	
 func walk_state_process(_delta: float) -> void:
@@ -300,7 +302,7 @@ func walk_state_process(_delta: float) -> void:
 	if Input.is_action_just_pressed("A"):
 		TARGET_STATE = PlayerState.ATTACK
 		return
-	elif Input.is_action_just_pressed("B"):
+	elif Input.is_action_just_pressed("B") and bombs:
 		drop_bomb()
 	
 	velocity = Vector2(dx, dy) * speed
@@ -331,8 +333,8 @@ func enter_state_process(_delta: float) -> void:
 			ShowScreen.emit()
 			TARGET_STATE = PlayerState.IDLE
 			anim_player.play("RESET")
-			bgm_player.volume_linear = 0.1
-			print(in_building)
+			if in_building:
+				bgm_player.volume_linear = 0.1
 	
 func exit_state_process(_delta: float) -> void:
 	if consider_timer:
@@ -373,13 +375,16 @@ func die_state_process(_delta: float) -> void:
 
 func respawn() -> void:
 	if in_dungeon:
-		camera.teleport(Vector2(2208.0, 544.0))
-		position = Vector2(2463.0, 928.0)
-		play_bgm(dungeon_bgm)
-	elif in_boss:
-		camera.teleport(Vector2(2208.0, -96.0))
-		position = Vector2(2400.0, 200.0)
-		play_bgm(dungeon_bgm)
+		if in_boss:
+			camera.teleport(Vector2(2208.0, -96.0))
+			position = Vector2(2640.0, 176.0)
+			in_boss = false
+			stop_bgm()
+			play_bgm(dungeon_bgm)
+		else:
+			camera.teleport(Vector2(2208.0, 544.0))
+			position = Vector2(2463.0, 928.0)
+			play_bgm(dungeon_bgm)
 	else:
 		camera.teleport(Vector2(0.0, -96.0))
 		position = Vector2(172.0, 128.0)
@@ -395,6 +400,8 @@ func on_enter(_pos : Vector2, _campos : Vector2, _in_building : bool, _dungeon_e
 		in_building = true
 	if _dungeon_entrance:
 		in_dungeon = true
+		bgm_player.stop()
+		bgm_player.stream = dungeon_bgm
 	TARGET_STATE = PlayerState.ENTER
 	camera.TransitionStart.emit()
 	
@@ -402,6 +409,8 @@ func on_exit(_pos : Vector2, _campos : Vector2, _in_building : bool, _dungeon_ex
 	target_cam_pos = _campos
 	target_pos = _pos
 	if _dungeon_exit:
+		bgm_player.stop()
+		bgm_player.stream = overworld_bgm
 		in_dungeon = false
 	TARGET_STATE = PlayerState.EXIT
 	timer = 30
@@ -417,6 +426,8 @@ func _on_animation_player_animation_finished(_anim_name):
 		HideScreen.emit()
 		timer = 30
 		consider_timer = true
+		if !bgm_player.playing:
+			bgm_player.play()
 		dir = 2
 		return
 	elif _anim_name == "exit":
@@ -424,6 +435,8 @@ func _on_animation_player_animation_finished(_anim_name):
 		anim_player.play("RESET")
 		camera.TransitionComplete.emit()
 		bgm_player.volume_linear = 0.3
+		if !bgm_player.playing:
+			bgm_player.play()
 		dir = 4
 		return
 		

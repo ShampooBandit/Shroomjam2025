@@ -1,4 +1,4 @@
-extends CharacterBody2D
+class_name ZeldaEnemyArrow extends CharacterBody2D
 
 var dir = 1
 var damage = 1

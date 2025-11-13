@@ -147,7 +147,10 @@ func update_anim(cutout: AnimatedSprite2D, evil: bool):
 	
 func hit(which: int):
 	if badguys[which] == true:
-		hit_player = SoundPlayer.play_sound(hit_sfx, "Console")
+		if hit_player:
+			hit_player.play()
+		else:
+			hit_player = SoundPlayer.play_sound(hit_sfx, "Console")
 		match which:
 			0:
 				left_cutout.animation = "spinning"

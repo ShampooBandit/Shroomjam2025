@@ -1,4 +1,4 @@
-extends CharacterBody2D
+class_name ZeldaCrumbleWall extends CharacterBody2D
 
 @onready var hitbox : CollisionShape2D = $CollisionShape2D
 @onready var sprite : Sprite2D = $WallSprite

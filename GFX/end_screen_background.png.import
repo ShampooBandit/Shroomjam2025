@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://da63wixp5h4m0"
-path="res://.godot/imported/hands_nes_controller.png-6c0a2948bcb6e5625579e4de09e868fd.ctex"
+uid="uid://dfd1a1w52gvmh"
+path="res://.godot/imported/end_screen_background.png-cd401f819b97fc7a5bf836876a51849c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://GFX/hands_nes_controller.png"
-dest_files=["res://.godot/imported/hands_nes_controller.png-6c0a2948bcb6e5625579e4de09e868fd.ctex"]
+source_file="res://GFX/end_screen_background.png"
+dest_files=["res://.godot/imported/end_screen_background.png-cd401f819b97fc7a5bf836876a51849c.ctex"]
 
 [params]
 

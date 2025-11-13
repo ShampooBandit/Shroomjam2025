@@ -25,11 +25,12 @@ func teleport(teleport_pos : Vector2) -> void:
 	right_border = position.x + width
 	top_border = position.y + 96.0 
 	bottom_border = position.y + height + 96.0
+	TransitionComplete.emit()
 
 func exit() -> void:
 	TransitionComplete.emit()
 
-func _process(_delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if move:
 		match dir:
 			1:

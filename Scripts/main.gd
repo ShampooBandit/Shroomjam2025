@@ -31,8 +31,8 @@ func _ready() -> void:
 	screen_cover.modulate.a = 0.0
 	
 	duckhunt.beat_game.connect(beat_nes_game)
-	platformer.beatGame.connect(go_to_next_game)
-	zelda.ZeldaGameBeat.connect(go_to_next_game)
+	platformer.beatGame.connect(beat_nes_game)
+	zelda.ZeldaGameBeat.connect(beat_nes_game)
 	detection.CaughtGaming.connect(lose_game)
 	
 	bus_ids[0] = AudioServer.get_bus_index("Master")
@@ -125,7 +125,7 @@ func _gameplay_process(_delta: float) -> void:
 				channel_label.visible = true
 				channel_label_timer = 120
 				show_game = true
-		elif Input.is_action_just_pressed("NextCommercial"):
+		elif Input.is_action_just_pressed("NextCommercial") and commercials.visible:
 			#commercials._go_to_next_commercial()
 			commercials._go_to_random_commercial()
 
