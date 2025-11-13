@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
-@onready var arrow := preload("res://Scenes/Games/Zelda/enemies/ZeldaEnemyArrow.tscn")
-@onready var pickup := preload("res://Scenes/Games/Zelda/pickups/ZeldaPickup.tscn")
+var arrow := preload("res://Scenes/Games/Zelda/enemies/ZeldaEnemyArrow.tscn")
+var pickup := preload("res://Scenes/Games/Zelda/pickups/ZeldaPickup.tscn")
 
 var hurt_sfx := preload("res://SFX/Zelda/enemy_hurt.wav")
 var die_sfx := preload("res://SFX/Zelda/enemy_die.wav")
@@ -70,7 +70,7 @@ func check_wall_direction() -> int:
 	
 	chosen_dir = randi_range(0, len(possible_dir)-1)
 	
-	if len(possible_dir > 0):
+	if len(possible_dir) > 0:
 		return possible_dir[chosen_dir]
 	else:
 		return 0
@@ -124,22 +124,22 @@ func _idle_process(_delta: float) -> void:
 	global_position.x = clamp(global_position.x, left_border, right_border)
 	global_position.y = clamp(global_position.y, top_border, bottom_border)
 	
-	#if get_last_slide_collision():
-		#timer = randi_range(60, 180)
-		#dir = check_wall_direction()
-		#match dir:
-			#1:
-				#velocity = Vector2(-speed, 0.0)
-				#anim_player.play("walk_left")
-			#2:
-				#velocity = Vector2(0.0, -speed)
-				#anim_player.play("walk_up")
-			#3:
-				#velocity = Vector2(speed, 0.0)
-				#anim_player.play("walk_right")
-			#4:
-				#velocity = Vector2(0.0, speed)
-				#anim_player.play("walk_down")
+	if get_last_slide_collision():
+		timer = randi_range(60, 180)
+		dir = check_wall_direction()
+		match dir:
+			1:
+				velocity = Vector2(-speed, 0.0)
+				anim_player.play("walk_left")
+			2:
+				velocity = Vector2(0.0, -speed)
+				anim_player.play("walk_up")
+			3:
+				velocity = Vector2(speed, 0.0)
+				anim_player.play("walk_right")
+			4:
+				velocity = Vector2(0.0, speed)
+				anim_player.play("walk_down")
 
 func _hurt_process(_delta: float) -> void:
 	timer -= 1
@@ -153,11 +153,11 @@ func _hurt_process(_delta: float) -> void:
 		STATE = 0
 
 func take_damage(_dir : int, _dmg : int):
-	hp -= _dmg
-	if hp <= 0:
-		die()
-		
 	if invuln_timer <= 0:
+		hp -= _dmg
+		if hp <= 0:
+			die()
+
 		match _dir:
 			1:
 				velocity = Vector2(-400.0, 0.0)

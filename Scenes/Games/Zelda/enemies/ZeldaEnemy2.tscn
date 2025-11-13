@@ -65,3 +65,43 @@ shape = SubResource("RectangleShape2D_bv21s")
 libraries = {
 &"": SubResource("AnimationLibrary_fu4o5")
 }
+
+[node name="UpWallCast" type="RayCast2D" parent="."]
+position = Vector2(-10, -3)
+target_position = Vector2(0, -4)
+collision_mask = 2
+
+[node name="UpWallCast2" type="RayCast2D" parent="."]
+position = Vector2(10, -3)
+target_position = Vector2(0, -4)
+collision_mask = 2
+
+[node name="DownWallCast" type="RayCast2D" parent="."]
+position = Vector2(-10, 13)
+target_position = Vector2(0, 4)
+collision_mask = 2
+
+[node name="DownWallCast2" type="RayCast2D" parent="."]
+position = Vector2(10, 13)
+target_position = Vector2(0, 4)
+collision_mask = 2
+
+[node name="LeftWallCast" type="RayCast2D" parent="."]
+position = Vector2(-10, -3)
+target_position = Vector2(-4, 0)
+collision_mask = 2
+
+[node name="LeftWallCast2" type="RayCast2D" parent="."]
+position = Vector2(-10, 13)
+target_position = Vector2(-4, 0)
+collision_mask = 2
+
+[node name="RightWallCast" type="RayCast2D" parent="."]
+position = Vector2(10, -3)
+target_position = Vector2(4, 0)
+collision_mask = 2
+
+[node name="RightWallCast2" type="RayCast2D" parent="."]
+position = Vector2(10, 13)
+target_position = Vector2(4, 0)
+collision_mask = 2

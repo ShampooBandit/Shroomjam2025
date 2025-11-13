@@ -314,8 +314,9 @@ func hurt_state_process(_delta: float) -> void:
 	
 	move_and_slide()
 	
-	global_position.x = clamp(global_position.x, camera.left_border + 16.0, camera.right_border - 16.0)
-	global_position.y = clamp(global_position.y, camera.top_border + 96.0 + 16.0, camera.bottom_border + 96.0 - 16.0)
+	print(camera.left_border + 16.0)
+	global_position.x = clamp(global_position.x, camera.left_border + 32.0, camera.right_border - 32.0)
+	global_position.y = clamp(global_position.y, camera.top_border + 96.0 + 32.0, camera.bottom_border + 96.0 - 32.0)
 	
 	if timer <= 0:
 		TARGET_STATE = PlayerState.IDLE

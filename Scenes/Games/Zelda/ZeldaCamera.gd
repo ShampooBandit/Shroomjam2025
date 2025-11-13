@@ -25,7 +25,6 @@ func teleport(teleport_pos : Vector2) -> void:
 	right_border = position.x + width
 	top_border = position.y + 96.0 
 	bottom_border = position.y + height + 96.0
-	TransitionComplete.emit()
 
 func exit() -> void:
 	TransitionComplete.emit()
@@ -49,7 +48,7 @@ func _physics_process(_delta: float) -> void:
 				position.y += 4.0
 				if position.y >= target_pos.y:
 					finish_transition()
-				
+
 func finish_transition() -> void:
 	position = target_pos
 	move = false

@@ -56,7 +56,8 @@ func _physics_process(_delta: float) -> void:
 					# Show silhouette
 			AttackState.ATTACKING:
 				if game_loop.show_game == true:
-					lose()
+					#lose()
+					pass
 				if timer <= 0:
 					# Transition to recovery
 					attack_state = AttackState.RECOVERY
@@ -83,6 +84,18 @@ func stop_ai() -> void:
 
 func start_ai() -> void:
 	is_stopped = false
+
+func change_ai(_min_attack_spacing: int, _max_attack_spacing: int, _grace: float, 
+_min_attack_duration: int, _max_attack_duration: int) -> void:
+	min_time_between_attacks = _min_attack_spacing
+	## The most time possible between two attacks.
+	max_time_between_attacks = _max_attack_spacing
+	## How long from the warning animation to the actual attack happening
+	grace_period = _grace
+	## How long will attacks last at minimum
+	min_time_of_attack = _min_attack_duration
+	## How long will attacks last at maximum
+	max_time_of_attack = _max_attack_duration
 
 func lose() -> void:
 	stop_ai()

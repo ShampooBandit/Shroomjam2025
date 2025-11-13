@@ -1642,11 +1642,6 @@ position = Vector2(639, 559)
 camera = NodePath("../Camera2D")
 enemy_hp = 2
 
-[node name="SlimeSpawner9" parent="Container" node_paths=PackedStringArray("camera") instance=ExtResource("7_k84ew")]
-position = Vector2(405, 430)
-camera = NodePath("../Camera2D")
-enemy_hp = 2
-
 [node name="SlimeSpawner10" parent="Container" node_paths=PackedStringArray("camera") instance=ExtResource("7_k84ew")]
 position = Vector2(228, 547)
 camera = NodePath("../Camera2D")
@@ -1720,38 +1715,14 @@ enemy_id = 1
 camera = NodePath("../Camera2D")
 enemy_hp = 3
 
-[node name="PurpleSlimeSpawner2" parent="Container" node_paths=PackedStringArray("camera") instance=ExtResource("7_k84ew")]
-position = Vector2(2898, 896)
-enemy_id = 1
-camera = NodePath("../Camera2D")
-enemy_hp = 3
-
-[node name="PurpleSlimeSpawner3" parent="Container" node_paths=PackedStringArray("camera") instance=ExtResource("7_k84ew")]
-position = Vector2(3054, 888)
-enemy_id = 1
-camera = NodePath("../Camera2D")
-enemy_hp = 3
-
 [node name="PurpleSlimeSpawner4" parent="Container" node_paths=PackedStringArray("camera") instance=ExtResource("7_k84ew")]
-position = Vector2(1854, 736)
+position = Vector2(1840, 741)
 enemy_id = 1
 camera = NodePath("../Camera2D")
 enemy_hp = 3
 
 [node name="PurpleSlimeSpawner5" parent="Container" node_paths=PackedStringArray("camera") instance=ExtResource("7_k84ew")]
-position = Vector2(2053, 739)
-enemy_id = 1
-camera = NodePath("../Camera2D")
-enemy_hp = 3
-
-[node name="PurpleSlimeSpawner6" parent="Container" node_paths=PackedStringArray("camera") instance=ExtResource("7_k84ew")]
-position = Vector2(1954, 850)
-enemy_id = 1
-camera = NodePath("../Camera2D")
-enemy_hp = 3
-
-[node name="PurpleSlimeSpawner7" parent="Container" node_paths=PackedStringArray("camera") instance=ExtResource("7_k84ew")]
-position = Vector2(2469, 592)
+position = Vector2(2031, 900)
 enemy_id = 1
 camera = NodePath("../Camera2D")
 enemy_hp = 3
@@ -1770,12 +1741,6 @@ enemy_hp = 3
 
 [node name="PurpleSlimeSpawner10" parent="Container" node_paths=PackedStringArray("camera") instance=ExtResource("7_k84ew")]
 position = Vector2(2141, 570)
-enemy_id = 1
-camera = NodePath("../Camera2D")
-enemy_hp = 3
-
-[node name="PurpleSlimeSpawner11" parent="Container" node_paths=PackedStringArray("camera") instance=ExtResource("7_k84ew")]
-position = Vector2(1801, 199)
 enemy_id = 1
 camera = NodePath("../Camera2D")
 enemy_hp = 3
@@ -1829,25 +1794,19 @@ camera = NodePath("../Camera2D")
 enemy_hp = 4
 
 [node name="BokoblinSpawner5" parent="Container" node_paths=PackedStringArray("camera") instance=ExtResource("7_k84ew")]
-position = Vector2(3168, 804)
-enemy_id = 3
-camera = NodePath("../Camera2D")
-enemy_hp = 4
-
-[node name="BokoblinSpawner6" parent="Container" node_paths=PackedStringArray("camera") instance=ExtResource("7_k84ew")]
-position = Vector2(1954, 783)
+position = Vector2(3139, 901)
 enemy_id = 3
 camera = NodePath("../Camera2D")
 enemy_hp = 4
 
 [node name="BokoblinSpawner7" parent="Container" node_paths=PackedStringArray("camera") instance=ExtResource("7_k84ew")]
-position = Vector2(1856, 894)
+position = Vector2(1841, 889)
 enemy_id = 3
 camera = NodePath("../Camera2D")
 enemy_hp = 4
 
 [node name="BokoblinSpawner8" parent="Container" node_paths=PackedStringArray("camera") instance=ExtResource("7_k84ew")]
-position = Vector2(2053, 895)
+position = Vector2(2029, 749)
 enemy_id = 3
 camera = NodePath("../Camera2D")
 enemy_hp = 4

@@ -9,6 +9,7 @@ func _ready() -> void:
 func _on_area_2d_body_entered(body):
 	if body is ZeldaPlayer:
 		SoundPlayer.play_sound(pickup_sfx, "Console")
-		if body.hp < body.maxhp:
-			body.hp += 1
+		body.hp += 2
+		if body.hp > body.maxhp:
+			body.hp = body.maxhp
 		queue_free()

@@ -44,8 +44,8 @@ func _physics_process(_delta: float) -> void:
 				e.take_damage(0, 4)
 		if touching_wall:
 			for w in touching_wall:
-				if w is ZeldaCrumbleWall:
-					touching_wall[0].destroy()
+				if w is ZeldaCrumbleWall and !w is TileMapLayer:
+					w.destroy()
 
 func _on_animation_player_animation_finished(_anim_name):
 	queue_free()
