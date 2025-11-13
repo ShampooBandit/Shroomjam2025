@@ -112,7 +112,8 @@ func _physics_process(_delta: float) -> void:
 					slide_player = SoundPlayer.play_sound(slide_sfx, "Console")
 		HoganState.TRANSITION:
 			if position.x < 1:
-				slide_player.stop()
+				if slide_player:
+					slide_player.stop()
 				state = HoganState.WAITING
 				timer = randf_range(1.0, 2.0) * 60 # Wait for a random time before showing the enemies
 				game.timetohit = snapped(randf_range(2.0, 4.0), 0.1) # Set a random time to hit the enemies
@@ -165,3 +166,11 @@ func hit(which: int):
 		game.hoganmiss()
 		timer = 3 * 60
 		game.misses += 1
+
+func reset() -> void:
+	#slide_player = SoundPlayer.play_sound(slide_sfx, "Console")
+	position.x = 200
+	state = HoganState.TRANSITION
+	left_cutout.animation = "neutral"
+	center_cutout.animation = "neutral"
+	right_cutout.animation = "neutral"

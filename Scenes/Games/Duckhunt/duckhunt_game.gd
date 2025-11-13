@@ -259,6 +259,8 @@ func reset_game() -> void:
 	clay1_obj.reset_pigeon()
 	#clay2_obj.state = clay2_obj.ClayState.INTRO
 	carriage_obj.state = carriage_obj.HoganState.WAITING
+	if gamemode == Gamemode.HOGAN:
+		carriage_obj.reset()
 	duck = 0
 	carriage_obj.position.x = 0
 

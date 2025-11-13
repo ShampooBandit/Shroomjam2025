@@ -32,12 +32,17 @@ var is_currentgame_complete : bool = false
 var going_to_next_game : bool = false
 var won_the_game : bool = false
 
+func _stop_ai() -> void:
+	detection.reset_anim()
+	detection.stop_ai()
+
 func _ready() -> void:
 	screen_cover.modulate.a = 0.0
 	
 	duckhunt.beat_game.connect(beat_nes_game)
 	platformer.beatGame.connect(beat_nes_game)
 	zelda.ZeldaGameBeat.connect(beat_nes_game)
+	zelda.StopAI.connect(_stop_ai)
 	detection.CaughtGaming.connect(lose_game)
 	
 	bus_ids[0] = AudioServer.get_bus_index("Master")

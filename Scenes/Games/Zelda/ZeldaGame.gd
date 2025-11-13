@@ -15,6 +15,7 @@ var do_end_timer = false
 var on_title = true
 
 signal ZeldaGameBeat
+signal StopAI
 
 func _ready() -> void:
 	player.process_mode = Node.PROCESS_MODE_DISABLED
@@ -69,6 +70,7 @@ func _process(_delta: float) -> void:
 
 func _beat_game() -> void:
 	do_end_timer = true
+	StopAI.emit()
 
 func connect_to_boss(_boss: ZeldaFinalBoss) -> void:
 	_boss.BossDefeated.connect(_beat_game)

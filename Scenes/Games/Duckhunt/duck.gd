@@ -137,7 +137,8 @@ func _physics_process(_delta: float):
 			white_square.hide()
 			position += Vector2(0, 1.5)
 			if global_position.y >= duck_spawner.global_position.y:
-				sfx_player.stop()
+				if sfx_player:
+					sfx_player.stop()
 				game.shots = 3
 				timer = 90
 				dog.hit()
