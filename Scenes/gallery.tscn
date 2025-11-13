@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dpvfedut3c734" path="res://Scripts/gallery_video_list.gd" id="1_s4i5e"]
 [ext_resource type="Texture2D" uid="uid://di40xeyrrvlo2" path="res://GFX/title_screen_background_1.png" id="1_tivr1"]
 [ext_resource type="Script" uid="uid://u7j7yhvlt8ab" path="res://Scripts/gallery_player.gd" id="2_c4y5e"]
-[ext_resource type="VideoStream" uid="uid://lipqcx5ow2fm" path="res://Videos/90s Commercials - S01.E1.ogv" id="2_e6kyq"]
+[ext_resource type="VideoStream" uid="uid://bdrtqyl6qu5hp" path="res://Videos/Imagine.ogv" id="2_e6kyq"]
 [ext_resource type="PackedScene" uid="uid://bg3s3oi38dg6i" path="res://Scenes/gallery_video_container.tscn" id="2_qynqv"]
 [ext_resource type="Texture2D" uid="uid://cgqwctoeujj0x" path="res://GFX/title_screen_background_2.png" id="2_vqeo1"]
 [ext_resource type="Texture2D" uid="uid://lx7rxlfco8m8" path="res://GFX/play-button.png" id="3_c4y5e"]
