@@ -57,14 +57,12 @@ func _physics_process(_delta: float):
 		duck_hitbox.monitoring = true
 		duck_hitbox.monitorable = true
 		white_square.show()
-		show()
 	if game.gamemode != game.Gamemode.CLAY:
 		state = ClayState.NEUTRAL
 		hide()
 		duck_hitbox.monitoring = false
 		duck_hitbox.monitorable = false
 	else:
-		show()
 		duck_hitbox.monitoring = true
 		duck_hitbox.monitorable = true
 	timer -= 1
@@ -75,6 +73,7 @@ func _physics_process(_delta: float):
 			if timer <= 0:
 				respawn_pigeon()
 		ClayState.FLYING:
+			show()
 			# Move the character
 			if flying_left:
 				position += Vector2(-hori_speed-base_mult, (-base_speed-base_mult) * v_velocity)
@@ -113,7 +112,6 @@ func hit():
 
 func respawn_pigeon():
 	global_position = duck_spawner.global_position + Vector2(randi_range(-50, 50), 0)
-	show()
 	random_trajectory()
 	state = ClayState.FLYING
 	timer = 120

@@ -691,7 +691,6 @@ text = "1"
 label_settings = SubResource("LabelSettings_h4o7v")
 
 [node name="HoganTimeToHit" type="Label" parent="."]
-visible = false
 offset_left = 499.0
 offset_top = 300.0
 offset_right = 523.0

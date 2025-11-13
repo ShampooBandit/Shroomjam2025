@@ -33,6 +33,7 @@ var badguys = [false, false, false]
 var state = HoganState.WAITING
 
 var timer = 0
+var tth_timer = 0
 
 func _physics_process(_delta: float) -> void:
 	if game.gamemode != game.Gamemode.HOGAN:
@@ -49,6 +50,9 @@ func _physics_process(_delta: float) -> void:
 		right_white_square.show()
 		game.shots = 999 # Make sure you have infinite ammo
 	timer -= 1
+	if tth_timer > 0 and state == HoganState.SHOWN:
+		tth_timer -= 1
+	game.timetohit_display = tth_timer / 60
 	if position.x > 0:
 		position.x -= 1 # Move the carriage right if unpositioned
 	match state:
@@ -61,13 +65,13 @@ func _physics_process(_delta: float) -> void:
 				update_anim(center_cutout, badguys[1])
 				update_anim(right_cutout, badguys[2])
 				state = HoganState.SHOWN
-				timer = game.timetohit * 60
+				tth_timer = game.timetohit * 60
 		HoganState.SHOWN:
 			if hits >= difficulty:
 				# Advance early, the player hit all targets
 				state = HoganState.PASS
 				timer = 3 * 60
-			if timer <= 0:
+			if tth_timer <= 0:
 				# If time's up
 				if hits >= difficulty:
 					# The player somehow won anyway
@@ -77,7 +81,7 @@ func _physics_process(_delta: float) -> void:
 					# The player didn't make it in time
 					state = HoganState.MISS
 					game.hoganmiss()
-					game.misses += difficulty
+					game.misses += 1
 					timer = 3 * 60
 		HoganState.MISS:
 			if timer <= 0:
@@ -106,10 +110,14 @@ func _physics_process(_delta: float) -> void:
 				position.x = 200 # Move 200 to the right to start the slide anim
 				game.hogan_level += 1 # Next level on the HUD
 				# Win condition
-				if game.hogan_level > 9 and game.misses <= 5:
-					game.add_level()
-				else:
-					slide_player = SoundPlayer.play_sound(slide_sfx, "Console")
+				if game.hogan_level > 9:
+					if game.misses <= 5:
+						game.add_level()
+					else:
+						game.reset_hogan_on_fail()
+				if game.misses > 6:
+					game.reset_hogan_on_fail()
+				slide_player = SoundPlayer.play_sound(slide_sfx, "Console")
 		HoganState.TRANSITION:
 			if position.x < 1:
 				if slide_player:

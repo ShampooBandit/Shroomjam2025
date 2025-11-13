@@ -18,6 +18,8 @@ var threshold = 6
 var timetohit = 1.4
 var misses = 0
 
+var timetohit_display = 0
+
 var hogan_miss_screen = false
 var hogan_miss_timer = 0
 
@@ -220,8 +222,8 @@ func _process(_delta: float):
 	level_label.text = str(level)
 	level_label_hogan.text = str(hogan_level)
 	
-	tth_label_hogan.text = str(int(timetohit))
-	tth_label_second_hogan.text = str(int(round((timetohit - int(timetohit))*10)))
+	tth_label_hogan.text = str(int(timetohit_display))
+	tth_label_second_hogan.text = str(int(round((timetohit_display - int(timetohit_display))*10)))
 	
 	misses_label_hogan.text = str(misses)
 	
@@ -263,6 +265,24 @@ func reset_game() -> void:
 		carriage_obj.reset()
 	duck = 0
 	carriage_obj.position.x = 0
+	clay1_obj.has_begun = false
+	timetohit = snapped(randf_range(2.0, 4.0), 0.1)
+	
+func reset_hogan_on_fail() -> void:
+	pointscore = 0
+	hogan_level = 1
+	misses = 0
+	carriage_obj.state = carriage_obj.HoganState.TRANSITION
+	#carriage_obj.reset()
+	carriage_obj.position.x = 0
+	carriage_obj.left_cutout.animation = "neutral"
+	carriage_obj.center_cutout.animation = "neutral"
+	carriage_obj.right_cutout.animation = "neutral"
+	if carriage_obj.hit_player:
+		carriage_obj.hit_player.stop()
+	if carriage_obj.slide_player:
+		carriage_obj.slide_player.stop()
+	timetohit = snapped(randf_range(2.0, 4.0), 0.1)
 
 func earn_point() -> void:
 	successes[duck] = true
