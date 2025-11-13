@@ -28,22 +28,24 @@ var flying_left = false
 
 @export var duck_hitbox: DuckHitbox
 
-var timer = 0
-var respawn_timer = 0
+var has_begun = false
+var pause_respawning = true
+
+var timer = 3 * 60
+var respawn_timer = 3 * 60
 var second_delay = 0
 
 var base_mult = 0
 
-var v_velocity = 0
+var v_velocity = 1
 
 var base_speed = 5 # The speed multiplier of the duck when flying.
 var hori_speed = 0.5
 var time_to_hit = 5 # At minimum, how long the duck waits to get hit in seconds
 
 func _ready():
+	reset_pigeon()
 	random_trajectory()
-	spawn_pigeon()
-	respawn_timer = 3 * 60
 	
 
 func _physics_process(_delta: float):
@@ -61,8 +63,8 @@ func _physics_process(_delta: float):
 		duck_hitbox.monitoring = true
 		duck_hitbox.monitorable = true
 		white_square.show()
-		show()
-	respawn_timer -= 1
+	if !pause_respawning:
+		respawn_timer -= 1
 	second_delay -= 1
 	if respawn_timer <= 0:
 		respawn_pigeon()
@@ -75,7 +77,6 @@ func _physics_process(_delta: float):
 		duck_hitbox.monitoring = false
 		duck_hitbox.monitorable = false
 	else:
-		show()
 		duck_hitbox.monitoring = true
 		duck_hitbox.monitorable = true
 	timer -= 1
@@ -83,10 +84,18 @@ func _physics_process(_delta: float):
 	match state:
 		ClayState.INTRO:
 			white_square.hide()
+			hide()
+			second_pigeon.hide()
+			second_pigeon.state = second_pigeon.ClayState.INTRO
 			if timer <= 0:
+				v_velocity = 1
 				respawn_pigeon()
+				pause_respawning = false
+				show()
+				second_pigeon.show()
 		ClayState.FLYING:
 			# Move the character
+			show()
 			if flying_left:
 				position += Vector2(-hori_speed-base_mult, (-base_speed-base_mult) * v_velocity)
 			else:
@@ -123,10 +132,12 @@ func hit():
 	game.pointscore += 1000
 
 func respawn_pigeon():
-	game.duck += 2
+	if has_begun:
+		game.duck += 2
+	else:
+		has_begun = true
 	game.shots = 3
 	global_position = duck_spawner.global_position + Vector2(randi_range(-50, 50), 0)
-	show()
 	random_trajectory()
 	state = ClayState.FLYING
 	second_delay = 30
@@ -140,20 +151,10 @@ func reset_pigeon():
 	game.shots = 3
 	global_position = duck_spawner.global_position + Vector2(randi_range(-50, 50), 0)
 	hide()
+	second_pigeon.hide()
 	respawn_timer = 120
 	v_velocity = 1
 	state = ClayState.INTRO
 	frame = 0
-	
-func spawn_pigeon():
-	game.shots = 3
-	global_position = duck_spawner.global_position + Vector2(randi_range(-50, 50), 0)
-	show()
-	random_trajectory()
-	state = ClayState.FLYING
-	second_delay = 30
-	state = ClayState.FLYING
-	timer = 120
-	v_velocity = 1
-	frame = 0
-	play()
+	timer = 3 * 60
+	respawn_timer = 3 * 60

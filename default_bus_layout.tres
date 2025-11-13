@@ -1,4 +1,4 @@
-[gd_resource type="AudioBusLayout" load_steps=5 format=3 uid="uid://kkb7bmutqun2"]
+[gd_resource type="AudioBusLayout" load_steps=6 format=3 uid="uid://kkb7bmutqun2"]
 
 [sub_resource type="AudioEffectCompressor" id="AudioEffectCompressor_n8wo2"]
 resource_name = "Compressor"
@@ -15,6 +15,11 @@ resource_name = "BandPassFilter"
 
 [sub_resource type="AudioEffectBandPassFilter" id="AudioEffectBandPassFilter_j3pel"]
 resource_name = "BandPassFilter"
+
+[sub_resource type="AudioEffectLimiter" id="AudioEffectLimiter_j3pel"]
+resource_name = "Limiter"
+ceiling_db = -6.0
+threshold_db = -2.0
 
 [resource]
 bus/0/volume_db = -1.1215086
@@ -38,6 +43,8 @@ bus/2/volume_db = -5.045384
 bus/2/send = &"Master"
 bus/2/effect/0/effect = SubResource("AudioEffectBandPassFilter_j3pel")
 bus/2/effect/0/enabled = true
+bus/2/effect/1/effect = SubResource("AudioEffectLimiter_j3pel")
+bus/2/effect/1/enabled = true
 bus/3/name = &"World"
 bus/3/solo = false
 bus/3/mute = false
