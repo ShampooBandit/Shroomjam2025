@@ -68,6 +68,25 @@ func _process(_delta: float) -> void:
 		_gameplay_process(_delta)
 	
 func _between_game_process(_delta: float) -> void:
+	if !show_game:
+		if current_game == 0:
+			hands.anim_player.play("zapper")
+		else:
+			hands.anim_player.play("nes")
+		game_list[current_game].show_game()
+		commercials.visible = false
+		AudioServer.set_bus_mute(bus_ids[2], false)
+		AudioServer.set_bus_mute(bus_ids[1], true)
+		channel_label.get_child(0).text = "Ch. 3"
+		channel_label.visible = true
+		channel_label_timer = 120
+		show_game = true
+		
+	if channel_label_timer > 0:
+		channel_label_timer -= 1
+	else:
+		channel_label.visible = false
+		
 	if going_to_next_game:
 		timer -= 1
 		if timer <= 1:

@@ -14,7 +14,7 @@ func _physics_process(_delta: float) -> void:
 	if on_screen:
 		timer -= 1
 		
-		if timer <= 0 and !boss_child:
+		if timer <= 0 and !boss_child and !spawned_boss:
 			boss_child = boss.instantiate()
 			boss_child.player = player
 			boss_child.process_mode = Node.PROCESS_MODE_ALWAYS
