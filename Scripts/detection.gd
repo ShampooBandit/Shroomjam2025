@@ -1,6 +1,11 @@
 extends Node
 class_name Detection
 
+var approach_sfx := preload("res://SFX/steps_approach.ogg")
+var leave_sfx := preload("res://SFX/steps_leave.ogg")
+var closing_sfx := preload("res://SFX/door_closing2.ogg")
+var opening_sfx := preload("res://SFX/door_opening.mp3")
+
 ## The least time possible between two attacks.
 @export var min_time_between_attacks = 10
 ## The most time possible between two attacks.
@@ -40,6 +45,7 @@ func _physics_process(_delta: float) -> void:
 					# Transition to grace period
 					timer = grace_period * 60
 					attack_state = AttackState.GRACE
+					SoundPlayer.play_sound(opening_sfx, "World")
 					anim_player.play("opening")
 			AttackState.GRACE:
 				# Play door opening anim
@@ -50,11 +56,11 @@ func _physics_process(_delta: float) -> void:
 					# Show silhouette
 			AttackState.ATTACKING:
 				if game_loop.show_game == true:
-					# TODO lose()
-					pass
+					lose()
 				if timer <= 0:
 					# Transition to recovery
 					attack_state = AttackState.RECOVERY
+					SoundPlayer.play_sound(closing_sfx, "World")
 					anim_player.play("closing")
 					timer = 30
 			AttackState.RECOVERY:

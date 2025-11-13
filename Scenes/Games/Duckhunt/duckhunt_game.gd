@@ -3,7 +3,7 @@ class_name DuckHuntGame
 
 signal beat_game
 
-var level = 4
+var level = 1
 var hogan_level = 1
 var shots = 3
 var duck = 0

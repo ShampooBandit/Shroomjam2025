@@ -23,16 +23,20 @@ var on_target_hogan_r = false
 
 func _process(delta: float):
 	var move_vector_h = Input.get_axis("Left", "Right")
-	if global_position.x + move_vector_h > bottomright.global_position.x:
-		move_vector_h = 0
-	if global_position.x + move_vector_h < topleft.global_position.x:
-		move_vector_h = 0
 	var move_vector_v = Input.get_axis("Up", "Down")
-	if global_position.y + move_vector_v > bottomright.global_position.y:
-		move_vector_v = 0
-	if global_position.y + move_vector_v < topleft.global_position.y:
-		move_vector_v = 0
+	
+	#if global_position.x + move_vector_h > bottomright.global_position.x:
+		#move_vector_h = 0
+	#if global_position.x + move_vector_h < topleft.global_position.x:
+		#move_vector_h = 0
+	#
+	#if global_position.y + move_vector_v > bottomright.global_position.y:
+		#move_vector_v = 0
+	#if global_position.y + move_vector_v < topleft.global_position.y:
+		#move_vector_v = 0
 	position += Vector2(move_vector_h, move_vector_v) * delta * 180
+	global_position.x = clampf(global_position.x, topleft.global_position.x, bottomright.global_position.x)
+	global_position.y = clampf(global_position.y, topleft.global_position.y, bottomright.global_position.y)
 	
 	if Input.is_action_just_pressed("A") and game.shots > 0:
 		if on_target_duck and duck.state == duck.DuckState.FLYING and game.gamemode == game.Gamemode.NORMAL:

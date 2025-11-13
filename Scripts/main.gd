@@ -26,6 +26,7 @@ var is_caught : bool = false
 var hiding_screen : bool = false
 var timer : int = 0
 var is_currentgame_complete : bool = false
+var going_to_next_game : bool = false
 
 func _ready() -> void:
 	screen_cover.modulate.a = 0.0
@@ -58,15 +59,17 @@ func _process(_delta: float) -> void:
 		_gameplay_process(_delta)
 	
 func _between_game_process(_delta: float) -> void:
-	if timer > 0:
+	if going_to_next_game:
 		timer -= 1
 		if timer <= 1:
 			is_currentgame_complete = false
 			go_to_next_game()
+			going_to_next_game = false
 	else:
 		if Input.is_action_just_pressed("Start"):
 			detection.reset_ai()
 			timer = 15
+			going_to_next_game = true
 	
 func _gameplay_process(_delta: float) -> void:
 	if channel_label_timer > 0:
@@ -139,7 +142,7 @@ func go_to_next_game() -> void:
 		0:
 			duckhunt.disable_tilemaps()
 			duckhunt.hide_game()
-			duckhunt.process_mode = Node.PROCESS_MODE_DISABLED
+			duckhunt.queue_free()
 			platformer.process_mode = Node.PROCESS_MODE_ALWAYS
 			platformer.enable_tilemaps()
 			platformer.show_game()
@@ -148,7 +151,7 @@ func go_to_next_game() -> void:
 		1:
 			platformer.disable_tilemaps()
 			platformer.hide_game()
-			platformer.process_mode = Node.PROCESS_MODE_DISABLED
+			platformer.queue_free()
 			zelda.process_mode = Node.PROCESS_MODE_ALWAYS
 			zelda.enable_tilemaps()
 			zelda.show_game()

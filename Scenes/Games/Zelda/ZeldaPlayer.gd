@@ -80,10 +80,10 @@ func _physics_process(_delta: float) -> void:
 	if !game_done:
 		check_screen_transition()
 		
-		if Input.is_action_just_pressed("B") and bgm_player.stream != boss_bgm:
-			in_dungeon = true
-			camera.teleport(Vector2(2208.0, -96.0))
-			position = Vector2(2400.0, 200.0)
+		#if Input.is_action_just_pressed("B") and bgm_player.stream != boss_bgm:
+			#in_dungeon = true
+			#camera.teleport(Vector2(2208.0, -96.0))
+			#position = Vector2(2400.0, 200.0)
 		
 		if hp <= 0 and STATE != PlayerState.DIE:
 			TARGET_STATE = PlayerState.DIE

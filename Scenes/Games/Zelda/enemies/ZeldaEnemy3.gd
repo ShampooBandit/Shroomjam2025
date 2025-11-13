@@ -70,7 +70,10 @@ func check_wall_direction() -> int:
 	
 	chosen_dir = randi_range(0, len(possible_dir)-1)
 	
-	return possible_dir[chosen_dir]
+	if len(possible_dir > 0):
+		return possible_dir[chosen_dir]
+	else:
+		return 0
 	
 func _attack_process(_delta: float) -> void:
 	if timer > 0:
