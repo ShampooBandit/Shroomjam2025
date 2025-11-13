@@ -1871,7 +1871,7 @@ enemy_hp = 4
 position = Vector2(928, 215)
 
 [node name="BombUpgrade" parent="Container" instance=ExtResource("8_y4o58")]
-position = Vector2(2495, 1136)
+position = Vector2(2495, 1144)
 item_id = 1
 
 [node name="EnterShop" parent="Container" instance=ExtResource("9_2xikf")]
@@ -1912,7 +1912,7 @@ in_building = false
 dungeon_entrance = true
 
 [node name="ZeldaBigKey" parent="Container" node_paths=PackedStringArray("locked_door") instance=ExtResource("13_0ob8l")]
-position = Vector2(1777, 107)
+position = Vector2(1773, 122)
 locked_door = NodePath("../ZeldaLockedDoor")
 
 [node name="ZeldaCrumbleWall" parent="Container" instance=ExtResource("11_s55pp")]

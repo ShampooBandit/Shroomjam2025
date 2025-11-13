@@ -113,6 +113,7 @@ func _physics_process(_delta: float) -> void:
 				if game.hogan_level > 9:
 					if game.misses <= 5:
 						game.add_level()
+						return
 					else:
 						game.reset_hogan_on_fail()
 				if game.misses > 6:

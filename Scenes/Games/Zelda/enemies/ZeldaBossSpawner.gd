@@ -21,10 +21,6 @@ func _physics_process(_delta: float) -> void:
 			add_child(boss_child)
 			spawned_boss = true
 
-func _on_visible_on_screen_notifier_2d_screen_exited():
-	on_screen = false
-	spawned_boss = false
-
 func _on_visible_on_screen_notifier_2d_screen_entered():
 	timer = 120
 	on_screen = true

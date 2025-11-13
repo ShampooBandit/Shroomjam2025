@@ -132,7 +132,7 @@ func _gameplay_process(_delta: float) -> void:
 	else:
 		if !won_the_game:
 			#if Input.is_action_just_pressed("Switch Game"):
-			#	beat_nes_game()
+				#beat_nes_game()
 			if Input.is_action_just_pressed("ToggleCommercial"):
 				if show_game:
 					hands.anim_player.play("remote")
