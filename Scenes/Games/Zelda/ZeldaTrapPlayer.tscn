@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://ce83gch0o2t2g"]
+
+[ext_resource type="Texture2D" uid="uid://b05gmrhxmrypq" path="res://GFX/Zoria Tileset/overworld.png" id="1_5b5me"]
+[ext_resource type="Script" uid="uid://cxvth2xdpnfn8" path="res://Scenes/Games/Zelda/ZeldaTrapPlayer.gd" id="1_og3tk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_og3tk"]
+size = Vector2(32, 32)
+
+[node name="ZeldaTrapPlayer" type="CharacterBody2D"]
+z_index = 1
+script = ExtResource("1_og3tk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_5b5me")
+region_enabled = true
+region_rect = Rect2(320, 640, 32, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_og3tk")

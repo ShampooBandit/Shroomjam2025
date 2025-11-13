@@ -6,17 +6,19 @@ signal beat_game
 var level = 1
 var hogan_level = 1
 var shots = 3
-var duck = 9
+var duck = 0
 var clay1 = 0
 var clay2 = 0
 var successes = [false, false, false, false, false, false, false, false, false, false]
-var score = 9
+var score = 0
 var pointscore = 0
 var highscore = 0
 var flyingcurrently = false
 var threshold = 6
 var timetohit = 1.4
 var misses = 0
+
+var timetohit_display = 0
 
 var hogan_miss_screen = false
 var hogan_miss_timer = 0
@@ -57,7 +59,7 @@ var counter = 0
 @export var carriage_obj: Carriage
 
 @export var title_screen: TextureRect
-@export var end_screen: TextureRect
+@export var end_screen: ColorRect
 @export var end_screen_label: Label
 
 func _ready() -> void:
@@ -220,8 +222,8 @@ func _process(_delta: float):
 	level_label.text = str(level)
 	level_label_hogan.text = str(hogan_level)
 	
-	tth_label_hogan.text = str(int(timetohit))
-	tth_label_second_hogan.text = str(int(round((timetohit - int(timetohit))*10)))
+	tth_label_hogan.text = str(int(timetohit_display))
+	tth_label_second_hogan.text = str(int(round((timetohit_display - int(timetohit_display))*10)))
 	
 	misses_label_hogan.text = str(misses)
 	
@@ -259,8 +261,28 @@ func reset_game() -> void:
 	clay1_obj.reset_pigeon()
 	#clay2_obj.state = clay2_obj.ClayState.INTRO
 	carriage_obj.state = carriage_obj.HoganState.WAITING
+	if gamemode == Gamemode.HOGAN:
+		carriage_obj.reset()
 	duck = 0
 	carriage_obj.position.x = 0
+	clay1_obj.has_begun = false
+	timetohit = snapped(randf_range(2.0, 4.0), 0.1)
+	
+func reset_hogan_on_fail() -> void:
+	pointscore = 0
+	hogan_level = 1
+	misses = 0
+	carriage_obj.state = carriage_obj.HoganState.TRANSITION
+	#carriage_obj.reset()
+	carriage_obj.position.x = 0
+	carriage_obj.left_cutout.animation = "neutral"
+	carriage_obj.center_cutout.animation = "neutral"
+	carriage_obj.right_cutout.animation = "neutral"
+	if carriage_obj.hit_player:
+		carriage_obj.hit_player.stop()
+	if carriage_obj.slide_player:
+		carriage_obj.slide_player.stop()
+	timetohit = snapped(randf_range(2.0, 4.0), 0.1)
 
 func earn_point() -> void:
 	successes[duck] = true

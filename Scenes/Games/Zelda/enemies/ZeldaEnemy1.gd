@@ -1,6 +1,15 @@
 extends CharacterBody2D
 
-@onready var pickup := preload("res://Scenes/Games/Zelda/pickups/ZeldaPickup.tscn")
+var pickup := preload("res://Scenes/Games/Zelda/pickups/ZeldaPickup.tscn")
+
+@onready var up_wall : RayCast2D = $UpWallCast
+@onready var up_wall2 : RayCast2D = $UpWallCast2
+@onready var down_wall : RayCast2D = $DownWallCast
+@onready var down_wall2 : RayCast2D = $DownWallCast2
+@onready var left_wall : RayCast2D = $LeftWallCast
+@onready var left_wall2 : RayCast2D = $LeftWallCast2
+@onready var right_wall : RayCast2D = $RightWallCast
+@onready var right_wall2 : RayCast2D = $RightWallCast2
 
 var hurt_sfx := preload("res://SFX/Zelda/enemy_hurt.wav")
 var die_sfx := preload("res://SFX/Zelda/enemy_die.wav")
@@ -42,12 +51,34 @@ func _physics_process(_delta: float) -> void:
 		1:
 			_hurt_process(_delta)
 	
+func check_wall_direction() -> int:
+	var possible_dir = []
+	var chosen_dir = 0
+	if !left_wall.is_colliding() and !left_wall2.is_colliding():
+		possible_dir.append(1)
+		
+	if !up_wall.is_colliding() and !up_wall2.is_colliding():
+		possible_dir.append(2)
+		
+	if !right_wall.is_colliding() and !right_wall2.is_colliding():
+		possible_dir.append(3)
+		
+	if !down_wall.is_colliding() and !down_wall2.is_colliding():
+		possible_dir.append(4)
+	
+	chosen_dir = randi_range(0, len(possible_dir)-1)
+	
+	if len(possible_dir) > 0:
+		return possible_dir[chosen_dir]
+	else:
+		return 0
+
 func _idle_process(_delta: float) -> void:
 	if timer > 0:
 		timer -= 1
 	else:
 		timer = randi_range(60, 180)
-		dir = randi_range(1, 4)
+		dir = check_wall_direction()
 		match dir:
 			1:
 				velocity = Vector2(-speed, 0.0)
@@ -65,7 +96,7 @@ func _idle_process(_delta: float) -> void:
 	
 	if get_last_slide_collision():
 		timer = randi_range(60, 180)
-		dir = randi_range(1, 4)
+		dir = check_wall_direction()
 		match dir:
 			1:
 				velocity = Vector2(-speed, 0.0)
@@ -88,11 +119,10 @@ func _hurt_process(_delta: float) -> void:
 		STATE = 0
 
 func take_damage(_dir : int, _dmg : int):
-	hp -= _dmg
-	if hp <= 0:
-		die()
-		
 	if invuln_timer <= 0:
+		hp -= _dmg
+		if hp <= 0:
+			die()
 		match _dir:
 			1:
 				velocity = Vector2(-400.0, 0.0)

@@ -130,7 +130,4 @@ collision_mask = 8
 position = Vector2(0, -19)
 shape = SubResource("RectangleShape2D_72rhq")
 
-[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
-rect = Rect2(-15, -10, 30, 20)
-
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

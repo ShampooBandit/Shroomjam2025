@@ -9,7 +9,7 @@ var player_visible = false
 
 var progress_dragged = false
 
-func _physics_process(delta: float):
+func _physics_process(_delta: float):
 	if player_visible:
 		if modulate.a < 1:
 			modulate.a += 0.1
@@ -39,7 +39,7 @@ func _on_progress_bar_drag_started() -> void:
 	vid_player.paused = true
 
 
-func _on_progress_bar_drag_ended(value_changed: bool) -> void:
+func _on_progress_bar_drag_ended(_value_changed: bool) -> void:
 	vid_player.stream_position = progress_bar.value
 	vid_player.paused = false
 	progress_dragged = false

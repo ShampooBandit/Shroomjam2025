@@ -20,6 +20,7 @@
 [ext_resource type="Script" uid="uid://b1jijlwgfypwi" path="res://Scenes/Games/Duckhunt/duck_hitbox.gd" id="10_x7ppw"]
 [ext_resource type="FontFile" uid="uid://desqh063rddbw" path="res://GFX/hoganfont.png" id="13_wg0fp"]
 [ext_resource type="Texture2D" uid="uid://ddcfjleqj4q0s" path="res://GFX/NES - Hogan's Alley - Miscellaneous - Hogan's Alley A.png" id="14_mvrrf"]
+[ext_resource type="Texture2D" uid="uid://ctrtr6c7a0das" path="res://GFX/ufo_hunt_title.png" id="21_a4wkw"]
 [ext_resource type="FontFile" uid="uid://ciftl4jofuyng" path="res://Resource/nintendo-nes-font.ttf" id="21_bn0kx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x7ppw"]
@@ -503,8 +504,6 @@ size = Vector2(22, 20)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iu5i7"]
 size = Vector2(22, 20)
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_iu5i7"]
-
 [node name="DuckhuntGame" type="Node2D" node_paths=PackedStringArray("ammo_label", "score_label", "ducks_label", "threshold_label", "level_label", "score_label_hogan", "high_score_label_hogan", "level_label_hogan", "tth_label_hogan", "tth_label_second_hogan", "misses_label_hogan", "foreground", "background", "clay_background", "hogan_foreground", "success_text", "fly_away_text", "duck_obj", "clay1_obj", "clay2_obj", "dog", "carriage_obj", "title_screen", "end_screen", "end_screen_label")]
 script = ExtResource("1_ktv5o")
 ammo_label = NodePath("AmmoLeft")
@@ -692,7 +691,6 @@ text = "1"
 label_settings = SubResource("LabelSettings_h4o7v")
 
 [node name="HoganTimeToHit" type="Label" parent="."]
-visible = false
 offset_left = 499.0
 offset_top = 300.0
 offset_right = 523.0
@@ -897,33 +895,32 @@ offset_left = 384.0
 offset_top = 279.0
 offset_right = 640.0
 offset_bottom = 487.0
-texture = SubResource("NoiseTexture2D_iu5i7")
+texture = ExtResource("21_a4wkw")
 expand_mode = 1
 
 [node name="Label" type="Label" parent="TitleScreen"]
 layout_mode = 0
 offset_left = 38.0
-offset_top = 122.0
+offset_top = 154.0
 offset_right = 214.0
-offset_bottom = 145.0
+offset_bottom = 177.0
 theme_override_fonts/font = ExtResource("21_bn0kx")
 text = "PRESS START"
 
-[node name="EndScreen" type="TextureRect" parent="."]
+[node name="EndScreen" type="ColorRect" parent="."]
 visible = false
 offset_left = 384.0
 offset_top = 279.0
 offset_right = 640.0
 offset_bottom = 487.0
-texture = SubResource("NoiseTexture2D_iu5i7")
-expand_mode = 1
+color = Color(0, 0, 0, 1)
 
 [node name="Label" type="Label" parent="EndScreen"]
 layout_mode = 0
 offset_left = 22.0
-offset_top = 121.0
+offset_top = 86.0
 offset_right = 230.0
-offset_bottom = 156.0
+offset_bottom = 121.0
 theme_override_fonts/font = ExtResource("21_bn0kx")
 text = "VICTORY
 SCORE: 696900"

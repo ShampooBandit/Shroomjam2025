@@ -20,11 +20,16 @@ var invuln : bool = false
 var invuln_timer : int = 0
 var hp : int = 15
 var player : ZeldaPlayer
-var damage : int = 1
+var damage : int = 2
 
 func _ready() -> void:
 	get_parent().get_parent().get_parent().connect_to_boss(self)
 	player.play_bgm(player.boss_bgm)
+	player.in_boss = true
+	player.Respawn.connect(_on_player_respawn)
+	player.final_boss_trap.enable()
+	if player.global_position.x < player.camera.left_border + 46:
+		player.global_position.x = player.camera.left_border + 46
 
 func _physics_process(_delta: float) -> void:
 	match STATE:
@@ -90,7 +95,7 @@ func _cast_process(_delta: float) -> void:
 	if timer <= 0:
 		STATE = 1
 		if invuln:
-			anim_player.play("idle_hurt")
+			anim_player.play("hurt")
 		else:
 			anim_player.play("idle")
 		timer = 60
@@ -110,6 +115,8 @@ func spawn_projectile() -> void:
 
 func take_damage(_dir, _damage):
 	if !invuln:
+		if _damage > 1:
+			_damage = 2
 		invuln = true
 		invuln_timer = 30
 		hp -= _damage
@@ -126,3 +133,8 @@ func take_damage(_dir, _damage):
 		elif STATE == 2:
 			SoundPlayer.play_sound(hurt_sfx, "Console")
 			anim_player.play("cast_hurt")
+
+func _on_player_respawn() -> void:
+	get_parent().process_mode = Node.PROCESS_MODE_INHERIT
+	get_parent()._on_visible_on_screen_notifier_2d_screen_exited()
+	queue_free()

@@ -1,10 +1,29 @@
-[gd_scene load_steps=4 format=3 uid="uid://566cjaism5dv"]
+[gd_scene load_steps=7 format=3 uid="uid://566cjaism5dv"]
 
 [ext_resource type="Script" uid="uid://bmwiesyeswwbl" path="res://Scripts/main_menu.gd" id="1_ekrfg"]
-[ext_resource type="PackedScene" path="res://Scenes/main_menu_button.tscn" id="1_w31pl"]
+[ext_resource type="PackedScene" uid="uid://btnsj2saglf54" path="res://Scenes/main_menu_button.tscn" id="1_w31pl"]
+[ext_resource type="Texture2D" uid="uid://di40xeyrrvlo2" path="res://GFX/title_screen_background_1.png" id="2_q2qps"]
+[ext_resource type="Texture2D" uid="uid://cgqwctoeujj0x" path="res://GFX/title_screen_background_2.png" id="3_yosvi"]
+[ext_resource type="Texture2D" uid="uid://bdkdwwrwpcukh" path="res://GFX/Menu_buttons.png" id="4_yosvi"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_4obfb"]
-font_size = 56
+[sub_resource type="SpriteFrames" id="SpriteFrames_2qdx2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_q2qps")
+}],
+"loop": true,
+"name": &"light_high",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_yosvi")
+}],
+"loop": true,
+"name": &"light_low",
+"speed": 5.0
+}]
 
 [node name="Title" type="Control"]
 layout_mode = 3
@@ -15,31 +34,28 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ekrfg")
 
-[node name="Label" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -315.0
-offset_top = 90.0
-offset_right = 315.0
-offset_bottom = 187.0
-grow_horizontal = 2
-text = "Binnying All Night"
-label_settings = SubResource("LabelSettings_4obfb")
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="Background" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_2qdx2")
+animation = &"light_low"
+centered = false
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(634, 511)
+texture = ExtResource("4_yosvi")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 161.0
-offset_top = 266.0
-offset_right = -161.0
+offset_left = 522.0
+offset_top = 285.0
+offset_right = -534.0
+offset_bottom = -100.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 21
 
 [node name="StartGameButton" parent="VBoxContainer" instance=ExtResource("1_w31pl")]
 layout_mode = 2
@@ -52,11 +68,6 @@ text = "Settings
 [node name="GalleryButton" parent="VBoxContainer" instance=ExtResource("1_w31pl")]
 layout_mode = 2
 text = "Gallery
-"
-
-[node name="CreditsButton" parent="VBoxContainer" instance=ExtResource("1_w31pl")]
-layout_mode = 2
-text = "Credits
 "
 
 [node name="QuitButton" parent="VBoxContainer" instance=ExtResource("1_w31pl")]

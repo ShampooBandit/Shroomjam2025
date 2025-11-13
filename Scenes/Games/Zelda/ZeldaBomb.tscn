@@ -194,6 +194,7 @@ script = ExtResource("1_qysj4")
 
 [node name="Explosion1" type="Sprite2D" parent="."]
 visible = false
+z_index = 1
 texture = ExtResource("2_jd7vp")
 hframes = 3
 frame = 2
@@ -202,6 +203,7 @@ region_rect = Rect2(360, 74, 108, 32)
 
 [node name="Explosion2" type="Sprite2D" parent="."]
 visible = false
+z_index = 1
 position = Vector2(14, -22)
 texture = ExtResource("2_jd7vp")
 hframes = 3
@@ -211,6 +213,7 @@ region_rect = Rect2(360, 74, 108, 32)
 
 [node name="Explosion3" type="Sprite2D" parent="."]
 visible = false
+z_index = 1
 position = Vector2(-14, -22)
 texture = ExtResource("2_jd7vp")
 hframes = 3
@@ -220,6 +223,7 @@ region_rect = Rect2(360, 74, 108, 32)
 
 [node name="Explosion4" type="Sprite2D" parent="."]
 visible = false
+z_index = 1
 position = Vector2(-26, 1)
 texture = ExtResource("2_jd7vp")
 hframes = 3
@@ -229,6 +233,7 @@ region_rect = Rect2(360, 74, 108, 32)
 
 [node name="Explosion7" type="Sprite2D" parent="."]
 visible = false
+z_index = 1
 position = Vector2(26, 1)
 texture = ExtResource("2_jd7vp")
 hframes = 3
@@ -238,6 +243,7 @@ region_rect = Rect2(360, 74, 108, 32)
 
 [node name="Explosion5" type="Sprite2D" parent="."]
 visible = false
+z_index = 1
 position = Vector2(-14, 21)
 texture = ExtResource("2_jd7vp")
 hframes = 3
@@ -247,6 +253,7 @@ region_rect = Rect2(360, 74, 108, 32)
 
 [node name="Explosion6" type="Sprite2D" parent="."]
 visible = false
+z_index = 1
 position = Vector2(14, 21)
 texture = ExtResource("2_jd7vp")
 hframes = 3
@@ -260,15 +267,15 @@ region_enabled = true
 region_rect = Rect2(469, 39, 34, 34)
 
 [node name="EnemyArea" type="Area2D" parent="."]
-collision_layer = 256
-collision_mask = 256
+collision_layer = 260
+collision_mask = 260
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyArea"]
 shape = SubResource("CircleShape2D_jd7vp")
 
 [node name="WallArea" type="Area2D" parent="."]
-collision_layer = 512
-collision_mask = 512
+collision_layer = 513
+collision_mask = 513
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WallArea"]
 shape = SubResource("CircleShape2D_jd7vp")

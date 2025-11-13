@@ -255,10 +255,11 @@ func _big_physics_process(delta: float) -> void:
 
 func _on_hurtbox_body_entered(_body):
 	if _body is PlatformerPowerup:
-		velocity = Vector2.ZERO
-		anim_player.speed_scale = 1
-		anim_player.play("powerup")
-		getting_powerup = true
+		if hp == 1:
+			anim_player.speed_scale = 1
+			velocity = Vector2.ZERO
+			anim_player.play("powerup")
+			getting_powerup = true
 		SoundPlayer.play_sound(get_powerup_sfx, "Console", 0.35)
 		_body.queue_free()
 	else:

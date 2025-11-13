@@ -29,7 +29,7 @@ func teleport(teleport_pos : Vector2) -> void:
 func exit() -> void:
 	TransitionComplete.emit()
 
-func _process(_delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if move:
 		match dir:
 			1:
@@ -48,7 +48,7 @@ func _process(_delta: float) -> void:
 				position.y += 4.0
 				if position.y >= target_pos.y:
 					finish_transition()
-				
+
 func finish_transition() -> void:
 	position = target_pos
 	move = false

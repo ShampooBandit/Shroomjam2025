@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://duif5ey5i2ff1"
-path="res://.godot/imported/nes_controller.png-e964f11b117b1b3d0b01ff861537ded0.ctex"
+uid="uid://bdkdwwrwpcukh"
+path="res://.godot/imported/Menu_buttons.png-7edc6f7465034bd4fb2aff3c3b6da6b7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://GFX/nes_controller.png"
-dest_files=["res://.godot/imported/nes_controller.png-e964f11b117b1b3d0b01ff861537ded0.ctex"]
+source_file="res://GFX/Menu_buttons.png"
+dest_files=["res://.godot/imported/Menu_buttons.png-7edc6f7465034bd4fb2aff3c3b6da6b7.ctex"]
 
 [params]
 

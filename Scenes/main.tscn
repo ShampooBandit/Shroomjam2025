@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bt5r7n1w3eui5"]
+[gd_scene load_steps=20 format=3 uid="uid://bt5r7n1w3eui5"]
 
 [ext_resource type="Script" uid="uid://ub3367t5lo43" path="res://Scripts/main.gd" id="1_8gbba"]
 [ext_resource type="PackedScene" uid="uid://bkhwbueajubi7" path="res://Scenes/Games/Platformer/PlatformerGame.tscn" id="1_jjgbg"]
@@ -8,7 +8,9 @@
 [ext_resource type="PackedScene" uid="uid://b8kqpck7ep2bo" path="res://Scenes/Games/Duckhunt/DuckhuntGame.tscn" id="6_6bp64"]
 [ext_resource type="PackedScene" uid="uid://sf2oei2qqhjc" path="res://Scenes/Games/Zelda/ZeldaGame.tscn" id="7_ynf5e"]
 [ext_resource type="Shader" uid="uid://p5qwhgmiideg" path="res://GFX/Shaders/crt.gdshader" id="8_344ge"]
+[ext_resource type="Texture2D" uid="uid://dfd1a1w52gvmh" path="res://GFX/end_screen_background.png" id="9_6iyac"]
 [ext_resource type="Script" uid="uid://b4ijsa6rbewmc" path="res://Scripts/detection.gd" id="9_ynf5e"]
+[ext_resource type="FontFile" uid="uid://bva1yqvsc7y43" path="res://Scenes/Pixel Digivolve.otf" id="10_fdnlq"]
 [ext_resource type="PackedScene" uid="uid://cidu46v48wg8y" path="res://Scenes/hands.tscn" id="11_d1ilt"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ynf5e"]
@@ -138,7 +140,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.75),
 "transitions": PackedFloat32Array(4, 1),
 "update": 0,
-"values": [1276.0, 640.0]
+"values": [1276.0, 800.0]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -150,7 +152,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.75),
 "transitions": PackedFloat32Array(4, 1),
 "update": 0,
-"values": [1276.0, 640.0]
+"values": [1276.0, 800.0]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -162,7 +164,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.75),
 "transitions": PackedFloat32Array(4, 1),
 "update": 0,
-"values": [4.0, 640.0]
+"values": [4.0, 480.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_d1ilt"]
@@ -294,6 +296,32 @@ offset_top = 143.0
 offset_right = 1104.0
 offset_bottom = 800.0
 color = Color(1, 1, 0.84000003, 0.2784314)
+
+[node name="MainEndScreen" type="Control" parent="CanvasLayer2"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer2/MainEndScreen"]
+texture = ExtResource("9_6iyac")
+centered = false
+
+[node name="Control" type="Control" parent="CanvasLayer2/MainEndScreen"]
+anchors_preset = 0
+offset_right = 1280.0
+offset_bottom = 720.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer2/MainEndScreen/Control"]
+layout_mode = 0
+offset_left = 59.0
+offset_top = 399.0
+offset_right = 754.0
+offset_bottom = 704.0
+theme_override_fonts/normal_font = ExtResource("10_fdnlq")
+theme_override_font_sizes/normal_font_size = 104
+text = "Thanks for playing"
 
 [node name="ScreenCover" type="ColorRect" parent="CanvasLayer2"]
 top_level = true

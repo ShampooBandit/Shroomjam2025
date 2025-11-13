@@ -1,6 +1,10 @@
 extends Control
 
 var master_bus = AudioServer.get_bus_index("Master")
+@onready var slider := $GridContainer/HSlider
+
+func _ready() -> void:
+	slider.value = Settings.main_volume
 
 func _on_back_button_pressed():
 	get_tree().change_scene_to_file("res://Scenes/title.tscn")
