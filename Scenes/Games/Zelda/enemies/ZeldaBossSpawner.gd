@@ -8,8 +8,14 @@ var on_screen : bool = false
 var spawned_boss : bool = false
 
 func _ready() -> void:
-	pass
-	
+	player.Respawn.connect(_on_player_respawn)
+
+func _on_player_respawn() -> void:
+	on_screen = false
+	timer = 120
+	boss_child = null
+	spawned_boss = false
+
 func _physics_process(_delta: float) -> void:
 	if on_screen:
 		timer -= 1

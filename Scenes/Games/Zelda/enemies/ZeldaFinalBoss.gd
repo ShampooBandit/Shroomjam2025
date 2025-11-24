@@ -136,5 +136,4 @@ func take_damage(_dir, _damage):
 
 func _on_player_respawn() -> void:
 	get_parent().process_mode = Node.PROCESS_MODE_INHERIT
-	get_parent()._on_visible_on_screen_notifier_2d_screen_exited()
 	queue_free()

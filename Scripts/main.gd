@@ -119,9 +119,9 @@ func _gameplay_process(_delta: float) -> void:
 			timer -= 1
 			if timer <= 0:
 				is_caught = false
+				game_list[current_game].process_mode = Node.PROCESS_MODE_INHERIT
 				game_list[current_game].reset_game()
 				AudioServer.set_bus_mute(bus_ids[2], false)
-				game_list[current_game].process_mode = Node.PROCESS_MODE_INHERIT
 				var tween = get_tree().create_tween()
 				tween.tween_property(screen_cover, "modulate:a", 0.0, 1.0)
 				tween.play()

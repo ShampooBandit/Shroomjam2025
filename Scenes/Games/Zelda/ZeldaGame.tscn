@@ -1940,7 +1940,7 @@ player = NodePath("../ZeldaPlayer")
 
 [node name="ZeldaPlayer" parent="Container" node_paths=PackedStringArray("final_boss_trap", "camera") instance=ExtResource("2_yodkl")]
 z_as_relative = false
-position = Vector2(176, 120)
+position = Vector2(177, 116)
 final_boss_trap = NodePath("../ZeldaTrapPlayer")
 camera = NodePath("../Camera2D")
 
